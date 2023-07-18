@@ -1,6 +1,7 @@
 <!doctype html>
 <html class="scroll-smooth" lang="de">
 <head>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.svg">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <title>Karriere bei L21s</title>
@@ -20,6 +21,11 @@
             }
         }
     </script>
+    <style>
+        html {
+            font-family: "Helvetica Now Display", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
+        }
+    </style>
 </head>
 <body class="text-white bg-white overflow-x-none">
     <section id="header">
@@ -41,13 +47,13 @@
                         <a href="#offeneStellen" class="rounded-full border-2 p-2 px-4 text-md transition duration-500 hover:bg-white border-white xl:hover:text-textgray text-center">Jetzt bewerben</a>
                     </div>
                 </nav>
-                <div class="flex flex-col pt-24 pb-24 md:pt-32 md:pb-0 h-full md:w-screen flex-grow">
+                <div class="flex flex-col pt-24 pb-24 md:pt-48 md:pb-0 h-full md:w-screen flex-grow">
                     <div class="flex flex-col gap-4 md:gap-16 p-8 md:p-0 flex-grow justify-evenly md:justify-start md:items-center">
                         <div class="flex flex-col justify-center items-center text-center gap-8">
                             <h1 class="font-bold text-3xl text-center md:text-7xl">Karriere bei L21s</h1>
                             <h2 class="md:text-2xl">Falls du mehr &uuml;ber L21s erfahren m&ouml;chtest, bist du hier genau richtig.<br>Wir zeigen dir Schritt f&uuml;r Schritt was dich bei L21s erwartet.</h2>
                         </div>
-                        <iframe loading="lazy" class="rounded-xl md:-bottom-8 md:absolute md:h-[60%] md:w-[60%]" width="100%" height="240" src="https://www.youtube-nocookie.com/embed/v2gKLt1Q5EM?controls=0" title="YouTube video player" frameborder="0" allow="" allowfullscreen></iframe>
+                        <iframe loading="lazy" class="rounded-xl md:-bottom-16 md:absolute md:h-[60%] md:w-[60%]" width="100%" height="240" src="https://www.youtube-nocookie.com/embed/v2gKLt1Q5EM?controls=1" title="YouTube video player" frameborder="0" allow="" allowfullscreen></iframe>
                         <a href="#projekte" class="md:hidden rounded-full border-2 p-2 px-4 text-md text-center" >Zu den Projekten</a>
                     </div>
                 </div>
@@ -56,21 +62,20 @@
     </section>
     <div class="md:grid md:grid-rows-5 md:grid-cols-3 md:py-32 md:px-32 md:gap-16">
         <section id="projekte">
-            <div class="bg-white text-violette md:bg-inherit min-h-screen flex flex-col h-full md:min-h-0">
-                <div class="flex flex-col py-24 flex-grow md:p-8 md:bg-bggray md:rounded-2xl hover:scale-105 transition duration-300">
+            <div class="bg-white text-violette md:bg-inherit flex flex-col h-full md:min-h-0">
+                <div class="flex flex-col py-6 flex-grow md:p-8 md:bg-bggray md:rounded-2xl">
                     <div class="flex flex-col gap-8 p-8 flex-grow justify-evenly md:p-0 md:justify-between">
                         <div class="flex flex-col justify-center gap-8">
-                            <div>
-                                <img loading="lazy" src="assets/planning.gif" width="48" height="48">
+                            <div class="flex flex-col gap-2">
+                                <img class="-translate-x-1" loading="lazy" src="assets/planning.gif" width="40" height="40">
                                 <h1 class="text-3xl">Unsere Projekte</h1>
+                                <p class="text-textgray">
+                                    Was für Probleme lösen wir bei L21s? Wie sieht ein typischer Kunde von uns aus?
+                                    Wann entscheidet man sich für eine Zusammenarbeit mit L21s und
+                                    welche Aufträge wollen wir vielleicht eher ungern bearbeiten?
+                                    <br><br>Till hat die Antworten auf alle diese Fragen.
+                                </p>
                             </div>
-                            <p class="text-textgray">
-                                Was f&uuml;r Projekte gestalten wir bei L21s?<br>
-                                Wie sieht ein typischer Kunde von uns aus?<br>
-                                Wann entscheidet man sich f&uuml;r eine Zusammenarbeit mit L21s und wann ist L21s nicht der beste Ansprechpartner?<br>
-                                <br>
-                                Das erkl&auml;rt dir Till im Video.
-                            </p>
                         </div>
                         <iframe loading="lazy" class="rounded-2xl drop-shadow-md" width="100%" height="240" src="https://www.youtube-nocookie.com/embed/opL4u_gi5VY?controls=1" title="YouTube video player" frameborder="0" allow="" allowfullscreen></iframe>
                         <a href="#technologien" class="md:hidden rounded-full border-2 p-2 px-4 text-md text-center" >Zu den Technologien</a>
@@ -78,169 +83,151 @@
                 </div>
             </div>
         </section>
-        <div class="grid md:row-start-1 md:col-start-2 md:col-span-2 hover:scale-105 transition duration-300">
+        <div class="grid md:row-start-1 md:col-start-2 md:col-span-2">
             <img loading="lazy" src="assets/bild1.png" class="hidden object-cover w-full h-full aspect-video self-center rounded-2xl md:block">
         </div>
         <section id="technologien">
-            <div class="md:row-start-2 md:col-start-2 bg-violette text-white md:text-violette md:bg-inherit min-h-screen flex flex-col h-full md:min-h-0">
-                <div class="flex flex-col py-24 flex-grow md:p-8 md:bg-bggray md:rounded-2xl hover:scale-105 transition duration-300">
+            <div class="md:row-start-2 md:col-start-2 bg-violette text-white md:text-violette md:bg-inherit flex flex-col h-full md:min-h-0">
+                <div class="flex flex-col py-6 flex-grow md:p-8 md:bg-bggray md:rounded-2xl">
                     <div class="flex flex-col gap-8 p-8 flex-grow justify-evenly md:p-0 md:justify-between">
-                        <div class="flex flex-col justify-center gap-8">
-                            <div>
-                                <img loading="lazy" src="assets/coding.gif" width="48" height="48">
+                        <div class="flex flex-col justify-center gap-2">
+                            <div class="flex flex-col gap-2">
+                                <img class="-translate-x-1" loading="lazy" src="assets/coding.gif" width="40" height="40">
                                 <h1 class="text-3xl">Technologien</h1>
+                                <p class="md:text-textgray">
+                                    Welche Technologien verwenden wir eigentlich bei L21s? Wie wählen wir die richtige Technologie für unsere Kundenprojekte aus? Arbeiten wir eher Fullstack oder in Silos getrennt nach Frontend und Backend?
+                                    <br><br>Dein zukünftiger Kollege Tung kann dir mehr erzählen.
+                                </p>
                             </div>
-                            <p class="md:text-textgray">
-                                Welche Technologien verwenden wir eigentlich bei L21s?<br>
-                                Und gibt es Technologien, welche wir primär verwenden?<br>
-                                Oder welche wir tunlichst vermeiden?<br>
-                                <br>
-                                Das verrät dir Tung im Video.
-                            </p>
                         </div>
-                        <iframe loading="lazy" class="rounded-2xl drop-shadow-md" width="100%" height="240" src="https://www.youtube-nocookie.com/embed/ld6-olsFYPY?controls=0" title="YouTube video player" frameborder="0" allow="" allowfullscreen></iframe>
+                        <iframe loading="lazy" class="rounded-2xl drop-shadow-md" width="100%" height="240" src="https://www.youtube-nocookie.com/embed/ld6-olsFYPY?controls=1" title="YouTube video player" frameborder="0" allow="" allowfullscreen></iframe>
                         <a href="#teamaufstellung" class="md:hidden rounded-full border-2 p-2 px-4 text-md text-center" >Zur Zusammenarbeit</a>
                     </div>
                 </div>
             </div>
         </section>
-        <div class="grid md:row-start-2 md:col-start-1 md:col-span-1 hover:scale-105 transition duration-300">
+        <div class="grid md:row-start-2 md:col-start-1 md:col-span-1">
             <img loading="lazy" src="assets/img_5.jpeg" class="hidden object-cover w-full h-full aspect-video self-center rounded-2xl md:block">
         </div>
         <section id="teamaufstellung">
-            <div class="bg-white text-violette md:bg-inherit min-h-screen flex flex-col h-full md:min-h-0">
-                <div class="flex flex-col py-24 flex-grow md:p-8 md:bg-bggray md:rounded-2xl hover:scale-105 transition duration-300">
+            <div class="bg-white text-violette md:bg-inherit flex flex-col h-full md:min-h-0">
+                <div class="flex flex-col py-6 flex-grow md:p-8 md:bg-bggray md:rounded-2xl">
                     <div class="flex flex-col gap-8 p-8 flex-grow justify-evenly md:p-0 md:justify-between">
                         <div class="flex flex-col justify-center gap-8">
-                            <div>
-                                <img loading="lazy" src="assets/presentation.gif" width="48" height="48">
-                                <h1 class="text-3xl">Zusammenarbeit</h1>
+                            <div class="flex flex-col gap-2">
+                                <img class="-translate-x-1" loading="lazy" src="assets/presentation.gif" width="40" height="40">
+                                <h1 class="text-3xl">Zusammenarbeit & Teams</h1>
+                                <p class="text-textgray">
+                                    Wie groß sind die Teams, die bei uns ein Kundenprojekt bearbeiten? Machen wir einen Unterschied zwischen Beratern und Programmierern? Wie verstehen wir agile Arbeitsweisen? Wie fördern wir Austausch über Teams hinweg?
+                                    <br><br>Junior Software Engineer Philippe hat den Durchblick.
+                                </p>
                             </div>
-                            <p class="text-textgray">
-                                Wie arbeiten Teams bei L21s zusammen?<br>
-                                Was ist die Größe eines durchschnittlichen Teams?<br>
-                                Wie viele Kunden betreut ein Team?<br>
-                                <br>
-                                Diese Fragen beantwortet dir Philippe im Video.
-                            </p>
                         </div>
-                        <iframe loading="lazy" class="rounded-2xl drop-shadow-md" width="100%" height="240" src="https://www.youtube-nocookie.com/embed/M3j0SfpdpgI?controls=0" title="YouTube video player" frameborder="0" allow="" allowfullscreen></iframe>
+                        <iframe loading="lazy" class="rounded-2xl drop-shadow-md" width="100%" height="240" src="https://www.youtube-nocookie.com/embed/M3j0SfpdpgI?controls=1" title="YouTube video player" frameborder="0" allow="" allowfullscreen></iframe>
                         <a href="#learning" class="md:hidden rounded-full border-2 p-2 px-4 text-md text-center" >Zum Learning</a>
                     </div>
                 </div>
             </div>
         </section>
-        <div class="grid md:row-start-2 md:col-start-3 md:col-span-1 hover:scale-105 transition duration-300">
+        <div class="grid md:row-start-2 md:col-start-3 md:col-span-1">
             <img loading="lazy" src="assets/img_1.png" class="hidden object-cover w-full h-full aspect-video self-center rounded-2xl md:block">
         </div>
-        <div class="grid md:row-start-3 md:col-start-1 md:col-span-2 hover:scale-105 transition duration-300">
+        <div class="grid md:row-start-3 md:col-start-1 md:col-span-2">
             <img loading="lazy" src="assets/img_6.jpeg" class="hidden object-cover w-full h-full aspect-video self-center rounded-2xl md:block">
         </div>
-        <div class="grid md:row-start-4 md:col-start-2 md:col-span-2 hover:scale-105 transition duration-300">
+        <div class="grid md:row-start-4 md:col-start-2 md:col-span-2">
             <img loading="lazy" src="assets/img_2.png" class="hidden object-cover w-full h-full aspect-video self-center rounded-2xl md:block">
         </div>
         <section id="learning">
-            <div class="bg-violette text-white md:text-violette md:bg-inherit min-h-screen flex flex-col h-full md:min-h-0">
-                <div class="flex flex-col py-24 flex-grow md:p-8 md:bg-bggray md:rounded-2xl hover:scale-105 transition duration-300">
+            <div class="bg-violette text-white md:text-violette md:bg-inherit flex flex-col h-full md:min-h-0">
+                <div class="flex flex-col py-6 flex-grow md:p-8 md:bg-bggray md:rounded-2xl">
                     <div class="flex flex-col gap-8 p-8 flex-grow justify-evenly md:p-0 md:justify-between">
                         <div class="flex flex-col justify-center gap-8">
-                            <div>
-                                <img loading="lazy" src="assets/online-learning.gif" width="48" height="48">
-                                <h1 class="text-3xl">Learning</h1>
+                            <div class="flex flex-col gap-2">
+                                <img loading="lazy" class="-translate-x-1" src="assets/online-learning.gif" width="40" height="40">
+                                <h1 class="text-3xl">Learning & Weiterbildung</h1>
+                                <p class="md:text-textgray">
+                                    Wie integrieren wir berufliche Weiterbildung in unseren Projektalltag? Was für Angebote und Möglichkeiten bieten wir darüber hinaus, damit unsere Engineers immer am Zahn der Zeit sind?
+                                    <br><br>Unser Senior Software Engineer Sebastian coached täglich sein Team und kann daher aus erster Hand berichten.
+                                </p>
                             </div>
-                            <p class="md:text-textgray">
-                                Welchen Stellenwert hat Learning bzw. die berufliche Weiterbildung bei L21s?<br>
-                                Was für besondere Vorteile bieten wir dir?<br>
-                                <br>
-                                Darüber berichtet dir, aus erster Hand, Sebastian im Video.
-                            </p>
                         </div>
-                        <iframe loading="lazy" class="rounded-2xl drop-shadow-md" width="100%" height="240" src="https://www.youtube-nocookie.com/embed/PC-1SBUhjrM?controls=0" title="YouTube video player" frameborder="0" allow="" allowfullscreen></iframe>
+                        <iframe loading="lazy" class="rounded-2xl drop-shadow-md" width="100%" height="240" src="https://www.youtube-nocookie.com/embed/PC-1SBUhjrM?controls=1" title="YouTube video player" frameborder="0" allow="" allowfullscreen></iframe>
                         <a href="#remote" class="md:hidden rounded-full border-2 p-2 px-4 text-md text-center" >Zum Remotesetup</a>
                     </div>
                 </div>
             </div>
         </section>
-        <div class="grid md:row-start-5 md:col-start-1 md:col-span-1 hover:scale-105 transition duration-300">
+        <div class="grid md:row-start-5 md:col-start-1 md:col-span-1">
             <img loading="lazy" src="assets/img_1.png" class="hidden object-cover w-full h-full aspect-video self-center rounded-2xl md:block">
         </div>
         <section id="remote">
-            <div class="bg-white text-violette md:bg-inherit min-h-screen flex flex-col h-full md:min-h-0">
-                <div class="flex flex-col py-24 flex-grow md:p-8 md:bg-bggray md:rounded-2xl hover:scale-105 transition duration-300">
+            <div class="bg-white text-violette md:bg-inherit flex flex-col h-full md:min-h-0">
+                <div class="flex flex-col py-6 flex-grow md:p-8 md:bg-bggray md:rounded-2xl">
                     <div class="flex flex-col gap-8 p-8 flex-grow justify-evenly md:p-0 md:justify-between">
                         <div class="flex flex-col justify-center gap-8">
-                            <div>
-                                <img loading="lazy" src="assets/video-conference.gif" width="48" height="48">
+                            <div class="flex flex-col gap-2">
+                                <img class="-translate-x-1" loading="lazy" src="assets/video-conference.gif" width="40" height="40">
                                 <h1 class="text-3xl">100% Remote</h1>
+                                <p class="text-textgray">
+                                    Wie sieht unser 100% Remote-Setup aus? Brauche ich dafür eigene Hardware? Was ist, wenn mein Internet ausfällt? Seht ihr euch auch mal im echten Leben?
+                                    <br><br>Dominic arbeitet im Sommer regelmäßig von seinem Hausboot und weiß daher Bescheid.
+                                </p>
                             </div>
-                            <p class="text-textgray">
-                                Wie sieht unser 100% Remote-Setup aus?<br>
-                                Brauche ich dafür eigene Hardware?<br>
-                                Was ist, wenn mein Internet ausfällt?<br>
-                                Seht ihr euch auch mal im echten Leben?<br>
-                                <br>
-                                Mehr erzählen wird dir Dominic im Video.
-                            </p>
                         </div>
-                        <iframe loading="lazy" class="rounded-2xl drop-shadow-md" width="100%" height="240" src="https://www.youtube-nocookie.com/embed/eEMu0NZvFYM?controls=0" title="YouTube video player" frameborder="0" allow="" allowfullscreen></iframe>
+                        <iframe loading="lazy" class="rounded-2xl drop-shadow-md" width="100%" height="240" src="https://www.youtube-nocookie.com/embed/eEMu0NZvFYM?controls=1" title="YouTube video player" frameborder="0" allow="" allowfullscreen></iframe>
                         <a href="#bewerbungsprozess" class="md:hidden rounded-full border-2 p-2 px-4 text-md text-center" >Zum Bewerbungsprozess</a>
                     </div>
                 </div>
             </div>
         </section>
-        <div class="grid md:row-start-5 md:col-start-3 md:col-span-1 hover:scale-105 transition duration-300">
+        <div class="grid md:row-start-5 md:col-start-3 md:col-span-1">
             <img loading="lazy" src="assets/img_4.jpeg" class="hidden object-cover w-full h-full aspect-video self-center rounded-2xl md:block">
         </div>
         <section id="bewerbungsprozess">
-            <div class="bg-violette text-white md:text-violette md:bg-inherit min-h-screen flex flex-col h-full md:min-h-0">
-                <div class="flex flex-col py-24 flex-grow md:p-8 md:bg-bggray md:rounded-2xl hover:scale-105 transition duration-300">
+            <div class="bg-violette text-white md:text-violette md:bg-inherit flex flex-col h-full md:min-h-0">
+                <div class="flex flex-col py-6 flex-grow md:p-8 md:bg-bggray md:rounded-2xl">
                     <div class="flex flex-col gap-8 p-8 flex-grow justify-evenly md:p-0 md:justify-between">
                         <div class="flex flex-col justify-center gap-8">
-                            <div>
-                                <img loading="lazy" src="assets/job.gif" width="48" height="48">
+                            <div class="flex flex-col gap-2">
+                                <img class="-translate-x-1" loading="lazy" src="assets/job.gif" width="40" height="40">
                                 <h1 class="text-3xl">Bewerbungsprozess</h1>
+                                <p class="md:text-textgray">
+                                    Wie konzipiert man einen Bewerbungsprozess, der möglichst nah am echten Job ausgerichtet ist? Was erwarten wir von dir, wenn du dich bei L21s vorstellst? Wie kannst du dich vorbereiten? Was kannst du von uns erwarten?
+                                    <br><br>Unser Gründer Tobias legt die Karten auf den Tisch.
+                                </p>
                             </div>
-                            <p class="md:text-textgray">
-                                Wie läuft der Bewerbungsprozess bei L21s ab?<br>
-                                Was erwarten wir von dir?<br>
-                                Was kannst du von uns erwarten?<br>
-                                <br>
-                                Das bringt dir Tobi gerne im nächsten Video näher.
-                            </p>
                         </div>
-                        <iframe loading="lazy" class="rounded-2xl drop-shadow-md" width="100%" height="240" src="https://www.youtube-nocookie.com/embed/vfQuD7B-E2M?controls=0" title="YouTube video player" frameborder="0" allow="" allowfullscreen></iframe>
+                        <iframe loading="lazy" class="rounded-2xl drop-shadow-md" width="100%" height="240" src="https://www.youtube-nocookie.com/embed/vfQuD7B-E2M?controls=1" title="YouTube video player" frameborder="0" allow="" allowfullscreen></iframe>
                         <a href="#onboarding" class="md:hidden rounded-full border-2 p-2 px-4 text-md text-center" >Zum Onboarding</a>
                     </div>
                 </div>
             </div>
         </section>
-        <div class="grid md:row-start-6 md:col-start-1 md:col-span-2 hover:scale-105 transition duration-300">
+        <div class="grid md:row-start-6 md:col-start-1 md:col-span-2">
             <img loading="lazy" src="assets/img_5.jpeg" class="hidden object-cover w-full h-full aspect-video self-center rounded-2xl md:block">
         </div>
         <section id="onboarding">
-            <div class="bg-white text-violette md:bg-inherit min-h-screen flex flex-col md:min-h-0">
-                <div class="flex flex-col py-12 md:p-8 md:bg-bggray md:rounded-2xl hover:scale-105 transition duration-300">
+            <div class="bg-white text-violette md:bg-inherit flex flex-col md:min-h-0">
+                <div class="flex flex-col py-6 md:p-8 md:bg-bggray md:rounded-2xl">
                     <div class="flex flex-col gap-8 p-8 flex-grow justify-evenly md:p-0 md:justify-between">
                         <div class="flex flex-col justify-center gap-8">
-                            <div>
-                                <img loading="lazy" src="assets/startup.gif" width="48" height="48">
+                            <div class="flex flex-col gap-2">
+                                <img class="-translate-x-1" loading="lazy" src="assets/startup.gif" width="40" height="40">
                                 <h1 class="text-3xl">Onboarding</h1>
+                                <p class="text-textgray">
+                                    Wie sieht das Onboarding und die Einarbeitung bei L21s aus? Was passiert vor deinem Start, an deinem ersten Tag, in der ersten Woche und darüber hinaus? Wie stellen wir sicher, dass du dich wohlfühlst und alles hast, was du zum Arbeiten brauchst?
+                                    <br><br>Henrike & Gamze aus unserem Operations Team holen dich an Bord.
+                                </p>
                             </div>
-                            <p class="text-textgray">
-                                Wie sieht das Onboarding und die Einarbeitung bei L21s aus?<br>
-                                Wie werden die ersten Tagen aussehen?<br>
-                                Die nachfolgenden Wochen, wie werden sich diese gestalten?<br>
-                                <br>
-                                Am besten erläutern dir das Henni & Gamze im Video.
-                            </p>
                         </div>
-                        <iframe loading="lazy" class="rounded-2xl drop-shadow-md" width="100%" height="240" src="https://www.youtube-nocookie.com/embed/8SI3602jLzQ?controls=0" title="YouTube video player" frameborder="0" allow="" allowfullscreen></iframe>
+                        <iframe loading="lazy" class="rounded-2xl drop-shadow-md" width="100%" height="240" src="https://www.youtube-nocookie.com/embed/8SI3602jLzQ?controls=1" title="YouTube video player" frameborder="0" allow="" allowfullscreen></iframe>
                         <a href="#offeneStellen" class="md:hidden rounded-full border-2 p-2 px-4 text-md text-center">Unsere offenen Stellen</a>
                     </div>
                 </div>
             </div>
         </section>
-        <div class="grid md:row-start-7 md:col-start-2 md:col-span-2 hover:scale-105 transition duration-300">
+        <div class="grid md:row-start-7 md:col-start-2 md:col-span-2">
             <img loading="lazy" src="assets/img_3.png" class="hidden object-cover w-full h-full aspect-video self-center rounded-2xl md:block">
         </div>
     </div>
@@ -248,12 +235,12 @@
         <div class="relative min-h-screen h-full md:min-h-full">
             <video autoplay loop muted src="assets/file.mp4" class="absolute top-0 left-0 z-0 object-cover w-full h-full"></video>
             <div class="relative w-full top-0 left-0 z-10 flex flex-col h-full">
-                <div class="flex flex-col py-24 px-8 md:px-16 gap-16 h-full">
+                <div class="flex flex-col py-12 px-8 md:px-16 gap-16 h-full">
                     <h1 class="text-3xl md:text-6xl text-center font-bold">Konnten wir dich &uuml;berzeugen?</h1>
                     <div class="flex flex-col gap-8 md:flex-row h-full">
                         <div class="flex flex-col gap-4 md:w-1/3">
                             <div class="flex flex-col gap-2">
-                                <h2 class="text-2xl">Junior Engineer</h2>
+                                <h2 class="text-2xl">Junior Software Engineer</h2>
                                 <p>(M/W/D)</p>
                             </div>
                             <div class="flex flex-row gap-4 flex-wrap">
@@ -261,7 +248,7 @@
                                 <span class="rounded-full bg-white/20 py-2 px-4 min-w-fit">20h / Woche</span>
                             </div>
                             <p class="flex-grow">
-                                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod.
+                                Du studierst Informatik oder ein anderes Fach mit IT-Schwerpunkt? Als Junior Engineer bei L21s kannst du neben deinem Studium nicht nur Geld verdienen sondern auch wertvolle Erfahrungen in der Softwareentwicklung sammeln.
                             </p>
                             <a href="#offeneStellen" class="rounded-full border-2 p-2 px-4 text-center md:self-start md:mt-8 transition duration-500 hover:bg-white border-white md:hover:text-textgray">
                                 Jetzt bewerben
@@ -270,7 +257,7 @@
                         <div class="md:w-[4px] w-full bg-white/50 rounded-full"></div>
                         <div class="flex flex-col gap-4 md:w-1/3">
                             <div class="flex flex-col gap-2">
-                                <h2 class="text-2xl">Software Engineer in Consulting</h2>
+                                <h2 class="text-2xl">Software Engineer</h2>
                                 <p>(M/W/D)</p>
                             </div>
                             <div class="flex flex-row gap-4 flex-wrap">
@@ -278,7 +265,7 @@
                                 <span class="rounded-full bg-white/20 py-2 px-4 min-w-fit">Vollzeit</span>
                             </div>
                             <p class="flex-grow">
-                                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod.
+                                Du hast dein Studium oder deine Ausbildung bereits hinter dir und idealerweise schon ein paar Projekte im Berufsleben abgeschlossen - dann freuen wir uns auf deine Bewerbung als Software Engineer in unserem Team.
                             </p>
                             <a href="#offeneStellen" class="rounded-full border-2 p-2 px-4 text-center md:self-start md:mt-8 transition duration-500 hover:bg-white border-white md:hover:text-textgray">
                                 Jetzt bewerben
@@ -287,7 +274,7 @@
                         <div class="md:w-[4px] w-full bg-white/50 rounded-full"></div>
                         <div class="flex flex-col gap-4 md:w-1/3">
                             <div class="flex flex-col gap-2">
-                                <h2 class="text-2xl">Senior Software Engineer in Consulting</h2>
+                                <h2 class="text-2xl">Senior Software Engineer</h2>
                                 <p>(M/W/D)</p>
                             </div>
                             <div class="flex flex-row gap-4 flex-wrap">
@@ -295,7 +282,7 @@
                                 <span class="rounded-full bg-white/20 py-2 px-4 min-w-fit">Vollzeit</span>
                             </div>
                             <p class="flex-grow">
-                                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod.
+                                Als Senior leitest du ein Team von 3-4 Engineers und bist operativer Ansprechpartner für alle Belange unseres Kunden. Wenn 60% hands-on coding und 40% Projektleitung und Steuerung dein Traumjob sind, dann bist du hier richtig.
                             </p>
                             <a href="#offeneStellen" class="rounded-full border-2 p-2 px-4 text-center md:self-start md:mt-8 transition duration-500 hover:bg-white border-white md:hover:text-textgray">
                                 Jetzt bewerben
