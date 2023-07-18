@@ -22,6 +22,26 @@
         }
     </script>
     <style>
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: rgba(88, 88, 88, 0.7);
+            border-radius: 12px;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #585858;
+        }
+
         html {
             font-family: "Helvetica Now Display", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
         }
@@ -47,14 +67,14 @@
                         <a href="#offeneStellen" class="rounded-full border-2 p-2 px-4 text-md transition duration-500 hover:bg-white border-white md:hover:text-textgray text-center">Jetzt bewerben</a>
                     </div>
                 </nav>
-                <div class="flex flex-col pt-24 pb-24 md:pt-48 md:pb-0 h-full md:w-screen flex-grow">
+                <div class="flex flex-col pt-24 pb-24 md:pt-48 md:pb-0 h-full flex-grow">
                     <div class="flex flex-col gap-4 md:gap-16 p-8 md:p-0 flex-grow justify-evenly md:justify-start md:items-center">
                         <div class="flex flex-col justify-center items-center text-center gap-8">
                             <h1 class="font-bold text-3xl text-center md:text-7xl">Karriere bei L21s</h1>
                             <h2 class="md:text-2xl">Falls du mehr über L21s erfahren möchtest, bist du hier genau richtig.
                                 <br class="hidden md:block">Wir zeigen dir Schritt für Schritt, was dich bei L21s erwartet.</h2>
                         </div>
-                        <iframe loading="lazy" class="rounded-xl md:-bottom-16 md:absolute md:h-[60%] md:w-[60%]" width="100%" height="240" src="https://www.youtube-nocookie.com/embed/v2gKLt1Q5EM?controls=1" title="YouTube video player" frameborder="0" allow="" allowfullscreen></iframe>
+                        <iframe loading="lazy" class="rounded-xl drop-shadow-md md:-bottom-16 md:absolute md:h-[60%] md:w-[60%]" width="100%" height="240" src="https://www.youtube-nocookie.com/embed/v2gKLt1Q5EM?controls=1" title="YouTube video player" frameborder="0" allow="" allowfullscreen></iframe>
                         <a href="#projekte" class="md:hidden rounded-full border-2 p-2 px-4 text-md text-center" >Zu den Projekten</a>
                     </div>
                 </div>
@@ -206,7 +226,7 @@
                 <span class="text-xl font-bold">Lucas beim Wasserski</span>
                 <span>Sommerevent 2023 | Köln</span>
             </div>
-            <img loading="lazy" src="assets/img_1.png" class="hidden object-cover w-full h-full aspect-video self-center rounded-2xl md:block">
+            <img loading="lazy" src="assets/A7303818.png" class="hidden object-cover w-full h-full aspect-video self-center rounded-2xl md:block">
         </div>
         <section id="remote">
             <div class="bg-white text-violette md:bg-inherit flex flex-col h-full md:min-h-0">
