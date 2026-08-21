@@ -3,9 +3,18 @@
 
     "tech": {
       "persona": [
-        "Softwareentwickler:in",
-        "Problemlöser:in",
-        "Berater:in"
+        {
+          "title": "Softwareentwickler:in",
+          "emoji": "\uD83D\uDC7E"
+        },
+        {
+          "title": "Problemlöser:in",
+          "emoji": "\uD83E\uDDE9"
+        },
+        {
+          "title": "Berater:in",
+          "emoji": "\uD83E\uDD1D"
+        }
       ],
       "jobs": [
         {
@@ -37,9 +46,18 @@
 
     "consulting": {
       "persona": [
-        "Analytiker:in",
-        "Berater:in",
-        "Unternehmer:in"
+        {
+          "title": "Analytiker:in",
+          "emoji": "\uD83D\uDD2C"
+        },
+        {
+          "title": "Berater:in",
+          "emoji": "\uD83E\uDD1D"
+        },
+        {
+          "title": "Unternehmer:in",
+          "emoji": "\uD83D\uDCBC"
+        }
       ],
       "jobs": [
         {
