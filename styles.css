@@ -33,3 +33,93 @@ body {
             "Segoe UI Symbol",
             "Noto Color Emoji";
 }
+
+.department {
+    overflow: hidden;
+    height: fit-content;
+    box-shadow: 0 0.25rem 1.5rem 0 rgba(0, 0, 0, 0.25);
+}
+
+.department-header {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    gap: 1.5rem;
+    background: linear-gradient(88deg, rgba(0, 0, 0, 0.40) 1.65%, rgba(0, 0, 0, 0.10) 100%);
+}
+
+.department-title-l21s {
+    filter: brightness(1.25);
+}
+
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    white-space: nowrap;
+    gap: 0.75rem 0.5rem;
+}
+
+.tag {
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    height: fit-content;
+    border-radius: 5rem;
+    font-size: 1rem;
+}
+
+.emoji {
+    margin-right: 0.5rem;
+    font-size: 1rem;
+}
+
+.job-card {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+    gap: 1.75rem;
+    padding: 2rem 0;
+}
+
+.job-card > div {
+    display: flex;
+    padding: 0 2rem;
+    gap: 1.5rem;
+}
+
+.subtitle {
+    text-transform: uppercase;
+    opacity: 0.75;
+}
+
+.job-card-description {
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.job-card-description-more {
+    filter: brightness(1.75);
+    font-weight: bold;
+}
+
+.apply-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 5rem;
+    font-weight: bold;
+    white-space: nowrap;
+    height: fit-content;
+}
+
+.apply-button > span, .apply-button > svg {
+    filter: brightness(0.75);
+}
+.apply-button:hover > span, .apply-button:hover > svg {
+    color: white;
+    filter: none;
+}
