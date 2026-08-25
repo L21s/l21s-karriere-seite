@@ -1,0 +1,108 @@
+{
+  "departments": {
+
+    "tech": {
+      "persona": [
+        {
+          "title": "Softwareentwickler:in",
+          "emoji": "\uD83D\uDC7E"
+        },
+        {
+          "title": "Problemlöser:in",
+          "emoji": "\uD83E\uDDE9"
+        },
+        {
+          "title": "Berater:in",
+          "emoji": "\uD83E\uDD1D"
+        }
+      ],
+      "jobs": [
+        {
+          "title": "Junior Engineer",
+          "experience": {
+            "title": "Werkstudent",
+            "emoji": "\uD83C\uDF93"
+          },
+          "employment": "20 h / Woche",
+          "remote": "100% Remote",
+          "description": "Du studierst Informatik oder ein anderes Fach mit IT-Schwerpunkt? Als Junior Engineer bei L21s kannst du neben deinem Studium nicht nur Geld verdienen, sondern auch wertvolle Erfahrungen in der Softwareentwicklung sammeln.",
+          "url": "https://l21s-gmbh.jobs.personio.de/job/818778"
+        },
+        {
+          "title": "Software Engineer",
+          "experience": {
+            "title": "Einstieg",
+            "emoji": "\uD83C\uDF31"
+          },
+          "employment": "Vollzeit",
+          "remote": "100% Remote",
+          "description": "Du hast dein Studium oder deine Ausbildung bereits hinter dir und idealerweise schon ein paar Projekte im Berufsleben abgeschlossen – dann freuen wir uns auf deine Bewerbung als Software Engineer in unserem Team.",
+          "url": "https://l21s-gmbh.jobs.personio.de/job/818778"
+        },
+        {
+          "title": "Senior Software Engineer",
+          "experience": {
+            "title": "2–5 Jahre",
+            "emoji": "\uD83D\uDE80"
+          },
+          "employment": "Vollzeit",
+          "remote": "100% Remote",
+          "description": "Digitalproduktentwicklung durchgespielt? Kann gut sein, dass die Rolle als Senior Software Engineer bei L21s dein nächster Schritt ist! Bewirb dich als Senior, wenn du dir zutraust ein Produkt Fullstack eigenverantwortlich zu entwickeln.",
+          "url": "https://l21s-gmbh.jobs.personio.de/job/790050"
+        }
+      ]
+    },
+
+    "consulting": {
+      "persona": [
+        {
+          "title": "Analytiker:in",
+          "emoji": "\uD83D\uDD2C"
+        },
+        {
+          "title": "Berater:in",
+          "emoji": "\uD83E\uDD1D"
+        },
+        {
+          "title": "Unternehmer:in",
+          "emoji": "\uD83D\uDCBC"
+        }
+      ],
+      "jobs": [
+        {
+          "title": "(Senior) Consultant",
+          "experience": {
+            "title": "2–5 Jahre",
+            "emoji": "\uD83D\uDE80"
+          },
+          "employment": "Vollzeit",
+          "remote": "100% Remote",
+          "description": "Du arbeitest lieber an Konzepten als im Code, brennst aber trotzdem für Digitalisierung? Dann bist du in unserem Consulting Bereich genau richtig! Als Consultant bereitest du technische und organisatorische Fragestellungen verständlich auf und berätst das Top-Management.",
+          "url": "https://l21s-gmbh.jobs.personio.de/job/1843069"
+        },
+        {
+          "title": "(Senior) Business Analyst",
+          "experience": {
+            "title": "2–5 Jahre",
+            "emoji": "\uD83D\uDE80"
+          },
+          "employment": "Vollzeit",
+          "remote": "100% Remote",
+          "description": "Du hast Lust, dich tief in die Prozesse unserer Kunden einzudenken und ihre Anforderungen an Softwarelösungen auf den Punkt zu bringen? Als Business Analyst in unserem Consulting Bereich schaffst du die Brücke zwischen Fachbereichen und IT.",
+          "url": "https://l21s-gmbh.jobs.personio.de/job/2757117"
+        },
+        {
+          "title": "Project Lead",
+          "experience": {
+            "title": "3+ Jahre",
+            "emoji": "\u2B50"
+          },
+          "employment": "Vollzeit",
+          "remote": "100% Remote",
+          "description": "Projektleitung bedeutet für dich nicht Verwaltungsroutine fernab von Inhalten, sondern das Knacken komplexer Probleme mit deinem Team? Als Project Lead gestaltest du Projekte inhaltlich aus und behältst gleichzeitig die strategische Steuerung im Griff.",
+          "url": "https://l21s-gmbh.jobs.personio.de/job/2695472"
+        }
+      ]
+    }
+  }
+}
