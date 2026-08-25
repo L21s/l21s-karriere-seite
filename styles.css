@@ -101,6 +101,7 @@ body {
 .job-card-description-more {
     filter: brightness(1.75);
     font-weight: bold;
+    width: fit-content;
 }
 
 .apply-button {
