@@ -28,21 +28,17 @@ function renderJobs(container, jobs, color) {
 
 function initDescriptionToggle(container) {
     container.querySelectorAll(".job-card").forEach(card => {
-        const descriptionContainer = card.querySelector(".job-card-description-container");
         const description = card.querySelector(".job-card-description");
-        const chevron = card.querySelector(".job-card-description-chevron");
         const moreButton = card.querySelector(".job-card-description-more");
 
         function toggleDescription() {
-            description.classList.toggle("line-clamp-2");
-            const isCollapsed = description.classList.contains("line-clamp-2");
+            description.classList.toggle("md:line-clamp-2");
+            const isCollapsed = description.classList.contains("md:line-clamp-2");
 
             moreButton.textContent = isCollapsed ? "Mehr" : "Weniger";
-            chevron.classList.toggle("rotate-180", !isCollapsed);
         }
 
         moreButton.addEventListener("click", toggleDescription);
-        descriptionContainer.addEventListener("click", toggleDescription);
     });
 }
 
@@ -68,10 +64,7 @@ function createJobCard(job, color) {
             </div>
             <div class="flex-col xl:flex-row">
                 <div class="flex flex-col grow gap-2">
-                    <div class="job-card-description-container flex flex-row max-md:p-8 max-md:-mx-8 max-md:bg-white max-md:bg-white/5">
-                        <p class="job-card-description line-clamp-2">${job.description}</p>
-                        <svg class="job-card-description-chevron text-white h-6 w-6 ml-4 my-4 md:hidden transition" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </div>
+                    <p class="job-card-description md:line-clamp-2 max-sm:pb-3 hyphens-auto" lang="de">${job.description}</p>
                     <span class="job-card-description-more cursor-pointer text-${color} max-md:hidden">Mehr</span>
                 </div>
                 <a class="apply-button self-end md:max-xl:hidden md:py-3 w-full md:w-fit bg-white hover:bg-${color} rounded-full transition" href="${job.url}" target="_blank">
