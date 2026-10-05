@@ -25,6 +25,7 @@
     </script>
     <link rel="stylesheet" href="./styles.css">
     <script src="./jobs.js" defer></script>
+    <script src="./toggle.js" defer></script>
 </head>
 <body class="text-white bg-white overflow-x-hidden">
     <section id="header">
@@ -75,31 +76,29 @@
     </section>
     <div class="md:flex md:flex-col xl:grid md:grid-rows-5 lg:grid-cols-3 md:py-8 md:px-8 md:pt-24 md:gap-8 max-w-[1800px] mx-auto">
         <section id="projekte">
-            <div class="bg-white text-violette md:bg-inherit flex flex-col h-full md:min-h-0">
-                <div class="flex flex-col py-6 flex-grow md:p-8 md:bg-bggray md:rounded-2xl">
-                    <div class="flex flex-col gap-8 p-8 flex-grow justify-evenly md:p-0 md:justify-between">
-                        <div class="flex flex-col justify-center gap-8">
-                            <div class="flex flex-col gap-2">
-                                <div class="flex flex-row md:flex-col md:items-start items-center md:gap-2">
-                                    <img class="-translate-x-1" loading="lazy" src="assets/planning_normal.gif"
-                                         alt="Projekte" width="40" height="40">
-                                    <h1 class="text-2xl">Unsere Projekte</h1>
-                                </div>
-                                <p class="text-textgray">
-                                    Was für Probleme lösen wir bei L21s? Wie sieht ein typischer Kunde von uns aus?
-                                    Wann entscheidet man sich für eine Zusammenarbeit mit L21s und
-                                    welche Aufträge wollen wir vielleicht eher ungern bearbeiten?
-                                    <br><br>Till hat die Antworten auf alle diese Fragen:
-                                </p>
-                            </div>
-                        </div>
-                        <iframe loading="lazy" class="rounded-2xl drop-shadow-md" width="100%" height="278"
-                                src="https://www.youtube-nocookie.com/embed/opL4u_gi5VY?controls=1&rel=0"
-                                title="YouTube video player" frameborder="0" allow="" allowfullscreen></iframe>
-                        <a href="#offeneStellen" class="md:hidden rounded-full border-2 p-2 px-4 text-md text-center">Jetzt
-                            bewerben</a>
-                    </div>
+            <div class="flex flex-col gap-6 py-6 flex-grow p-8 max-md:py-12 md:max-2xl:pb-9 bg-bggray md:rounded-2xl h-full">
+                <div class="video-card-container relative">
+                    <iframe loading="lazy" class="rounded-2xl aspect-video" width="100%"
+                            src="https://www.youtube-nocookie.com/embed/opL4u_gi5VY?controls=1&rel=0"
+                            title="YouTube video player" frameborder="0" allow="" allowfullscreen>
+                    </iframe>
+                    <toggle-button class="max-md:invisible"></toggle-button>
                 </div>
+                <div class="flex flex-row md:flex-col md:items-start items-center md:gap-2">
+                    <img class="-translate-x-1" loading="lazy" src="assets/planning_normal.gif"
+                         alt="Projekte" width="40" height="40">
+                    <h1 class="text-xl md:text-2xl text-black font-medium">Unsere Projekte</h1>
+                </div>
+                <div class="flex flex-col gap-3">
+                    <p class="text-violette font-medium">Till hat die Antworten auf alle diese Fragen:</p>
+                    <p class="text-textgray">
+                        Was für Probleme lösen wir bei L21s? Wie sieht ein typischer Kunde von uns aus?
+                        Wann entscheidet man sich für eine Zusammenarbeit mit L21s und
+                        welche Aufträge wollen wir vielleicht eher ungern bearbeiten?
+                    </p>
+                </div>
+                <a href="#offeneStellen" class="md:hidden rounded-full border-2 p-2 px-4 text-md text-center text-violette">Jetzt
+                    bewerben</a>
             </div>
         </section>
         <div class="relative hidden md:grid md:row-start-1 md:col-start-2 md:col-span-2 group">
