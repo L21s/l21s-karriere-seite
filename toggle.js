@@ -3,14 +3,14 @@ let isConsulting = false;
 class ToggleButton extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
-            <button class="toggle">
-                <span class="slider rounded-full bg-violette"></span>
-                <span class="label font-medium active">Tech</span>
-                <span class="label font-medium">Consulting</span>
-            </button>
+            <div class="toggle-container p-1 rounded-full bg-white shadow-sm">
+                <button class="toggle flex relative gap-0">
+                    <span class="slider rounded-full absolute bg-violette"></span>
+                    <span class="label rounded-full z-10 overflow-hidden py-2 px-4 font-medium text-textgray bg-violette active">Tech</span>
+                    <span class="label rounded-full z-10 overflow-hidden py-2 px-4 font-medium text-textgray bg-pink">Consulting</span>
+                </button>
+            </div>
         `;
-
-        this.classList.add("bg-white", "rounded-full");
 
         this.button = this.querySelector(".toggle");
         this.slider = this.querySelector(".slider");
