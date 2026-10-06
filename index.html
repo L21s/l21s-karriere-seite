@@ -28,6 +28,7 @@
     <script src="./jobs.js" defer></script>
     <script src="./toggle.js" defer></script>
     <script src="./video.js" defer></script>
+    <script src="./career-card.js" defer></script>
 </head>
 <body class="text-white bg-white overflow-x-hidden">
     <section id="header">
@@ -78,30 +79,15 @@
     </section>
     <div class="md:flex md:flex-col xl:grid md:grid-rows-5 lg:grid-cols-3 md:py-8 md:px-8 md:pt-24 md:gap-8 max-w-[1800px] mx-auto">
         <section id="projekte">
-            <div class="flex flex-col gap-6 py-6 flex-grow p-8 max-md:py-12 md:max-2xl:pb-9 bg-bggray md:rounded-2xl h-full">
-                <div class="video-card-container relative">
-                    <iframe loading="lazy" class="rounded-2xl aspect-video" width="100%"
-                            src="https://www.youtube-nocookie.com/embed/opL4u_gi5VY?controls=1&rel=0"
-                            title="YouTube video player" frameborder="0" allow="" allowfullscreen>
-                    </iframe>
-                    <toggle-button class="max-md:invisible"></toggle-button>
-                </div>
-                <div class="flex flex-row md:flex-col md:items-start items-center md:gap-2">
-                    <img class="-translate-x-1" loading="lazy" src="assets/planning_normal.gif"
-                         alt="Projekte" width="40" height="40">
-                    <h1 class="text-xl md:text-2xl text-black font-medium">Unsere Projekte</h1>
-                </div>
-                <div class="flex flex-col gap-3">
-                    <p class="text-violette font-medium">Till hat die Antworten auf alle diese Fragen:</p>
-                    <p class="text-textgray">
-                        Was für Probleme lösen wir bei L21s? Wie sieht ein typischer Kunde von uns aus?
-                        Wann entscheidet man sich für eine Zusammenarbeit mit L21s und
-                        welche Aufträge wollen wir vielleicht eher ungern bearbeiten?
-                    </p>
-                </div>
-                <a href="#offeneStellen" class="md:hidden rounded-full border-2 p-2 px-4 text-md text-center text-violette">Jetzt
-                    bewerben</a>
-            </div>
+            <career-card video-id="opL4u_gi5VY" icon="planning" toggle>
+                <span slot="title">Unsere Projekte</span>
+                <span slot="subtitle">Till hat die Antworten auf alle diese Fragen:</span>
+                <span slot="text">
+                    Was für Probleme lösen wir bei L21s? Wie sieht ein typischer Kunde von uns aus?
+                    Wann entscheidet man sich für eine Zusammenarbeit mit L21s und
+                    welche Aufträge wollen wir vielleicht eher ungern bearbeiten?
+                </span>
+            </career-card>
         </section>
         <div class="relative hidden md:grid md:row-start-1 md:col-start-2 md:col-span-2 group">
             <div class="absolute top-0 left-0 text-white transition duration-500 rounded-2xl w-full h-full
@@ -115,34 +101,15 @@
                  class="hidden object-cover w-full h-full aspect-video self-center rounded-2xl md:block">
         </div>
         <section id="technologien">
-            <div class="md:row-start-2 md:col-start-2 bg-violette text-white md:text-violette md:bg-inherit flex flex-col h-full md:min-h-0">
-                <div class="flex flex-col py-6 flex-grow md:p-8 md:bg-bggray md:rounded-2xl">
-                    <div class="flex flex-col gap-8 p-8 flex-grow justify-evenly md:p-0 md:justify-between">
-                        <div class="flex flex-col justify-center gap-2">
-                            <div class="flex flex-col gap-2">
-                                <div class="flex flex-row md:flex-col md:items-start items-center md:gap-2">
-                                    <img class="-translate-x-1 hidden md:block" loading="lazy"
-                                         src="assets/coding_normal.gif" alt="Technologien" width="40" height="40">
-                                    <img class="-translate-x-1 md:hidden" loading="lazy" src="assets/coding_white.gif"
-                                         alt="Technologien" width="40" height="40">
-                                    <h1 class="text-2xl">Technologien</h1>
-                                </div>
-                                <p class="md:text-textgray">
-                                    Welche Technologien verwenden wir eigentlich bei L21s? Wie wählen wir die richtige
-                                    Technologie für unsere Kundenprojekte aus? Arbeiten wir eher Fullstack oder in Silos
-                                    getrennt nach Frontend und Backend?
-                                    <br><br>Dein zukünftiger Kollege Tung kann dir mehr erzählen:
-                                </p>
-                            </div>
-                        </div>
-                        <iframe loading="lazy" class="rounded-2xl drop-shadow-md" width="100%" height="278"
-                                src="https://www.youtube-nocookie.com/embed/ld6-olsFYPY?controls=1&rel=0"
-                                title="YouTube video player" frameborder="0" allow="" allowfullscreen></iframe>
-                        <a href="#offeneStellen" class="md:hidden rounded-full border-2 p-2 px-4 text-md text-center">Jetzt
-                            bewerben</a>
-                    </div>
-                </div>
-            </div>
+            <career-card video-id="ld6-olsFYPY" icon="coding">
+                <span slot="title">Technologien</span>
+                <span slot="subtitle">Dein zukünftiger Kollege Tung kann dir mehr erzählen:</span>
+                <span slot="text">
+                    Welche Technologien verwenden wir eigentlich bei L21s? Wie wählen wir die richtige
+                    Technologie für unsere Kundenprojekte aus? Arbeiten wir eher Fullstack oder in Silos
+                    getrennt nach Frontend und Backend?
+                </span>
+            </career-card>
         </section>
         <div class="relative hidden md:grid md:row-start-2 md:col-start-1 md:col-span-1 group">
             <div class="absolute top-0 left-0 text-white transition duration-500 rounded-2xl w-full h-full
@@ -156,32 +123,15 @@
                  class="hidden object-cover w-full h-full aspect-video self-center rounded-2xl md:block">
         </div>
         <section id="ki">
-            <div class="bg-white text-violette md:bg-inherit flex flex-col h-full md:min-h-0">
-                <div class="flex flex-col py-6 flex-grow md:p-8 md:bg-bggray md:rounded-2xl">
-                    <div class="flex flex-col gap-8 p-8 flex-grow justify-evenly md:p-0 md:justify-between">
-                        <div class="flex flex-col justify-center gap-8">
-                            <div class="flex flex-col gap-2">
-                                <div class="flex flex-row md:flex-col md:items-start items-center md:gap-2">
-                                    <img class="-translate-x-1" loading="lazy" src="assets/brain.gif"
-                                         alt="Arbeit mit KI" width="40" height="40">
-                                    <h1 class="text-2xl">Arbeit mit KI</h1>
-                                </div>
-                                <p class="text-textgray">
-                                    Wie genau setzen wir bei L21s künstliche Intelligenz in der Projektarbeit ein?
-                                    Welche KI-Tools verwenden wir? Wo stößt die KI dabei an ihre Grenzen? Und wo ist uns
-                                    der menschliche Berater am wichtigsten?
-                                    <br><br>Unser Gründer Tobias gibt dir einen Einblick:
-                                </p>
-                            </div>
-                        </div>
-                        <iframe loading="lazy" class="rounded-2xl drop-shadow-md" width="100%" height="278"
-                                src="https://www.youtube-nocookie.com/embed/17Hm0ZgGHo0?controls=1&rel=0"
-                                title="YouTube video player" frameborder="0" allow="" allowfullscreen></iframe>
-                        <a href="#offeneStellen" class="md:hidden rounded-full border-2 p-2 px-4 text-md text-center">Jetzt
-                            bewerben</a>
-                    </div>
-                </div>
-            </div>
+            <career-card video-id="17Hm0ZgGHo0" icon="brain">
+                <span slot="title">Arbeit mit KI</span>
+                <span slot="subtitle">Unser Gründer Tobias gibt dir einen Einblick:</span>
+                <span slot="text">
+                    Wie genau setzen wir bei L21s künstliche Intelligenz in der Projektarbeit ein?
+                    Welche KI-Tools verwenden wir? Wo stößt die KI dabei an ihre Grenzen? Und wo ist uns
+                    der menschliche Berater am wichtigsten?
+                </span>
+            </career-card>
         </section>
         <div class="relative hidden md:grid md:row-start-2 md:col-start-3 md:col-span-1 group">
             <div class="absolute top-0 left-0 text-white transition duration-500 rounded-2xl w-full h-full
@@ -204,34 +154,15 @@
                  class="hidden object-cover w-full h-full aspect-video self-center rounded-2xl md:block">
         </div>
         <section id="teamaufstellung">
-            <div class="bg-violette text-white md:text-violette md:bg-inherit flex flex-col h-full md:min-h-0">
-                <div class="flex flex-col py-6 flex-grow md:p-8 md:bg-bggray md:rounded-2xl">
-                    <div class="flex flex-col gap-8 p-8 flex-grow justify-evenly md:p-0 md:justify-between">
-                        <div class="flex flex-col justify-center gap-8">
-                            <div class="flex flex-col gap-2">
-                                <div class="flex flex-row md:flex-col md:items-start items-center md:gap-2">
-                                    <img class="-translate-x-1 hidden md:block" loading="lazy"
-                                         src="assets/presentation_normal.gif" alt="Zusammenarbeit & Teams" width="40" height="40">
-                                    <img class="-translate-x-1 md:hidden" loading="lazy" src="assets/presentation_white.gif"
-                                         alt="Zusammenarbeit & Teams" width="40" height="40">
-                                    <h1 class="text-2xl">Zusammenarbeit & Teams</h1>
-                                </div>
-                                <p class="md:text-textgray">
-                                    Wie groß sind die Teams, die bei uns ein Kundenprojekt bearbeiten? Machen wir einen
-                                    Unterschied zwischen Beratern und Programmierern? Wie verstehen wir agile
-                                    Arbeitsweisen? Wie fördern wir Austausch über Teams hinweg?
-                                    <br><br>Senior Software Engineer Philippe hat den Durchblick:
-                                </p>
-                            </div>
-                        </div>
-                        <iframe loading="lazy" class="rounded-2xl drop-shadow-md" width="100%" height="278"
-                                src="https://www.youtube-nocookie.com/embed/M3j0SfpdpgI?controls=1&rel=0"
-                                title="YouTube video player" frameborder="0" allow="" allowfullscreen></iframe>
-                        <a href="#offeneStellen" class="md:hidden rounded-full border-2 p-2 px-4 text-md text-center">Jetzt
-                            bewerben</a>
-                    </div>
-                </div>
-            </div>
+            <career-card video-id="M3j0SfpdpgI" icon="presentation">
+                <span slot="title">Zusammenarbeit & Teams</span>
+                <span slot="subtitle">Senior Software Engineer Philippe hat den Durchblick:</span>
+                <span slot="text">
+                    Wie groß sind die Teams, die bei uns ein Kundenprojekt bearbeiten? Machen wir einen
+                    Unterschied zwischen Beratern und Programmierern? Wie verstehen wir agile
+                    Arbeitsweisen? Wie fördern wir Austausch über Teams hinweg?
+                </span>
+            </career-card>
         </section>
         <div class="relative hidden md:grid md:row-start-4 md:col-start-2 md:col-span-2 group">
             <div class="absolute top-0 left-0 text-white transition duration-500 rounded-2xl w-full h-full
@@ -244,33 +175,16 @@
                  class="hidden object-cover w-full h-full aspect-video self-center rounded-2xl md:block">
         </div>
         <section id="learning">
-            <div class="bg-white text-violette md:bg-inherit flex flex-col h-full md:min-h-0">
-                <div class="flex flex-col py-6 flex-grow md:p-8 md:bg-bggray md:rounded-2xl">
-                    <div class="flex flex-col gap-8 p-8 flex-grow justify-evenly md:p-0 md:justify-between">
-                        <div class="flex flex-col justify-center gap-8">
-                            <div class="flex flex-col gap-2">
-                                <div class="flex flex-row md:flex-col md:items-start items-center md:gap-2">
-                                    <img class="-translate-x-1" loading="lazy" src="assets/online_learning_normal.gif"
-                                         alt="Learning & Weiterbildung" width="40" height="40">
-                                    <h1 class="text-2xl">Learning & Weiterbildung</h1>
-                                </div>
-                                <p class="text-textgray">
-                                    Wie integrieren wir berufliche Weiterbildung in unseren Projektalltag? Was für
-                                    Angebote und Möglichkeiten bieten wir darüber hinaus, damit unsere Engineers immer
-                                    am Zahn der Zeit sind?
-                                    <br><br>Unser Associate Director Sebastian coached täglich sein Team und kann
-                                    daher aus erster Hand berichten:
-                                </p>
-                            </div>
-                        </div>
-                        <iframe loading="lazy" class="rounded-2xl drop-shadow-md" width="100%" height="278"
-                                src="https://www.youtube-nocookie.com/embed/PC-1SBUhjrM?controls=1&rel=0"
-                                title="YouTube video player" frameborder="0" allow="" allowfullscreen></iframe>
-                        <a href="#offeneStellen" class="md:hidden rounded-full border-2 p-2 px-4 text-md text-center">Jetzt
-                            bewerben</a>
-                    </div>
-                </div>
-            </div>
+            <career-card video-id="PC-1SBUhjrM" icon="online_learning">
+                <span slot="title">Learning & Weiterbildung</span>
+                <span slot="subtitle">Unser Associate Director Sebastian coached täglich sein Team und kann
+                                    daher aus erster Hand berichten:</span>
+                <span slot="text">
+                    Wie integrieren wir berufliche Weiterbildung in unseren Projektalltag? Was für
+                    Angebote und Möglichkeiten bieten wir darüber hinaus, damit unsere Engineers immer
+                    am Zahn der Zeit sind?
+                </span>
+            </career-card>
         </section>
         <div class="relative hidden md:grid md:row-start-5 md:col-start-1 md:col-span-1 group">
             <div class="absolute top-0 left-0 text-white transition duration-500 rounded-2xl w-full h-full
@@ -283,34 +197,14 @@
                  class="hidden object-cover w-full h-full aspect-video self-center rounded-2xl md:block">
         </div>
         <section id="remote">
-            <div class="bg-violette text-white md:text-violette md:bg-inherit flex flex-col h-full md:min-h-0">
-                <div class="flex flex-col py-6 flex-grow md:p-8 md:bg-bggray md:rounded-2xl">
-                    <div class="flex flex-col gap-8 p-8 flex-grow justify-evenly md:p-0 md:justify-between">
-                        <div class="flex flex-col justify-center gap-8">
-                            <div class="flex flex-col gap-2">
-                                <div class="flex flex-row md:flex-col md:items-start items-center md:gap-2">
-                                    <img class="-translate-x-1 hidden md:block" loading="lazy"
-                                         src="assets/video-conference_normal.gif" alt="100% Remote" width="40" height="40">
-                                    <img class="-translate-x-1 md:hidden" loading="lazy" src="assets/video-conference_white.gif"
-                                         alt="100% Remote" width="40" height="40">
-                                    <h1 class="text-2xl">100 % Remote</h1>
-                                </div>
-                                <p class="md:text-textgray">
-                                    Wie sieht unser 100 % Remote-Setup aus? Brauche ich dafür eigene Hardware? Was ist,
-                                    wenn mein Internet ausfällt? Seht ihr euch auch mal im echten Leben?
-                                    <br><br>Dominic arbeitet im Sommer regelmäßig von seinem Hausboot und lebt Remote
-                                    wie kein Zweiter:
-                                </p>
-                            </div>
-                        </div>
-                        <iframe loading="lazy" class="rounded-2xl drop-shadow-md" width="100%" height="278"
-                                src="https://www.youtube-nocookie.com/embed/eEMu0NZvFYM?controls=1&rel=0"
-                                title="YouTube video player" frameborder="0" allow="" allowfullscreen></iframe>
-                        <a href="#offeneStellen" class="md:hidden rounded-full border-2 p-2 px-4 text-md text-center">Jetzt
-                            bewerben</a>
-                    </div>
-                </div>
-            </div>
+            <career-card video-id="eEMu0NZvFYM" icon="video-conference">
+                <span slot="title">100 % Remote</span>
+                <span slot="subtitle">Dominic arbeitet im Sommer regelmäßig von seinem Hausboot und lebt Remote wie kein Zweiter:</span>
+                <span slot="text">
+                    Wie sieht unser 100 % Remote-Setup aus? Brauche ich dafür eigene Hardware? Was ist,
+                    wenn mein Internet ausfällt? Seht ihr euch auch mal im echten Leben?
+                </span>
+            </career-card>
         </section>
         <div class="relative hidden md:grid md:row-start-5 md:col-start-3 md:col-span-1 group">
             <div class="absolute top-0 left-0 text-white transition duration-500 rounded-2xl w-full h-full
@@ -324,32 +218,15 @@
                  class="hidden object-cover w-full h-full aspect-video self-center rounded-2xl md:block">
         </div>
         <section id="bewerbungsprozess">
-            <div class="bg-white text-violette md:bg-inherit flex flex-col h-full md:min-h-0">
-                <div class="flex flex-col py-6 flex-grow md:p-8 md:bg-bggray md:rounded-2xl">
-                    <div class="flex flex-col gap-8 p-8 flex-grow justify-evenly md:p-0 md:justify-between">
-                        <div class="flex flex-col justify-center gap-8">
-                            <div class="flex flex-col gap-2">
-                                <div class="flex flex-row md:flex-col md:items-start items-center md:gap-2">
-                                    <img class="-translate-x-1" loading="lazy" src="assets/job_normal.gif"
-                                         alt="Bewerbungsprozess" width="40" height="40">
-                                    <h1 class="text-2xl">Bewerbungsprozess</h1>
-                                </div>
-                                <p class="text-textgray">
-                                    Wie konzipiert man einen Bewerbungsprozess, der möglichst nah am echten Job
-                                    ausgerichtet ist? Was erwarten wir von dir, wenn du dich bei L21s vorstellst? Wie
-                                    kannst du dich vorbereiten? Was kannst du von uns erwarten?
-                                    <br><br>Unser Gründer Tobias legt die Karten auf den Tisch:
-                                </p>
-                            </div>
-                        </div>
-                        <iframe loading="lazy" class="rounded-2xl drop-shadow-md" width="100%" height="278"
-                                src="https://www.youtube-nocookie.com/embed/vfQuD7B-E2M?controls=1&rel=0"
-                                title="YouTube video player" frameborder="0" allow="" allowfullscreen></iframe>
-                        <a href="#offeneStellen" class="md:hidden rounded-full border-2 p-2 px-4 text-md text-center">Jetzt
-                            bewerben</a>
-                    </div>
-                </div>
-            </div>
+            <career-card video-id="vfQuD7B-E2M" icon="job" toggle>
+                <span slot="title">Bewerbungsprozess</span>
+                <span slot="subtitle">Unser Gründer Tobias legt die Karten auf den Tisch:</span>
+                <span slot="text">
+                    Wie konzipiert man einen Bewerbungsprozess, der möglichst nah am echten Job
+                    ausgerichtet ist? Was erwarten wir von dir, wenn du dich bei L21s vorstellst? Wie
+                    kannst du dich vorbereiten? Was kannst du von uns erwarten?
+                </span>
+            </career-card>
         </section>
         <div class="relative md:row-start-6 md:col-start-1 md:col-span-2 group hidden md:grid">
             <div class="absolute top-0 left-0 text-white transition duration-500 rounded-2xl w-full h-full
@@ -374,34 +251,15 @@
                  class="hidden object-cover w-full h-full aspect-video self-center rounded-2xl md:block">
         </div>
         <section id="onboarding">
-            <div class="bg-violette text-white md:text-violette md:bg-inherit flex flex-col h-full md:min-h-0">
-                <div class="flex flex-col flex-grow py-6 md:p-8 md:bg-bggray md:rounded-2xl">
-                    <div class="flex flex-col gap-8 p-8 flex-grow justify-evenly md:p-0 md:justify-between">
-                        <div class="flex flex-col justify-center gap-8">
-                            <div class="flex flex-col gap-2">
-                                <div class="flex flex-row md:flex-col md:items-start items-center md:gap-2">
-                                    <img class="-translate-x-1 hidden md:block" loading="lazy"
-                                         src="assets/startup_normal.gif" alt="Onboarding" width="40" height="40">
-                                    <img class="-translate-x-1 md:hidden" loading="lazy" src="assets/startup_white.gif"
-                                         alt="Onboarding" width="40" height="40">
-                                    <h1 class="text-2xl">Onboarding</h1>
-                                </div>
-                                <p class="md:text-textgray">
-                                    Wie sieht das Onboarding und die Einarbeitung bei L21s aus? Was passiert vor deinem
-                                    Start, an deinem ersten Tag, in der ersten Woche und darüber hinaus? Wie stellen wir
-                                    sicher, dass du dich wohlfühlst und alles hast, was du zum Arbeiten brauchst?
-                                    <br><br>Das Operations Team holt dich an Bord:
-                                </p>
-                            </div>
-                        </div>
-                        <iframe loading="lazy" class="rounded-2xl drop-shadow-md" width="100%" height="278"
-                                src="https://www.youtube-nocookie.com/embed/8SI3602jLzQ?controls=1&rel=0"
-                                title="YouTube video player" frameborder="0" allow="" allowfullscreen></iframe>
-                        <a href="#offeneStellen" class="md:hidden rounded-full border-2 p-2 px-4 text-md text-center">Unsere
-                            offenen Stellen</a>
-                    </div>
-                </div>
-            </div>
+            <career-card video-id="8SI3602jLzQ" icon="startup">
+                <span slot="title">Onboarding</span>
+                <span slot="subtitle">Das Operations Team holt dich an Bord:</span>
+                <span slot="text">
+                    Wie sieht das Onboarding und die Einarbeitung bei L21s aus? Was passiert vor deinem
+                    Start, an deinem ersten Tag, in der ersten Woche und darüber hinaus? Wie stellen wir
+                    sicher, dass du dich wohlfühlst und alles hast, was du zum Arbeiten brauchst?
+                </span>
+            </career-card>
         </section>
         <div class="relative hidden md:grid md:row-start-8 md:col-start-1 md:col-span-1 group">
             <div class="absolute top-0 left-0 text-white transition duration-500 rounded-2xl w-full h-full
