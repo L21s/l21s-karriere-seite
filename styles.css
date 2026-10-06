@@ -124,6 +124,10 @@ body {
     filter: none;
 }
 
+video-player {
+    width: 100%;
+}
+
 toggle-button {
     height: fit-content;
     width: fit-content;
