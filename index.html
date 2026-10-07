@@ -79,13 +79,24 @@
     </section>
     <div class="md:flex md:flex-col xl:grid md:grid-rows-5 lg:grid-cols-3 md:py-8 md:px-8 md:pt-24 md:gap-8 max-w-[1800px] mx-auto">
         <section id="projekte">
-            <career-card video-id="opL4u_gi5VY" icon="planning" toggle>
-                <span slot="title">Unsere Projekte</span>
-                <span slot="subtitle">Till hat die Antworten auf alle diese Fragen:</span>
-                <span slot="text">
-                    Was für Probleme lösen wir bei L21s? Wie sieht ein typischer Kunde von uns aus?
-                    Wann entscheidet man sich für eine Zusammenarbeit mit L21s und
-                    welche Aufträge wollen wir vielleicht eher ungern bearbeiten?
+            <career-card video-id="opL4u_gi5VY" icon="planning">
+                <span data-mode="tech">
+                    <span data-slot="title">Unsere Tech-Projekte</span>
+                    <span data-slot="subtitle">Till hat die Antworten auf alle diese Fragen:</span>
+                    <span data-slot="text">
+                        Was für Probleme lösen wir bei L21s? Wie sieht ein typischer Kunde von uns aus?
+                        Wann entscheidet man sich für eine Zusammenarbeit mit L21s und
+                        welche Aufträge wollen wir vielleicht eher ungern bearbeiten?
+                    </span>
+                </span>
+                <span data-mode="consulting">
+                    <span data-slot="title">Unsere Consulting-Projekte</span>
+                    <span data-slot="subtitle">Felix hat die Antworten auf alle diese Fragen:</span>
+                    <span data-slot="text">
+                        An welchen Herausforderungen arbeiten Consultants bei L21s?
+                        Welche Rolle übernehmen wir in den Projekten und wie begleiten wir unsere Kunden
+                        von der ersten Analyse bis zur Umsetzung?
+                    </span>
                 </span>
             </career-card>
         </section>
@@ -102,12 +113,14 @@
         </div>
         <section id="technologien">
             <career-card video-id="ld6-olsFYPY" icon="coding">
-                <span slot="title">Technologien</span>
-                <span slot="subtitle">Dein zukünftiger Kollege Tung kann dir mehr erzählen:</span>
-                <span slot="text">
-                    Welche Technologien verwenden wir eigentlich bei L21s? Wie wählen wir die richtige
-                    Technologie für unsere Kundenprojekte aus? Arbeiten wir eher Fullstack oder in Silos
-                    getrennt nach Frontend und Backend?
+                <span data-mode="tech">
+                    <span data-slot="title">Technologien</span>
+                    <span data-slot="subtitle">Dein zukünftiger Kollege Tung kann dir mehr erzählen:</span>
+                    <span data-slot="text">
+                        Welche Technologien verwenden wir eigentlich bei L21s? Wie wählen wir die richtige
+                        Technologie für unsere Kundenprojekte aus? Arbeiten wir eher Fullstack oder in Silos
+                        getrennt nach Frontend und Backend?
+                    </span>
                 </span>
             </career-card>
         </section>
@@ -124,12 +137,14 @@
         </div>
         <section id="ki">
             <career-card video-id="17Hm0ZgGHo0" icon="brain">
-                <span slot="title">Arbeit mit KI</span>
-                <span slot="subtitle">Unser Gründer Tobias gibt dir einen Einblick:</span>
-                <span slot="text">
-                    Wie genau setzen wir bei L21s künstliche Intelligenz in der Projektarbeit ein?
-                    Welche KI-Tools verwenden wir? Wo stößt die KI dabei an ihre Grenzen? Und wo ist uns
-                    der menschliche Berater am wichtigsten?
+                <span data-mode="tech">
+                    <span data-slot="title">Arbeit mit KI</span>
+                    <span data-slot="subtitle">Unser Gründer Tobias gibt dir einen Einblick:</span>
+                    <span data-slot="text">
+                        Wie genau setzen wir bei L21s künstliche Intelligenz in der Projektarbeit ein?
+                        Welche KI-Tools verwenden wir? Wo stößt die KI dabei an ihre Grenzen? Und wo ist uns
+                        der menschliche Berater am wichtigsten?
+                    </span>
                 </span>
             </career-card>
         </section>
@@ -155,12 +170,14 @@
         </div>
         <section id="teamaufstellung">
             <career-card video-id="M3j0SfpdpgI" icon="presentation">
-                <span slot="title">Zusammenarbeit & Teams</span>
-                <span slot="subtitle">Senior Software Engineer Philippe hat den Durchblick:</span>
-                <span slot="text">
-                    Wie groß sind die Teams, die bei uns ein Kundenprojekt bearbeiten? Machen wir einen
-                    Unterschied zwischen Beratern und Programmierern? Wie verstehen wir agile
-                    Arbeitsweisen? Wie fördern wir Austausch über Teams hinweg?
+                <span data-mode="tech">
+                    <span data-slot="title">Zusammenarbeit & Teams</span>
+                    <span data-slot="subtitle">Senior Software Engineer Philippe hat den Durchblick:</span>
+                    <span data-slot="text">
+                        Wie groß sind die Teams, die bei uns ein Kundenprojekt bearbeiten? Machen wir einen
+                        Unterschied zwischen Beratern und Programmierern? Wie verstehen wir agile
+                        Arbeitsweisen? Wie fördern wir Austausch über Teams hinweg?
+                    </span>
                 </span>
             </career-card>
         </section>
@@ -176,13 +193,14 @@
         </div>
         <section id="learning">
             <career-card video-id="PC-1SBUhjrM" icon="online_learning">
-                <span slot="title">Learning & Weiterbildung</span>
-                <span slot="subtitle">Unser Associate Director Sebastian coached täglich sein Team und kann
-                                    daher aus erster Hand berichten:</span>
-                <span slot="text">
-                    Wie integrieren wir berufliche Weiterbildung in unseren Projektalltag? Was für
-                    Angebote und Möglichkeiten bieten wir darüber hinaus, damit unsere Engineers immer
-                    am Zahn der Zeit sind?
+                <span data-mode="tech">
+                    <span data-slot="title">Learning & Weiterbildung</span>
+                    <span data-slot="subtitle">Unser Associate Director Sebastian coached täglich sein Team und kann daher aus erster Hand berichten:</span>
+                    <span data-slot="text">
+                        Wie integrieren wir berufliche Weiterbildung in unseren Projektalltag? Was für
+                        Angebote und Möglichkeiten bieten wir darüber hinaus, damit unsere Engineers immer
+                        am Zahn der Zeit sind?
+                    </span>
                 </span>
             </career-card>
         </section>
@@ -198,11 +216,13 @@
         </div>
         <section id="remote">
             <career-card video-id="eEMu0NZvFYM" icon="video-conference">
-                <span slot="title">100 % Remote</span>
-                <span slot="subtitle">Dominic arbeitet im Sommer regelmäßig von seinem Hausboot und lebt Remote wie kein Zweiter:</span>
-                <span slot="text">
-                    Wie sieht unser 100 % Remote-Setup aus? Brauche ich dafür eigene Hardware? Was ist,
-                    wenn mein Internet ausfällt? Seht ihr euch auch mal im echten Leben?
+                <span data-mode="tech">
+                    <span data-slot="title">100 % Remote</span>
+                    <span data-slot="subtitle">Dominic arbeitet im Sommer regelmäßig von seinem Hausboot und lebt Remote wie kein Zweiter:</span>
+                    <span data-slot="text">
+                        Wie sieht unser 100 % Remote-Setup aus? Brauche ich dafür eigene Hardware? Was ist,
+                        wenn mein Internet ausfällt? Seht ihr euch auch mal im echten Leben?
+                    </span>
                 </span>
             </career-card>
         </section>
@@ -218,13 +238,23 @@
                  class="hidden object-cover w-full h-full aspect-video self-center rounded-2xl md:block">
         </div>
         <section id="bewerbungsprozess">
-            <career-card video-id="vfQuD7B-E2M" icon="job" toggle>
-                <span slot="title">Bewerbungsprozess</span>
-                <span slot="subtitle">Unser Gründer Tobias legt die Karten auf den Tisch:</span>
-                <span slot="text">
-                    Wie konzipiert man einen Bewerbungsprozess, der möglichst nah am echten Job
-                    ausgerichtet ist? Was erwarten wir von dir, wenn du dich bei L21s vorstellst? Wie
-                    kannst du dich vorbereiten? Was kannst du von uns erwarten?
+            <career-card video-id="vfQuD7B-E2M" icon="job">
+                <span data-mode="tech">
+                    <span data-slot="title">Bewerbung bei L21s Tech</span>
+                    <span data-slot="subtitle">Unser Gründer Tobias legt die Karten auf den Tisch:</span>
+                    <span data-slot="text">
+                        Wie konzipiert man einen Bewerbungsprozess, der möglichst nah am echten Job
+                        ausgerichtet ist? Was erwarten wir von dir, wenn du dich bei L21s vorstellst? Wie
+                        kannst du dich vorbereiten? Was kannst du von uns erwarten?
+                    </span>
+                </span>
+                <span data-mode="consulting">
+                    <span data-slot="title">Bewerbung bei L21s Consulting</span>
+                    <span data-slot="subtitle">Name legt die Karten auf den Tisch:</span>
+                    <span data-slot="text">
+                        Wie läuft eine Bewerbung im Consulting bei L21s ab?
+                        Welche Schritte erwarten dich und wie finden wir gemeinsam heraus, ob wir zueinander passen?
+                    </span>
                 </span>
             </career-card>
         </section>
@@ -252,12 +282,14 @@
         </div>
         <section id="onboarding">
             <career-card video-id="8SI3602jLzQ" icon="startup">
-                <span slot="title">Onboarding</span>
-                <span slot="subtitle">Das Operations Team holt dich an Bord:</span>
-                <span slot="text">
-                    Wie sieht das Onboarding und die Einarbeitung bei L21s aus? Was passiert vor deinem
-                    Start, an deinem ersten Tag, in der ersten Woche und darüber hinaus? Wie stellen wir
-                    sicher, dass du dich wohlfühlst und alles hast, was du zum Arbeiten brauchst?
+                <span data-mode="tech">
+                    <span data-slot="title">Onboarding</span>
+                    <span data-slot="subtitle">Das Operations Team holt dich an Bord:</span>
+                    <span data-slot="text">
+                        Wie sieht das Onboarding und die Einarbeitung bei L21s aus? Was passiert vor deinem
+                        Start, an deinem ersten Tag, in der ersten Woche und darüber hinaus? Wie stellen wir
+                        sicher, dass du dich wohlfühlst und alles hast, was du zum Arbeiten brauchst?
+                    </span>
                 </span>
             </career-card>
         </section>

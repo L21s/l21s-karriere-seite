@@ -19,6 +19,7 @@ class ToggleButton extends HTMLElement {
         this.button.onclick = () => {
             isConsulting = !isConsulting;
             updateToggle();
+            document.dispatchEvent(new CustomEvent("mode-change", {detail: {isConsulting}}));
         };
 
         updateToggle();

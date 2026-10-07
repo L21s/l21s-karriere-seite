@@ -2,11 +2,11 @@ class CareerCard extends HTMLElement {
     connectedCallback() {
         const videoId = this.getAttribute("video-id");
         const icon = this.getAttribute("icon");
-        const hasToggle = this.hasAttribute("toggle");
 
-        const title = this.querySelector('[slot="title"]');
-        const subtitle = this.querySelector('[slot="subtitle"]');
-        const text = this.querySelector('[slot="text"]');
+        this.techContent = this.querySelector('[data-mode="tech"]');
+        this.consultingContent = this.querySelector('[data-mode="consulting"]');
+
+        const hasToggle = !!this.consultingContent;
 
         this.innerHTML = `
             <div class="flex flex-col flex-grow gap-6 py-6 p-8 max-md:py-12 md:max-2xl:pb-9 bg-bggray md:rounded-2xl h-full">
@@ -26,9 +26,10 @@ class CareerCard extends HTMLElement {
             </div>
         `;
 
-        this.querySelector('[data-slot="title"]').append(title);
-        this.querySelector('[data-slot="subtitle"]').append(subtitle);
-        this.querySelector('[data-slot="text"]').append(text);
+        this.showMode(false);
+        document.addEventListener("mode-change", event => {
+            this.showMode(event.detail.isConsulting);
+        });
 
         const video = this.querySelector("video-player");
         const toggle = this.querySelector("toggle-button");
@@ -42,6 +43,20 @@ class CareerCard extends HTMLElement {
                 toggle.classList.remove("toggle-minimized");
             });
         }
+    }
+
+    showMode(isConsulting) {
+        const currentContent = isConsulting && this.consultingContent ? this.consultingContent : this.techContent;
+        const subtitle = this.querySelector('[data-slot="subtitle"]')
+
+        if (this.consultingContent) {
+            subtitle.classList.toggle("text-violette", !isConsulting);
+            subtitle.classList.toggle("text-pink", isConsulting);
+        }
+
+        subtitle.textContent = currentContent.querySelector('[data-slot="subtitle"]').textContent;
+        this.querySelector('[data-slot="title"]').textContent = currentContent.querySelector('[data-slot="title"]').textContent;
+        this.querySelector('[data-slot="text"]').textContent = currentContent.querySelector('[data-slot="text"]').textContent;
     }
 }
 
