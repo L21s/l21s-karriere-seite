@@ -149,7 +149,7 @@ toggle-button:hover .label {
 
 .toggle-minimized:not(:hover) {
     height: 0.75rem;
-    transform: translate(50%, 75%);
+    transform: translate(-50%, 75%);
 }
 .toggle-minimized:not(:hover) .toggle {
     gap: 0.25rem;

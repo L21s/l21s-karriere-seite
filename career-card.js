@@ -12,7 +12,7 @@ class CareerCard extends HTMLElement {
             <div class="flex flex-col flex-grow gap-6 py-6 p-8 max-md:py-12 md:max-2xl:pb-9 bg-bggray md:rounded-2xl h-full">
                 <div class="video-card-container flex relative aspect-video">
                     <video-player video-id="${videoId}"></video-player>
-                    ${hasToggle ? `<toggle-button class="max-md:invisible absolute translate-x-1/2 translate-y-1/2 bottom-0 left-0.5"></toggle-button>` : ""}
+                    ${hasToggle ? `<toggle-button class="max-md:invisible absolute -translate-x-1/2 translate-y-1/2 bottom-0 left-1/2"></toggle-button>` : ""}
                 </div>
                 <div class="flex flex-row md:flex-col md:items-start items-center md:gap-2">
                     <img class="-translate-x-1" loading="lazy" src="assets/${icon}_normal.gif" alt="${icon}" width="40" height="40">
