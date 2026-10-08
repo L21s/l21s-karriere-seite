@@ -126,6 +126,7 @@ body {
 
 video-player {
     width: 100%;
+    position: relative;
 }
 
 toggle-button {
