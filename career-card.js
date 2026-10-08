@@ -1,6 +1,5 @@
 class CareerCard extends HTMLElement {
     connectedCallback() {
-        const videoId = this.getAttribute("video-id");
         const icon = this.getAttribute("icon");
 
         this.techContent = this.querySelector('[data-mode="tech"]');
@@ -11,7 +10,12 @@ class CareerCard extends HTMLElement {
         this.innerHTML = `
             <div class="flex flex-col flex-grow gap-6 py-6 p-8 max-md:py-12 md:max-2xl:pb-9 bg-bggray md:rounded-2xl h-full">
                 <div class="video-card-container flex relative aspect-video">
-                    <video-player video-id="${videoId}"></video-player>
+                    <div class="grid w-full">
+                        <video-player data-slot="video-tech" class="card-video-fade col-start-1 row-start-1" video-id="${this.techContent.dataset.videoId}"></video-player>
+                        ${hasConsulting ? `
+                            <video-player data-slot="video-consulting" class="card-video-fade col-start-1 row-start-1" video-id="${this.consultingContent.dataset.videoId}"></video-player>
+                        ` : ""}
+                    </div>
                     ${hasConsulting ? `
                         <toggle-button class="max-md:invisible absolute -translate-x-1/2 translate-y-1/2 bottom-0 left-1/2"></toggle-button>
                     ` : ""}
@@ -29,13 +33,13 @@ class CareerCard extends HTMLElement {
                 </div>
 
                 <div class="grid">
-                    <div class="col-start-1 row-start-1 flex flex-col gap-3">
+                    <div data-slot="content-tech" class="col-start-1 row-start-1 flex flex-col gap-3">
                         <p data-slot="subtitle-tech" class="text-violette font-medium"></p>
                         <p data-slot="text-tech" class="text-textgray"></p>
                     </div>
 
                     ${hasConsulting ? `
-                        <div class="col-start-1 row-start-1 flex flex-col gap-3">
+                        <div data-slot="content-consulting" class="col-start-1 row-start-1 flex flex-col gap-3">
                             <p data-slot="subtitle-consulting" class="text-pink font-medium"></p>
                             <p data-slot="text-consulting" class="text-textgray"></p>
                         </div>
@@ -48,38 +52,55 @@ class CareerCard extends HTMLElement {
             </div>
         `;
 
-        this.querySelector('[data-slot="title-tech"]').textContent = this.techContent.querySelector('[data-slot="title"]').textContent;
-        this.querySelector('[data-slot="subtitle-tech"]').textContent = this.techContent.querySelector('[data-slot="subtitle"]').textContent;
-        this.querySelector('[data-slot="text-tech"]').textContent = this.techContent.querySelector('[data-slot="text"]').textContent;
+        this.setContent("tech", this.techContent);
 
         if (hasConsulting) {
-            this.querySelector('[data-slot="title-consulting"]').textContent = this.consultingContent.querySelector('[data-slot="title"]').textContent;
-            this.querySelector('[data-slot="subtitle-consulting"]').textContent = this.consultingContent.querySelector('[data-slot="subtitle"]').textContent;
-            this.querySelector('[data-slot="text-consulting"]').textContent = this.consultingContent.querySelector('[data-slot="text"]').textContent;
+            this.setContent("consulting", this.consultingContent);
+            this.setupVideoEvents();
 
             this.switchMode(false);
             document.addEventListener("mode-change", event => {
                 this.switchMode(event.detail.isConsulting);
             });
-
-            const video = this.querySelector("video-player");
-            const toggle = this.querySelector("toggle-button");
-
-            video.addEventListener("video-playing", () => {
-                toggle.classList.add("toggle-minimized");
-            });
-            video.addEventListener("video-paused", () => {
-                toggle.classList.remove("toggle-minimized");
-            });
         }
     }
 
-    switchMode(isConsulting) {
-        this.querySelector('[data-slot="title-tech"]').style.visibility = isConsulting ? "hidden" : "visible";
-        this.querySelector('[data-slot="subtitle-tech"]').parentElement.style.visibility = isConsulting ? "hidden" : "visible";
+    setContent(mode, source) {
+        this.querySelector(`[data-slot="title-${mode}"]`).textContent = source.querySelector('[data-slot="title"]').textContent;
+        this.querySelector(`[data-slot="subtitle-${mode}"]`).textContent = source.querySelector('[data-slot="subtitle"]').textContent;
+        this.querySelector(`[data-slot="text-${mode}"]`).textContent = source.querySelector('[data-slot="text"]').textContent;
+    }
 
-        this.querySelector('[data-slot="title-consulting"]').style.visibility = isConsulting ? "visible" : "hidden";
-        this.querySelector('[data-slot="subtitle-consulting"]').parentElement.style.visibility = isConsulting ? "visible" : "hidden";
+    setupVideoEvents() {
+        const videos = this.querySelectorAll("video-player");
+        const toggle = this.querySelector("toggle-button");
+
+        videos.forEach(video => {
+            video.addEventListener("video-playing", () => {
+                toggle.classList.add("toggle-minimized");
+            });
+
+            video.addEventListener("video-paused", () => {
+                toggle.classList.remove("toggle-minimized");
+            });
+        });
+    }
+
+    switchMode(isConsulting) {
+        const videoTech = this.querySelector('[data-slot="video-tech"]');
+        const videoConsulting = this.querySelector('[data-slot="video-consulting"]');
+
+        const videoToPause = isConsulting ? videoTech : videoConsulting;
+        videoToPause.player?.pauseVideo();
+
+        videoTech.classList.toggle("is-hidden", isConsulting);
+        videoConsulting.classList.toggle("is-hidden", !isConsulting);
+
+        this.querySelector('[data-slot="title-tech"]').classList.toggle("is-hidden", isConsulting);
+        this.querySelector('[data-slot="title-consulting"]').classList.toggle("is-hidden", !isConsulting);
+
+        this.querySelector('[data-slot="content-tech"]').classList.toggle("is-hidden", isConsulting);
+        this.querySelector('[data-slot="content-consulting"]').classList.toggle("is-hidden", !isConsulting);
     }
 }
 
