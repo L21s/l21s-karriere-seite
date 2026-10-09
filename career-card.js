@@ -1,3 +1,4 @@
+
 class CareerCard extends HTMLElement {
     connectedCallback() {
         const icon = this.getAttribute("icon");
@@ -8,47 +9,48 @@ class CareerCard extends HTMLElement {
         const hasConsulting = !!this.consultingContent;
 
         this.innerHTML = `
-            <div class="flex flex-col flex-grow gap-6 py-6 p-8 max-md:py-12 md:max-2xl:pb-9 bg-bggray md:rounded-2xl h-full">
+            <div class="flex flex-col flex-grow gap-6 p-8 max-md:p-0 md:max-2xl:pb-9 bg-bggray rounded-t-2xl md:rounded-2xl h-full overflow-hidden max-md:-mt-4 max-md:shadow-[0_-0.2rem_0.75rem_rgba(0,0,0,0.4)]">
                 <div class="video-card-container flex relative aspect-video">
-                    <div class="grid w-full">
-                        <video-player data-slot="video-tech" class="card-video-fade col-start-1 row-start-1" video-id="${this.techContent.dataset.videoId}"></video-player>
-                        ${hasConsulting ? `
-                            <video-player data-slot="video-consulting" class="card-video-fade col-start-1 row-start-1" video-id="${this.consultingContent.dataset.videoId}"></video-player>
-                        ` : ""}
+                    <div class="grid w-full md:rounded-2xl overflow-hidden">
+                        <video-player data-mode="tech" class="card-video col-start-1 row-start-1" video-id="${this.techContent.dataset.videoId}"></video-player>
+                        ${hasConsulting ? `<video-player data-mode="consulting" class="card-video col-start-1 row-start-1" video-id="${this.consultingContent.dataset.videoId}"></video-player>` : ""}
                     </div>
-                    ${hasConsulting ? `
-                        <toggle-button class="max-md:invisible absolute -translate-x-1/2 translate-y-1/2 bottom-0 left-1/2"></toggle-button>
-                    ` : ""}
+                    ${hasConsulting ? `<toggle-button class="max-md:invisible absolute -translate-x-1/2 translate-y-1/2 bottom-0 left-1/2"></toggle-button>` : ""}
                 </div>
-
-                <div class="flex flex-row md:flex-col md:items-start items-center md:gap-2">
-                    <img class="-translate-x-1" loading="lazy" src="assets/${icon}_normal.gif" alt="${icon}" width="40" height="40">
-
-                    <div class="grid">
-                        <h1 data-slot="title-tech" class="col-start-1 row-start-1 text-xl md:text-2xl text-black font-medium"></h1>
-                        ${hasConsulting ? `
-                            <h1 data-slot="title-consulting" class="col-start-1 row-start-1 text-xl md:text-2xl text-black font-medium"></h1>
-                        ` : ""}
-                    </div>
-                </div>
-
-                <div class="grid">
-                    <div data-slot="content-tech" class="col-start-1 row-start-1 flex flex-col gap-3">
-                        <p data-slot="subtitle-tech" class="text-violette font-medium"></p>
-                        <p data-slot="text-tech" class="text-textgray"></p>
-                    </div>
-
-                    ${hasConsulting ? `
-                        <div data-slot="content-consulting" class="col-start-1 row-start-1 flex flex-col gap-3">
-                            <p data-slot="subtitle-consulting" class="text-pink font-medium"></p>
-                            <p data-slot="text-consulting" class="text-textgray"></p>
+                
+                <div class="grid max-md:mx-8">
+                    <div data-mode="tech" class="col-start-1 row-start-1 flex flex-col gap-6">
+                        <div class="flex flex-row md:flex-col md:items-start items-center gap-1 md:gap-2 max-md:mt-2">
+                            <img class="-translate-x-1 w-10" loading="lazy" src="assets/${icon}_normal.gif" alt="${icon}">
+                            <h1 data-slot="title" class="col-start-1 row-start-1 text-xl md:text-2xl text-black font-medium"></h1>
                         </div>
-                    ` : ""}
-                </div>
 
-                <a href="#offeneStellen" class="md:hidden rounded-full border-2 p-2 px-4 text-md text-center text-violette">
-                    Jetzt bewerben
-                </a>
+                        <div class="col-start-1 row-start-1 flex flex-col gap-3">
+                            <p data-slot="subtitle" class="text-violette font-medium"></p>
+                            <p data-slot="text" class="text-textgray"></p>
+                        </div>
+
+                        <a data-slot="button" href="#offeneStellen" class="button secondary md:hidden bg-white hover:bg-black rounded-full transition mt-8 mb-16">
+                            <span class="text-violette">Jetzt bewerben</span>
+                        </a>
+                    </div>
+
+                    <div data-mode="consulting" class="col-start-1 row-start-1 flex flex-col gap-6 is-hidden">
+                        <div class="flex flex-row md:flex-col md:items-start items-center gap-1 md:gap-2 max-md:mt-2">
+                            <img class="-translate-x-1 w-10" loading="lazy" src="assets/${icon}_normal.gif" alt="${icon}">
+                            <h1 data-slot="title" class="col-start-1 row-start-1 text-xl md:text-2xl text-black font-medium"></h1>
+                        </div>
+
+                        <div class="col-start-1 row-start-1 flex flex-col gap-3">
+                            <p data-slot="subtitle" class="text-pink font-medium"></p>
+                            <p data-slot="text" class="text-textgray"></p>
+                        </div>
+
+                        <a data-slot="button" href="#offeneStellen" class="button secondary md:hidden bg-white hover:bg-black rounded-full transition mt-8 mb-16">
+                            <span class="text-violette">Jetzt bewerben</span>
+                        </a>
+                    </div>
+                </div>
             </div>
         `;
 
@@ -66,9 +68,10 @@ class CareerCard extends HTMLElement {
     }
 
     setContent(mode, source) {
-        this.querySelector(`[data-slot="title-${mode}"]`).textContent = source.querySelector('[data-slot="title"]').textContent;
-        this.querySelector(`[data-slot="subtitle-${mode}"]`).textContent = source.querySelector('[data-slot="subtitle"]').textContent;
-        this.querySelector(`[data-slot="text-${mode}"]`).textContent = source.querySelector('[data-slot="text"]').textContent;
+        const modeContent = this.querySelector(`div[data-mode="${mode}"]`)
+        modeContent.querySelector(`[data-slot="title"]`).textContent = source.querySelector('[data-slot="title"]').textContent;
+        modeContent.querySelector('[data-slot="subtitle"]').textContent = source.querySelector('[data-slot="subtitle"]').textContent;
+        modeContent.querySelector('[data-slot="text"]').textContent = source.querySelector('[data-slot="text"]').textContent;
     }
 
     setupVideoEvents() {
@@ -87,20 +90,14 @@ class CareerCard extends HTMLElement {
     }
 
     switchMode(isConsulting) {
-        const videoTech = this.querySelector('[data-slot="video-tech"]');
-        const videoConsulting = this.querySelector('[data-slot="video-consulting"]');
+        const mode = isConsulting ? "consulting" : "tech";
+        const videos = this.querySelectorAll("video-player");
 
-        const videoToPause = isConsulting ? videoTech : videoConsulting;
-        videoToPause.player?.pauseVideo();
+        [...videos].find(video => video.dataset.mode !== mode)?.player?.pauseVideo();
 
-        videoTech.classList.toggle("is-hidden", isConsulting);
-        videoConsulting.classList.toggle("is-hidden", !isConsulting);
-
-        this.querySelector('[data-slot="title-tech"]').classList.toggle("is-hidden", isConsulting);
-        this.querySelector('[data-slot="title-consulting"]').classList.toggle("is-hidden", !isConsulting);
-
-        this.querySelector('[data-slot="content-tech"]').classList.toggle("is-hidden", isConsulting);
-        this.querySelector('[data-slot="content-consulting"]').classList.toggle("is-hidden", !isConsulting);
+        this.querySelectorAll('[data-mode]').forEach(element => {
+            element.classList.toggle("is-hidden", element.dataset.mode !== mode);
+        });
     }
 }
 

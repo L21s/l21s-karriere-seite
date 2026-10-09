@@ -166,7 +166,7 @@ toggle-button:hover .label {
     background-color: #585858;
 }
 
-.card-video-fade  {
+.card-video  {
     opacity: 1;
     visibility: visible;
     transition: opacity 0.4s ease, visibility 0s;
@@ -176,6 +176,6 @@ toggle-button:hover .label {
     opacity: 0;
     visibility: hidden;
 }
-.card-video-fade.is-hidden {
+.card-video.is-hidden {
     transition: opacity 0.4s ease, visibility 0s linear 0.4s;
 }
