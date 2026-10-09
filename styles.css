@@ -127,6 +127,8 @@ body {
 video-player {
     width: 100%;
     position: relative;
+    overflow: hidden;
+    background-color: black;
 }
 
 toggle-button {
