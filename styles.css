@@ -104,24 +104,29 @@ body {
     width: fit-content;
 }
 
-.apply-button {
+.button {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     padding: 1rem;
-    border-radius: 5rem;
     font-weight: bold;
     white-space: nowrap;
     height: fit-content;
 }
 
-.apply-button > span, .apply-button > svg {
+.button.apply > span, .button > svg {
     filter: brightness(0.75);
 }
-.apply-button:hover > span, .apply-button:hover > svg {
+.button.apply:hover > span, .button.apply:hover > svg {
     color: white;
     filter: none;
+}
+
+.button.secondary {
+    border-width: 2px;
+    border-style: solid;
+    background: none;
 }
 
 video-player {

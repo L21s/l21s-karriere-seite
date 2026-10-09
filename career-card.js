@@ -30,12 +30,12 @@ class CareerCard extends HTMLElement {
                             <p data-slot="text" class="text-textgray"></p>
                         </div>
 
-                        <a data-slot="button" href="#offeneStellen" class="button secondary md:hidden bg-white hover:bg-black rounded-full transition mt-8 mb-16">
+                        <a data-slot="button" href="#offeneStellen" class="button secondary border-violette md:hidden bg-white hover:bg-violette/10 rounded-full transition mt-8 mb-16">
                             <span class="text-violette">Jetzt bewerben</span>
                         </a>
                     </div>
 
-                    <div data-mode="consulting" class="col-start-1 row-start-1 flex flex-col gap-6 is-hidden">
+                    <div data-mode="consulting" class="col-start-1 row-start-1 flex flex-col gap-6">
                         <div class="flex flex-row md:flex-col md:items-start items-center gap-1 md:gap-2 max-md:mt-2">
                             <img class="-translate-x-1 w-10" loading="lazy" src="assets/${icon}_normal.gif" alt="${icon}">
                             <h1 data-slot="title" class="col-start-1 row-start-1 text-xl md:text-2xl text-black font-medium"></h1>
@@ -46,8 +46,8 @@ class CareerCard extends HTMLElement {
                             <p data-slot="text" class="text-textgray"></p>
                         </div>
 
-                        <a data-slot="button" href="#offeneStellen" class="button secondary md:hidden bg-white hover:bg-black rounded-full transition mt-8 mb-16">
-                            <span class="text-violette">Jetzt bewerben</span>
+                        <a data-slot="button" href="#offeneStellen" class="button secondary border-pink md:hidden bg-white hover:bg-pink/10 rounded-full transition mt-8 mb-16">
+                            <span class="text-pink">Jetzt bewerben</span>
                         </a>
                     </div>
                 </div>

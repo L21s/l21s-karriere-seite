@@ -51,7 +51,7 @@ function createJobCard(job, color) {
                         <h3 class="text-xl font-bold">${job.title}</h3>
                         <p class="subtitle text-sm">M/W/D</p>
                     </div>
-                    <a class="apply-button hidden md:max-xl:flex py-3 w-fit bg-white hover:bg-${color} rounded-full transition" href="${job.url}" target="_blank">
+                    <a class="button apply hidden md:max-xl:flex py-3 w-fit bg-white hover:bg-${color} rounded-full transition" href="${job.url}" target="_blank">
                         <span class="text-${color}">Jetzt bewerben</span>
                         <svg class="text-${color} h-5 w-5 ml-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"></path></svg>
                     </a>
@@ -67,7 +67,7 @@ function createJobCard(job, color) {
                     <p class="job-card-description md:line-clamp-2 max-sm:pb-3 hyphens-auto" lang="de">${job.description}</p>
                     <span class="job-card-description-more cursor-pointer text-${color} max-md:hidden">Mehr</span>
                 </div>
-                <a class="apply-button self-end md:max-xl:hidden md:py-3 w-full md:w-fit bg-white hover:bg-${color} rounded-full transition" href="${job.url}" target="_blank">
+                <a class="button apply self-end md:max-xl:hidden md:py-3 w-full md:w-fit bg-white hover:bg-${color} rounded-full transition" href="${job.url}" target="_blank">
                     <span class="text-${color}">Jetzt bewerben</span>
                     <svg class="text-${color} h-5 w-5 ml-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"></path></svg>
                 </a>
