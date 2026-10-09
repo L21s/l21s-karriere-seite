@@ -1,4 +1,4 @@
-let isConsulting = false;
+let currentMode = "tech";
 
 class ToggleButton extends HTMLElement {
     connectedCallback() {
@@ -17,9 +17,9 @@ class ToggleButton extends HTMLElement {
         this.labels = this.querySelectorAll(".label");
 
         this.button.onclick = () => {
-            isConsulting = !isConsulting;
+            currentMode = currentMode === "tech" ? "consulting" : "tech";
             updateToggle();
-            document.dispatchEvent(new CustomEvent("mode-change", {detail: {isConsulting}}));
+            document.dispatchEvent(new CustomEvent("mode-change", {detail: {currentMode}}));
         };
 
         updateToggle();
@@ -30,11 +30,11 @@ customElements.define("toggle-button", ToggleButton);
 
 function updateToggle() {
     document.querySelectorAll("toggle-button").forEach(toggle => {
-        const activeIndex = isConsulting ? 1 : 0;
+        const activeIndex = currentMode === "consulting" ? 1 : 0;
         const activeLabel = toggle.labels[activeIndex];
 
-        toggle.slider.classList.toggle("bg-violette", !isConsulting);
-        toggle.slider.classList.toggle("bg-pink", isConsulting);
+        toggle.slider.classList.toggle("bg-violette", currentMode === "tech");
+        toggle.slider.classList.toggle("bg-pink", currentMode === "consulting");
 
         toggle.slider.style.width = activeLabel.offsetWidth + "px";
         toggle.slider.style.transform =`translateX(${activeLabel.offsetLeft}px)`;

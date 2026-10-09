@@ -6,16 +6,17 @@ class CareerCard extends HTMLElement {
         this.techContent = this.querySelector('[data-mode="tech"]');
         this.consultingContent = this.querySelector('[data-mode="consulting"]');
 
+        const hasTech = !!this.techContent;
         const hasConsulting = !!this.consultingContent;
 
         this.innerHTML = `
             <div class="flex flex-col flex-grow gap-6 p-8 max-md:p-0 md:max-2xl:pb-9 bg-bggray rounded-t-2xl md:rounded-2xl h-full overflow-hidden max-md:-mt-4 max-md:shadow-[0_-0.2rem_0.75rem_rgba(0,0,0,0.4)]">
                 <div class="video-card-container flex relative aspect-video">
                     <div class="grid w-full md:rounded-2xl overflow-hidden">
-                        <video-player data-mode="tech" class="card-video col-start-1 row-start-1" video-id="${this.techContent.dataset.videoId}"></video-player>
+                        ${hasTech ? `<video-player data-mode="tech" class="card-video col-start-1 row-start-1" video-id="${this.techContent.dataset.videoId}"></video-player>` : ""}
                         ${hasConsulting ? `<video-player data-mode="consulting" class="card-video col-start-1 row-start-1" video-id="${this.consultingContent.dataset.videoId}"></video-player>` : ""}
                     </div>
-                    ${hasConsulting ? `<toggle-button class="max-md:invisible absolute -translate-x-1/2 translate-y-1/2 bottom-0 left-1/2"></toggle-button>` : ""}
+                    ${hasTech && hasConsulting ? `<toggle-button class="max-md:invisible absolute -translate-x-1/2 translate-y-1/2 bottom-0 left-1/2"></toggle-button>` : ""}
                 </div>
                 
                 <div class="grid max-md:mx-8">
@@ -54,15 +55,19 @@ class CareerCard extends HTMLElement {
             </div>
         `;
 
-        this.setContent("tech", this.techContent);
-
+        if (hasTech) {
+            this.setContent("tech", this.techContent);
+        }
         if (hasConsulting) {
             this.setContent("consulting", this.consultingContent);
-            this.setupVideoEvents();
+        }
 
-            this.switchMode(false);
+        this.switchMode(hasTech ? "tech" : "consulting");
+
+        if (hasTech && hasConsulting) {
+            this.setupVideoEvents();
             document.addEventListener("mode-change", event => {
-                this.switchMode(event.detail.isConsulting);
+                this.switchMode(event.detail.currentMode);
             });
         }
     }
@@ -89,8 +94,7 @@ class CareerCard extends HTMLElement {
         });
     }
 
-    switchMode(isConsulting) {
-        const mode = isConsulting ? "consulting" : "tech";
+    switchMode(mode) {
         const videos = this.querySelectorAll("video-player");
 
         [...videos].find(video => video.dataset.mode !== mode)?.player?.pauseVideo();
