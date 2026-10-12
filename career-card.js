@@ -12,7 +12,7 @@ class CareerCard extends HTMLElement {
         const hasToggle = hasTech && hasConsulting;
 
         this.innerHTML = `
-            <div class="flex flex-col flex-grow gap-6 p-8 max-md:p-0 md:max-2xl:pb-9 bg-bggray rounded-t-2xl md:rounded-2xl h-full overflow-hidden max-md:-mt-4 max-md:shadow-[0_-0.2rem_0.75rem_rgba(0,0,0,0.4)]">
+            <div class="flex flex-col flex-grow gap-6 p-8 max-md:p-0 md:max-2xl:pb-9 bg-bggray rounded-t-3xl md:rounded-2xl h-full overflow-hidden max-md:-mt-6 max-md:shadow-[0_-0.2rem_0.75rem_rgba(0,0,0,0.4)]">
                 <div class="video-card-container flex relative aspect-video">
                     <div class="grid w-full md:rounded-2xl overflow-hidden">
                         ${this.renderVideo("tech", sources.tech)}
@@ -52,20 +52,17 @@ class CareerCard extends HTMLElement {
         const color = mode === "tech" ? "violette" : "pink";
 
         return `
-            <div data-mode="${mode}" class="col-start-1 row-start-1 flex flex-col gap-6">
+            <div data-mode="${mode}" class="col-start-1 row-start-1 flex flex-col gap-6 max-md:mb-24">
                 <div class="flex flex-row md:flex-col md:items-start items-center gap-1 md:gap-2 max-md:mt-2">
                     <img class="-translate-x-1 w-10" loading="lazy" src="assets/${this.icon}_normal.gif" alt="${this.icon}"/>
                     <h1 data-slot="title" class="col-start-1 row-start-1 text-xl md:text-2xl text-black font-medium"></h1>
+                    <p class="md:hidden text-textgray ml-auto opacity-80 font-medium">${this.dataset.index}/10</p>
                 </div>
 
                 <div class="col-start-1 row-start-1 flex flex-col gap-3">
                     <p data-slot="subtitle" class="text-${color} font-medium"></p>
-                    <p data-slot="text" class="text-textgray"></p>
+                    <p data-slot="text" class="text-textgray hyphens-auto" lang="de"></p>
                 </div>
-
-                <a data-slot="button" href="#offeneStellen" class="button secondary border-${color} md:hidden bg-white hover:bg-${color}/10 rounded-full transition mt-8 mb-16">
-                    <span class="text-${color}">Jetzt bewerben</span>
-                </a>
             </div>
         `;
     }
