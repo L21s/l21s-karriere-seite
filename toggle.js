@@ -6,8 +6,8 @@ class ToggleButton extends HTMLElement {
             <div class="toggle-container p-1 rounded-full bg-white shadow-sm">
                 <button class="toggle flex relative gap-0">
                     <span class="slider rounded-full absolute bg-violette"></span>
-                    <span class="label rounded-full z-10 overflow-hidden font-medium text-textgray bg-violette active">Tech</span>
-                    <span class="label rounded-full z-10 overflow-hidden font-medium text-textgray bg-pink">Consulting</span>
+                    <span data-mode="tech" class="label rounded-full z-10 overflow-hidden font-medium text-textgray bg-violette active">Tech</span>
+                    <span data-mode="consulting" class="label rounded-full z-10 overflow-hidden font-medium text-textgray bg-pink">Consulting</span>
                 </button>
             </div>
         `;
@@ -16,33 +16,42 @@ class ToggleButton extends HTMLElement {
         this.slider = this.querySelector(".slider");
         this.labels = this.querySelectorAll(".label");
 
-        this.button.onclick = () => {
+        this.button.addEventListener("click", () => {
             currentMode = currentMode === "tech" ? "consulting" : "tech";
-            updateToggle();
-            document.dispatchEvent(new CustomEvent("mode-change", {detail: {currentMode}}));
-        };
+            this.updateAllToggles();
+            document.dispatchEvent(new CustomEvent("mode-change", {
+                detail: { currentMode }
+            }));
+        });
 
-        updateToggle();
+        this.updateToggle();
+    }
+
+    updateAllToggles() {
+        document.querySelectorAll("toggle-button").forEach(toggle => {
+            toggle.updateToggle();
+        });
+    }
+
+    updateToggle() {
+        const activeLabel = this.querySelector(`[data-mode="${currentMode}"]`);
+
+        this.slider.style.width = `${activeLabel.offsetWidth}px`;
+        this.slider.style.transform = `translateX(${activeLabel.offsetLeft}px)`;
+
+        this.slider.classList.toggle("bg-violette", currentMode === "tech");
+        this.slider.classList.toggle("bg-pink", currentMode === "consulting");
+
+        this.labels.forEach(label => {
+            label.classList.toggle("active", label.dataset.mode === currentMode);
+        });
     }
 }
 
 customElements.define("toggle-button", ToggleButton);
 
-function updateToggle() {
+window.addEventListener("resize", () => {
     document.querySelectorAll("toggle-button").forEach(toggle => {
-        const activeIndex = currentMode === "consulting" ? 1 : 0;
-        const activeLabel = toggle.labels[activeIndex];
-
-        toggle.slider.classList.toggle("bg-violette", currentMode === "tech");
-        toggle.slider.classList.toggle("bg-pink", currentMode === "consulting");
-
-        toggle.slider.style.width = activeLabel.offsetWidth + "px";
-        toggle.slider.style.transform =`translateX(${activeLabel.offsetLeft}px)`;
-
-        toggle.labels.forEach((label, index) => {
-            label.classList.toggle("active", index === activeIndex);
-        });
+        toggle.updateToggle();
     });
-}
-
-window.addEventListener("resize", updateToggle);
+});

@@ -1,4 +1,4 @@
-const youTubeApiReady = new Promise(resolve => {
+const youtubeApiReady = new Promise(resolve => {
     if (window.YT?.Player) {
         resolve(window.YT);
         return;
@@ -9,7 +9,7 @@ const youTubeApiReady = new Promise(resolve => {
 
 class VideoPlayer extends HTMLElement {
     async connectedCallback() {
-        const title = this.getAttribute("title");
+        const title = this.getAttribute("title") ?? "";
         const videoId = this.getAttribute("video-id");
 
         this.innerHTML = `
@@ -22,76 +22,83 @@ class VideoPlayer extends HTMLElement {
                     <span class="absolute p-3 rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-br from-violette to-pink">
                         <img src="assets/play.svg" alt="Play" class="h-8">
                     </span>
-                    <span class="clip-title absolute top-0 left-0 mx-8 my-6 text-xl font-bold line-clamp-1">${title ? title : ""}</span>
+                    <span class="clip-title absolute top-0 left-0 mx-8 my-6 text-xl font-bold line-clamp-1">${title}</span>
                 </div>
                 <span class="clip-duration z-10 text-xs p-1 px-2 rounded-full bg-black bg-opacity-50 w-fit self-end transition duration-500 opacity-0">0:00</span>
             </div>
+
             <div class="youtube-player w-full h-full" data-video-id="${videoId}"></div>
         `;
 
-        await youTubeApiReady
-        initPlayerLogic(this);
+        await youtubeApiReady;
+        this.initPlayer();
+    }
+
+    initPlayer() {
+        const playerContainer = this.querySelector(".youtube-player");
+        const overlay = this.querySelector(".clip-overlay");
+        const gradient = this.querySelector(".clip-gradient");
+        const duration = this.querySelector(".clip-duration");
+        const playButton = this.querySelector(".clip-play");
+
+        this.player = new YT.Player(playerContainer, {
+            videoId: playerContainer.dataset.videoId,
+            playerVars: {
+                playsinline: 1,
+                rel: 0
+            },
+            events: {
+                onReady: event => {
+                    this.setDuration(event.target, duration);
+
+                    gradient.classList.remove("hidden");
+                    duration.classList.remove("opacity-0");
+
+                    playButton.querySelectorAll("img").forEach(image => {
+                        image.classList.toggle("opacity-0");
+                    });
+
+                    overlay.addEventListener("click", () => {
+                        overlay.style.opacity = "0";
+                        overlay.style.pointerEvents = "none";
+
+                        this.player.playVideo();
+                    });
+                },
+
+                onStateChange: event => {
+                    this.handlePlayerState(event.data);
+                }
+            }
+        });
+    }
+
+    setDuration(player, durationElement) {
+        const totalSeconds = player.getDuration();
+        const minutes = Math.floor(totalSeconds / 60);
+        const seconds = Math.floor(totalSeconds % 60);
+
+        durationElement.textContent = `${minutes}:${seconds.toString().padStart(2, "0")}`;
+    }
+
+    handlePlayerState(state) {
+        if (state === YT.PlayerState.PLAYING) {
+            this.dispatchEvent(new CustomEvent("video-playing"));
+            this.pauseOtherVideos();
+        }
+
+        if (state === YT.PlayerState.PAUSED || state === YT.PlayerState.ENDED) {
+            this.dispatchEvent(new CustomEvent("video-paused"));
+        }
+    }
+
+    pauseOtherVideos() {
+        document.querySelectorAll("video-player").forEach(videoPlayer => {
+            if (videoPlayer !== this) {
+                videoPlayer.player?.pauseVideo();
+            }
+        });
     }
 }
 
 customElements.define("video-player", VideoPlayer);
-
-function setVideoDuration(player, durationElement) {
-    const duration = player.getDuration();
-
-    const minutes = Math.floor(duration / 60);
-    const seconds = Math.floor(duration % 60);
-
-    durationElement.textContent = `${minutes}:${seconds.toString().padStart(2, "0")}`;
-}
-
-function initPlayerLogic(video) {
-    const playerContainer = video.querySelector(".youtube-player");
-    const overlayElement = video.querySelector(".clip-overlay");
-    const gradientElement = video.querySelector(".clip-gradient");
-    const durationElement = video.querySelector(".clip-duration");
-    const playElement = video.querySelector(".clip-play");
-
-    const player = new YT.Player(playerContainer, {
-        videoId: playerContainer.dataset.videoId,
-        playerVars: {
-            playsinline: 1,
-            rel: 0
-        },
-        events: {
-            onReady: () => {
-                setVideoDuration(player, durationElement);
-
-                gradientElement.classList.remove('hidden');
-                durationElement.classList.remove('opacity-0');
-                playElement.querySelectorAll("img").forEach(img => {
-                    img.classList.toggle("opacity-0");
-                });
-
-                overlayElement.addEventListener("click", () => {
-                    overlayElement.style.opacity = "0";
-                    overlayElement.style.pointerEvents = "none";
-
-                    player.playVideo();
-                });
-            },
-
-            onStateChange: event => {
-                if (event.data === YT.PlayerState.PLAYING) {
-                    video.dispatchEvent(new CustomEvent("video-playing"));
-                    document.querySelectorAll("video-player").forEach(otherVideo => {
-                        if (otherVideo !== video) {
-                            otherVideo.player?.pauseVideo();
-                        }
-                    });
-                }
-
-                if (event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.ENDED) {
-                    video.dispatchEvent(new CustomEvent("video-paused"));
-                }
-            }
-        }
-    });
-
-    video.player = player;
-}
