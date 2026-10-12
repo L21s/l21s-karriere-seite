@@ -146,6 +146,11 @@ toggle-button * {
     height: 100%;
 }
 
+.toggle > span {
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+}
 .toggle > span.active {
     color: white;
 }
@@ -166,7 +171,6 @@ toggle-button:hover .label {
     opacity: 0;
 }
 .toggle-minimized:not(:hover) .label {
-    padding: 0 1rem;
     color: transparent;
 }
 .toggle-minimized:not(:hover) .label:not(.active) {

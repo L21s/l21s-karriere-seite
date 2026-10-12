@@ -6,8 +6,8 @@ class ToggleButton extends HTMLElement {
             <div class="toggle-container p-1 rounded-full bg-white shadow-sm">
                 <button class="toggle flex relative gap-0">
                     <span class="slider rounded-full absolute bg-violette"></span>
-                    <span class="label rounded-full z-10 overflow-hidden py-2 px-4 font-medium text-textgray bg-violette active">Tech</span>
-                    <span class="label rounded-full z-10 overflow-hidden py-2 px-4 font-medium text-textgray bg-pink">Consulting</span>
+                    <span class="label rounded-full z-10 overflow-hidden font-medium text-textgray bg-violette active">Tech</span>
+                    <span class="label rounded-full z-10 overflow-hidden font-medium text-textgray bg-pink">Consulting</span>
                 </button>
             </div>
         `;
@@ -44,3 +44,5 @@ function updateToggle() {
         });
     });
 }
+
+window.addEventListener("resize", updateToggle);
