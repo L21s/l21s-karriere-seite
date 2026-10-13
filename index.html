@@ -73,46 +73,46 @@
             </div>
         </div>
     </section>
-    <div class="relative z-10 md:flex md:flex-col xl:grid auto-rows-fr lg:grid-cols-3 md:py-8 md:px-8 md:pt-24 md:gap-8 max-w-[1800px] mx-auto">
-        <section id="projekte">
-            <career-card icon="planning" class="max-md:hidden">
-                <span data-mode="tech" data-video-id="opL4u_gi5VY">
-                    <span data-slot="title">Unsere Tech-Projekte</span>
-                    <span data-slot="subtitle">Till hat die Antworten auf alle diese Fragen:</span>
-                    <span data-slot="text">
-                        Was für Probleme lösen wir bei L21s? Wie sieht ein typischer Kunde von uns aus?
-                        Wann entscheidet man sich für eine Zusammenarbeit mit L21s und
-                        welche Aufträge wollen wir vielleicht eher ungern bearbeiten?
+    <div id="card-wrapper">
+        <div class="relative z-10 md:flex md:flex-col xl:grid auto-rows-fr lg:grid-cols-3 md:py-8 md:px-8 md:pt-24 md:gap-8 max-w-[1800px] mx-auto">
+            <section id="projekte">
+                <career-card icon="planning" class="max-md:hidden">
+                    <span data-mode="tech" data-video-id="opL4u_gi5VY">
+                        <span data-slot="title">Unsere Tech-Projekte</span>
+                        <span data-slot="subtitle">Till hat die Antworten auf alle diese Fragen:</span>
+                        <span data-slot="text">
+                            Was für Probleme lösen wir bei L21s? Wie sieht ein typischer Kunde von uns aus?
+                            Wann entscheidet man sich für eine Zusammenarbeit mit L21s und
+                            welche Aufträge wollen wir vielleicht eher ungern bearbeiten?
+                        </span>
                     </span>
-                </span>
-                <span data-mode="consulting" data-video-id="">
-                    <span data-slot="title">Unsere Consulting-Projekte</span>
-                    <span data-slot="subtitle">Felix hat die Antworten auf alle diese Fragen:</span>
-                    <span data-slot="text">
-                        An welchen Herausforderungen arbeiten Consultants bei L21s?
-                        Welche Rolle übernehmen wir in den Projekten und wie begleiten wir unsere Kunden
-                        von der ersten Analyse bis zur Umsetzung?
-                    </span>
-                </span>
-            </career-card>
-            <career-card icon="planning" data-index="1" class="md:hidden">
-                <span data-mode="tech" data-video-id="opL4u_gi5VY">
-                    <span data-slot="title">Unsere Tech-Projekte</span>
-                    <span data-slot="subtitle">Till hat die Antworten auf alle diese Fragen:</span>
-                    <span data-slot="text">
-                        Was für Probleme lösen wir bei L21s? Wie sieht ein typischer Kunde von uns aus?
-                        Wann entscheidet man sich für eine Zusammenarbeit mit L21s und
-                        welche Aufträge wollen wir vielleicht eher ungern bearbeiten?
-                    </span>
-                </span>
-            </career-card>
-        </section>
-        <div>
-            <section id="projekte-con">
-                <career-card icon="planning" data-index="2" class="md:hidden">
                     <span data-mode="consulting" data-video-id="">
                         <span data-slot="title">Unsere Consulting-Projekte</span>
-                        <span data-slot="subtitle">Felix hat die Antworten auf alle diese Fragen:</span>
+                        <span data-slot="subtitle">Name hat die Antworten auf alle diese Fragen:</span>
+                        <span data-slot="text">
+                            An welchen Herausforderungen arbeiten Consultants bei L21s?
+                            Welche Rolle übernehmen wir in den Projekten und wie begleiten wir unsere Kunden
+                            von der ersten Analyse bis zur Umsetzung?
+                        </span>
+                    </span>
+                </career-card>
+                <career-card icon="planning" data-index="1" class="md:hidden">
+                    <span data-mode="tech" data-video-id="opL4u_gi5VY">
+                        <span data-slot="title">Unsere Tech-Projekte</span>
+                        <span data-slot="subtitle">Till hat die Antworten auf alle diese Fragen:</span>
+                        <span data-slot="text">
+                            Was für Probleme lösen wir bei L21s? Wie sieht ein typischer Kunde von uns aus?
+                            Wann entscheidet man sich für eine Zusammenarbeit mit L21s und
+                            welche Aufträge wollen wir vielleicht eher ungern bearbeiten?
+                        </span>
+                    </span>
+                </career-card>
+            </section>
+            <section id="projekte-con" class="md:hidden">
+                <career-card icon="planning" data-index="2">
+                    <span data-mode="consulting" data-video-id="">
+                        <span data-slot="title">Unsere Consulting-Projekte</span>
+                        <span data-slot="subtitle">Name hat die Antworten auf alle diese Fragen:</span>
                         <span data-slot="text">
                             An welchen Herausforderungen arbeiten Consultants bei L21s?
                             Welche Rolle übernehmen wir in den Projekten und wie begleiten wir unsere Kunden
@@ -186,7 +186,8 @@
                     <span class="text-xl font-bold">Entspannen auf dem Hochkönig</span>
                     <span>Spring Break 2023 | Hochkönig, Österreich</span>
                 </div>
-                <img loading="lazy" src="assets/entspannen-auf-dem-hochkoenig.webp" alt="Entspannen auf dem Hochkönig"
+                <img loading="lazy" src="assets/entspannen-auf-dem-hochkoenig.webp"
+                     alt="Entspannen auf dem Hochkönig"
                      class="hidden object-cover w-full h-full aspect-video self-center rounded-2xl md:block">
             </div>
             <section id="teamaufstellung">
@@ -232,7 +233,8 @@
                     <span class="text-xl font-bold">Gemeinsames Abendessen in Maria Alm</span>
                     <span>Spring Break 2023 | Maria Alm, Österreich</span>
                 </div>
-                <img loading="lazy" src="assets/gemeinsames-abendessen-in-maria-alm.webp" alt="Gemeinsames Abendessen"
+                <img loading="lazy" src="assets/gemeinsames-abendessen-in-maria-alm.webp"
+                     alt="Gemeinsames Abendessen"
                      class="hidden object-cover w-full h-full aspect-video self-center rounded-2xl md:block">
             </div>
             <section id="remote">
@@ -290,8 +292,8 @@
                     </span>
                 </career-card>
             </section>
-            <section id="bewerbungsprozess-con">
-                <career-card icon="planning" data-index="9" class="md:hidden">
+            <section id="bewerbungsprozess-con" class="md:hidden">
+                <career-card icon="planning" data-index="9">
                     <span data-mode="consulting" data-video-id="">
                         <span data-slot="title">Bewerbung bei L21s Consulting</span>
                         <span data-slot="subtitle">Name legt die Karten auf den Tisch:</span>
@@ -339,8 +341,8 @@
             </section>
             <div class="relative hidden md:grid md:row-start-8 md:col-start-1 md:col-span-1 group">
                 <div class="absolute top-0 left-0 text-white transition duration-500 rounded-2xl w-full h-full
-                        bg-gradient-to-br from-violette/50 to-transparent opacity-0 group-hover:opacity-100
-                        flex flex-col p-8">
+                            bg-gradient-to-br from-violette/50 to-transparent opacity-0 group-hover:opacity-100
+                            flex flex-col p-8">
                     <span class="text-xl font-bold">Abschlussdinner bei Sonnenuntergang</span>
                     <span>Leaf Peeping 2024 | Xhoffraix, Belgien</span>
                 </div>
@@ -357,10 +359,9 @@
                 <img loading="lazy" src="assets/outdoor-teamdinner.jpg" alt="Outdoor Teamdinner"
                      class="hidden object-cover w-full h-full aspect-video self-center rounded-2xl md:block">
             </div>
-            <div class="sticky bottom-0 z-50 flex justify-center p-8 -mt-12 bg-gradient-to-t from-bggray from-25% to-transparent">
+            <div id="stickyButton" class="sticky bottom-0 z-50 flex justify-center p-8 -mt-20 bg-gradient-to-t from-bggray from-25% to-transparent md:hidden">
                 <div class="bg-bggray w-full rounded-full">
-                    <a href="#offeneStellen"
-                       class="button secondary w-full border-violette hover:bg-violette/10 rounded-full transition md:hidden">
+                    <a href="#offeneStellen" class="button secondary w-full border-violette hover:bg-violette/10 rounded-full transition">
                         <span class="text-violette">Jetzt bewerben</span>
                     </a>
                 </div>
@@ -418,5 +419,22 @@
         <a href="https://www.l21s.de/impressum">Impressum</a>
         <a href="https://www.l21s.de/datenschutz">Datenschutz</a>
     </footer>
+    <script>
+        const firstCard = document.querySelector('#projekte');
+        const stickyButton = document.querySelector('#stickyButton');
+
+        function updateStickyButton() {
+            const stickyEnd = firstCard.getBoundingClientRect().bottom;
+            const buttonHeight = stickyButton.offsetHeight;
+            const buttonMargin = parseFloat(getComputedStyle(stickyButton).marginTop) || 0;
+            const position = stickyEnd + buttonHeight + buttonMargin - window.innerHeight;
+
+            stickyButton.style.transform = `translateY(${Math.max(0, Math.min(buttonHeight, position))}px)`;
+        }
+
+        window.addEventListener('scroll', updateStickyButton, {passive: true});
+        window.addEventListener('resize', updateStickyButton);
+        updateStickyButton();
+    </script>
 </body>
 </html>
