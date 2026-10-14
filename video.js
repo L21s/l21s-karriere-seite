@@ -24,8 +24,12 @@ class VideoPlayer extends HTMLElement {
                     </span>
                     <span class="clip-title absolute top-0 left-0 mx-8 my-6 text-xl font-bold line-clamp-1">${title}</span>
                 </div>
-                <span class="clip-duration z-10 text-xs p-1 px-2 rounded-full bg-black bg-opacity-50 w-fit self-end transition duration-500 opacity-0">0:00</span>
+                <span class="clip-duration z-10 text-xs p-1 px-2 rounded-full bg-black/40 w-fit self-end transition duration-500 opacity-0">0:00</span>
             </div>
+            
+            <span class="clip-paused absolute p-3 rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-black/40 pointer-events-none hidden">
+                <img src="assets/play.svg" alt="Play" class="h-8">
+            </span>
 
             <div class="youtube-player w-full h-full" data-video-id="${videoId}"></div>
         `;
@@ -36,10 +40,6 @@ class VideoPlayer extends HTMLElement {
 
     initPlayer() {
         const playerContainer = this.querySelector(".youtube-player");
-        const overlay = this.querySelector(".clip-overlay");
-        const gradient = this.querySelector(".clip-gradient");
-        const duration = this.querySelector(".clip-duration");
-        const playButton = this.querySelector(".clip-play");
 
         this.player = new YT.Player(playerContainer, {
             videoId: playerContainer.dataset.videoId,
@@ -48,22 +48,9 @@ class VideoPlayer extends HTMLElement {
                 rel: 0
             },
             events: {
-                onReady: event => {
-                    this.setDuration(event.target, duration);
-
-                    gradient.classList.remove("hidden");
-                    duration.classList.remove("opacity-0");
-
-                    playButton.querySelectorAll("img").forEach(image => {
-                        image.classList.toggle("opacity-0");
-                    });
-
-                    overlay.addEventListener("click", () => {
-                        overlay.style.opacity = "0";
-                        overlay.style.pointerEvents = "none";
-
-                        this.player.playVideo();
-                    });
+                onReady: () => {
+                    this.setDuration();
+                    this.setOverlayInteraction();
                 },
 
                 onStateChange: event => {
@@ -73,15 +60,37 @@ class VideoPlayer extends HTMLElement {
         });
     }
 
-    setDuration(player, durationElement) {
-        const totalSeconds = player.getDuration();
+    setOverlayInteraction() {
+        const overlay = this.querySelector(".clip-overlay");
+        const gradient = this.querySelector(".clip-gradient");
+        const playButton = this.querySelector(".clip-play");
+
+        gradient.classList.remove("hidden");
+
+        playButton.querySelectorAll("img").forEach(image => {
+            image.classList.toggle("opacity-0");
+        });
+
+        overlay.addEventListener("click", () => {
+            overlay.classList.add("opacity-0","pointer-events-none");
+            this.player.playVideo();
+        });
+    }
+
+    setDuration() {
+        const duration = this.querySelector(".clip-duration");
+
+        const totalSeconds = this.player.getDuration();
         const minutes = Math.floor(totalSeconds / 60);
         const seconds = Math.floor(totalSeconds % 60);
 
-        durationElement.textContent = `${minutes}:${seconds.toString().padStart(2, "0")}`;
+        duration.textContent = `${minutes}:${seconds.toString().padStart(2, "0")}`;
+        duration.classList.remove("opacity-0");
     }
 
     handlePlayerState(state) {
+        const pausedButton = this.querySelector(".clip-paused");
+
         if (state === YT.PlayerState.PLAYING) {
             this.dispatchEvent(new CustomEvent("video-playing"));
             this.pauseOtherVideos();
@@ -89,6 +98,14 @@ class VideoPlayer extends HTMLElement {
 
         if (state === YT.PlayerState.PAUSED || state === YT.PlayerState.ENDED) {
             this.dispatchEvent(new CustomEvent("video-paused"));
+        }
+
+        if (state === YT.PlayerState.PAUSED) {
+            pausedButton.classList.remove("hidden");
+        }
+
+        if (state === YT.PlayerState.PLAYING || state === YT.PlayerState.BUFFERING) {
+            pausedButton.classList.add("hidden");
         }
     }
 
