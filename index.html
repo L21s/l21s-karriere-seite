@@ -8,6 +8,7 @@
     <meta charset="UTF-8">
     <title>Karriere bei L21s</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -25,16 +26,19 @@
     </script>
     <link rel="stylesheet" href="./styles.css">
     <script src="./jobs.js" defer></script>
+    <script src="./toggle.js" defer></script>
+    <script src="./video.js" defer></script>
+    <script src="./career-card.js" defer></script>
 </head>
 <body class="text-white bg-white overflow-x-hidden">
     <section id="header">
         <div class="relative bg-gradient-to-br from-violette to-pink">
             <video autoplay loop muted src="assets/file.webm"
                    class="absolute top-0 left-0 object-cover w-full h-full"></video>
-            <div class="w-full top-0 z-10 flex flex-col h-full">
+            <div class="w-full top-0 flex flex-col h-full">
                 <nav class="absolute left-1/2 -translate-x-1/2 flex w-full flex-row items-center justify-between p-8 max-w-[1800px]">
                     <a href="https://l21s.de">
-                        <img loading="lazy" src="assets/img.webp" width="85" height="64" alt="Logo L21s">
+                        <img loading="lazy" src="assets/img.webp" class="h-10 md:h-9" alt="Logo L21s">
                     </a>
                     <div class="flex flex-row gap-8 items-center">
                         <a href="#projekte" class="text-md xl:block hidden hover:underline">Projekte</a>
@@ -47,380 +51,321 @@
                            class="text-md xl:block hidden hover:underline">Bewerbungsprozess</a>
                         <a href="#onboarding" class="text-md xl:block hidden hover:underline">Onboarding</a>
                         <a href="#offeneStellen"
-                           class="rounded-full border-2 p-2 px-4 text-md transition duration-500 hover:bg-white border-white md:hover:text-textgray text-center">Jetzt
-                            bewerben</a>
+                           class="button secondary hover:bg-white/15 rounded-full md:py-3 transition">Jetzt bewerben</a>
                     </div>
                 </nav>
                 <div class="flex flex-col pt-24 pb-24 md:pt-32 lg:pt-40 2xl:pt-48 md:pb-0 h-full flex-grow max-w-[1800px] w-full mx-auto">
-                    <div class="flex flex-col gap-4 lg:gap-16 p-8 md:p-0 flex-grow justify-evenly md:justify-start md:items-center">
+                    <div class="flex flex-col gap-4 lg:gap-16 max-md:py-14 py-8 pb-0 flex-grow justify-evenly md:justify-start md:items-center">
                         <div class="relative flex flex-col justify-center items-center text-center gap-8 w-full">
                             <h1 class="font-bold text-3xl text-center md:text-7xl">Karriere bei L21s</h1>
-                            <h2 class="md:text-2xl">Falls du mehr über L21s erfahren möchtest, bist du hier genau
+                            <h2 class="md:text-2xl px-8">Falls du mehr über L21s erfahren möchtest, bist du hier genau
                                 richtig.
                                 <br class="hidden md:block">Wir zeigen dir Schritt für Schritt, was dich bei L21s
                                 erwartet.</h2>
-                            <iframe loading="lazy"
-                                    class="translate-y-8 rounded-xl drop-shadow-md md:h-[32rem] md:w-[80%] lg:w-[70%] 2xl:h-[40rem]"
-                                    width="100%" height="278"
-                                    src="https://www.youtube-nocookie.com/embed/v2gKLt1Q5EM?controls=1&rel=0"
-                                    title="YouTube video player" frameborder="0" allow="" allowfullscreen></iframe>
+                            <video-player title="Welcome to L21s!" video-id="v2gKLt1Q5EM"
+                                          class="max-md:my-8 md:translate-y-10 md:w-[80%] lg:w-[70%] md:rounded-2xl aspect-video"></video-player>
                             <a href="#projekte"
-                               class="translate-y-8 md:hidden rounded-full border-2 p-2 px-4 text-md text-center">Zu den
-                                Projekten</a>
+                               class="button secondary md:hidden hover:bg-white/15 rounded-full md:py-3 transition">Zu
+                                den Projekten</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <div class="md:flex md:flex-col xl:grid md:grid-rows-5 lg:grid-cols-3 md:py-8 md:px-8 md:pt-24 md:gap-8 max-w-[1800px] mx-auto">
-        <section id="projekte">
-            <div class="bg-white text-violette md:bg-inherit flex flex-col h-full md:min-h-0">
-                <div class="flex flex-col py-6 flex-grow md:p-8 md:bg-bggray md:rounded-2xl">
-                    <div class="flex flex-col gap-8 p-8 flex-grow justify-evenly md:p-0 md:justify-between">
-                        <div class="flex flex-col justify-center gap-8">
-                            <div class="flex flex-col gap-2">
-                                <div class="flex flex-row md:flex-col md:items-start items-center md:gap-2">
-                                    <img class="-translate-x-1" loading="lazy" src="assets/planning_normal.gif"
-                                         alt="Projekte" width="40" height="40">
-                                    <h1 class="text-2xl">Unsere Projekte</h1>
-                                </div>
-                                <p class="text-textgray">
-                                    Was für Probleme lösen wir bei L21s? Wie sieht ein typischer Kunde von uns aus?
-                                    Wann entscheidet man sich für eine Zusammenarbeit mit L21s und
-                                    welche Aufträge wollen wir vielleicht eher ungern bearbeiten?
-                                    <br><br>Till hat die Antworten auf alle diese Fragen:
-                                </p>
-                            </div>
-                        </div>
-                        <iframe loading="lazy" class="rounded-2xl drop-shadow-md" width="100%" height="278"
-                                src="https://www.youtube-nocookie.com/embed/opL4u_gi5VY?controls=1&rel=0"
-                                title="YouTube video player" frameborder="0" allow="" allowfullscreen></iframe>
-                        <a href="#offeneStellen" class="md:hidden rounded-full border-2 p-2 px-4 text-md text-center">Jetzt
-                            bewerben</a>
-                    </div>
+    <div id="card-wrapper">
+        <div class="relative z-10 md:flex md:flex-col xl:grid auto-rows-fr lg:grid-cols-3 md:py-8 md:px-8 md:pt-24 md:gap-8 max-w-[1800px] mx-auto">
+            <section id="projekte">
+                <career-card icon="planning" class="max-md:hidden">
+                    <span data-mode="tech" data-video-id="opL4u_gi5VY">
+                        <span data-slot="title">Unsere Tech-Projekte</span>
+                        <span data-slot="subtitle">Till hat die Antworten auf alle diese Fragen:</span>
+                        <span data-slot="text">
+                            Was für Probleme lösen wir bei L21s? Wie sieht ein typischer Kunde von uns aus?
+                            Wann entscheidet man sich für eine Zusammenarbeit mit L21s und
+                            welche Aufträge wollen wir vielleicht eher ungern bearbeiten?
+                        </span>
+                    </span>
+                    <span data-mode="consulting" data-video-id="">
+                        <span data-slot="title">Unsere Consulting-Projekte</span>
+                        <span data-slot="subtitle">Name hat die Antworten auf alle diese Fragen:</span>
+                        <span data-slot="text">
+                            An welchen Herausforderungen arbeiten Consultants bei L21s?
+                            Welche Rolle übernehmen wir in den Projekten und wie begleiten wir unsere Kunden
+                            von der ersten Analyse bis zur Umsetzung?
+                        </span>
+                    </span>
+                </career-card>
+                <career-card icon="planning" data-index="1" class="md:hidden">
+                    <span data-mode="tech" data-video-id="opL4u_gi5VY">
+                        <span data-slot="title">Unsere Tech-Projekte</span>
+                        <span data-slot="subtitle">Till hat die Antworten auf alle diese Fragen:</span>
+                        <span data-slot="text">
+                            Was für Probleme lösen wir bei L21s? Wie sieht ein typischer Kunde von uns aus?
+                            Wann entscheidet man sich für eine Zusammenarbeit mit L21s und
+                            welche Aufträge wollen wir vielleicht eher ungern bearbeiten?
+                        </span>
+                    </span>
+                </career-card>
+            </section>
+            <section id="projekte-con" class="md:hidden">
+                <career-card icon="planning" data-index="2">
+                    <span data-mode="consulting" data-video-id="">
+                        <span data-slot="title">Unsere Consulting-Projekte</span>
+                        <span data-slot="subtitle">Name hat die Antworten auf alle diese Fragen:</span>
+                        <span data-slot="text">
+                            An welchen Herausforderungen arbeiten Consultants bei L21s?
+                            Welche Rolle übernehmen wir in den Projekten und wie begleiten wir unsere Kunden
+                            von der ersten Analyse bis zur Umsetzung?
+                        </span>
+                    </span>
+                </career-card>
+            </section>
+            <div class="relative hidden md:grid md:row-start-1 md:col-start-2 md:col-span-2 group">
+                <div class="absolute top-0 left-0 text-white transition duration-500 rounded-2xl w-full h-full
+                            bg-gradient-to-br from-violette/50 to-transparent opacity-0 group-hover:opacity-100
+                            flex flex-col p-8">
+                    <span class="text-xl font-bold">Das Team am Tisch nach unserem Rhetoriktraining</span>
+                    <span>Spring Break 2023 | Maria Alm, Österreich</span>
+                </div>
+                <img loading="lazy" src="assets/das-team-am-tisch-nach-unserem-rhetoriktraining.webp"
+                     alt="Das Team am Tisch nach unserem Rhetoriktraining"
+                     class="hidden object-cover w-full h-full aspect-video self-center rounded-2xl md:block">
+            </div>
+            <section id="technologien">
+                <career-card icon="coding" data-index="3">
+                    <span data-mode="tech" data-video-id="ld6-olsFYPY">
+                        <span data-slot="title">Technologien</span>
+                        <span data-slot="subtitle">Dein zukünftiger Kollege Tung kann dir mehr erzählen:</span>
+                        <span data-slot="text">
+                            Welche Technologien verwenden wir eigentlich bei L21s? Wie wählen wir die richtige
+                            Technologie für unsere Kundenprojekte aus? Arbeiten wir eher Fullstack oder in Silos
+                            getrennt nach Frontend und Backend?
+                        </span>
+                    </span>
+                </career-card>
+            </section>
+            <div class="relative hidden md:grid md:row-start-2 md:col-start-1 md:col-span-1 group">
+                <div class="absolute top-0 left-0 text-white transition duration-500 rounded-2xl w-full h-full
+                            bg-gradient-to-br from-violette/50 to-transparent opacity-0 group-hover:opacity-100
+                            flex flex-col p-8">
+                    <span class="text-xl font-bold">Schlechtes Wetter bremst uns nicht aus</span>
+                    <span>Weihnachtsfeier 2022 | WhatAGame, Berlin</span>
+                </div>
+                <img loading="lazy" src="assets/schlechtes-wetter-bremst-uns-nicht-aus.webp"
+                     alt="Schlechtes Wetter bremmst uns nicht aus"
+                     class="hidden object-cover w-full h-full aspect-video self-center rounded-2xl md:block">
+            </div>
+            <section id="ki">
+                <career-card icon="brain" data-index="4">
+                    <span data-mode="tech" data-video-id="17Hm0ZgGHo0">
+                        <span data-slot="title">Arbeit mit KI</span>
+                        <span data-slot="subtitle">Unser Gründer Tobias gibt dir einen Einblick:</span>
+                        <span data-slot="text">
+                            Wie genau setzen wir bei L21s künstliche Intelligenz in der Projektarbeit ein?
+                            Welche KI-Tools verwenden wir? Wo stößt die KI dabei an ihre Grenzen? Und wo ist uns
+                            der menschliche Berater am wichtigsten?
+                        </span>
+                    </span>
+                </career-card>
+            </section>
+            <div class="relative hidden md:grid md:row-start-2 md:col-start-3 md:col-span-1 group">
+                <div class="absolute top-0 left-0 text-white transition duration-500 rounded-2xl w-full h-full
+                            bg-gradient-to-br from-violette/50 to-transparent opacity-0 group-hover:opacity-100
+                            flex flex-col p-8">
+                    <span class="text-xl font-bold">Abkühlen mit Wasserski</span>
+                    <span>Sommerevent 2023 | Wasserski Langenfeld, Köln</span>
+                </div>
+                <img loading="lazy" src="assets/abkuehlen-mit-wasserski.webp" alt="Abkühlen mit Wasserski"
+                     class="hidden object-cover w-full h-full aspect-video self-center rounded-2xl md:block">
+            </div>
+            <div class="relative hidden md:grid md:row-start-3 md:col-start-1 md:col-span-2 group">
+                <div class="absolute top-0 left-0 text-white transition duration-500 rounded-2xl w-full h-full
+                            bg-gradient-to-br from-violette/50 to-transparent opacity-0 group-hover:opacity-100
+                            flex flex-col p-8">
+                    <span class="text-xl font-bold">Entspannen auf dem Hochkönig</span>
+                    <span>Spring Break 2023 | Hochkönig, Österreich</span>
+                </div>
+                <img loading="lazy" src="assets/entspannen-auf-dem-hochkoenig.webp"
+                     alt="Entspannen auf dem Hochkönig"
+                     class="hidden object-cover w-full h-full aspect-video self-center rounded-2xl md:block">
+            </div>
+            <section id="teamaufstellung">
+                <career-card icon="presentation" data-index="5">
+                    <span data-mode="tech" data-video-id="M3j0SfpdpgI">
+                        <span data-slot="title">Zusammenarbeit & Teams</span>
+                        <span data-slot="subtitle">Senior Software Engineer Philippe hat den Durchblick:</span>
+                        <span data-slot="text">
+                            Wie groß sind die Teams, die bei uns ein Kundenprojekt bearbeiten? Machen wir einen
+                            Unterschied zwischen Beratern und Programmierern? Wie verstehen wir agile
+                            Arbeitsweisen? Wie fördern wir Austausch über Teams hinweg?
+                        </span>
+                    </span>
+                </career-card>
+            </section>
+            <div class="relative hidden md:grid md:row-start-4 md:col-start-2 md:col-span-2 group">
+                <div class="absolute top-0 left-0 text-white transition duration-500 rounded-2xl w-full h-full
+                            bg-gradient-to-br from-violette/50 to-transparent opacity-0 group-hover:opacity-100
+                            flex flex-col p-8">
+                    <span class="text-xl font-bold">Zeitvertreib im Zug</span>
+                    <span>Spring Break 2023 | ICE</span>
+                </div>
+                <img loading="lazy" src="assets/zeitvertreib-im-zug.webp" alt="Zeitvertreib im Zug"
+                     class="hidden object-cover w-full h-full aspect-video self-center rounded-2xl md:block">
+            </div>
+            <section id="learning">
+                <career-card icon="online_learning" data-index="6">
+                    <span data-mode="tech" data-video-id="PC-1SBUhjrM">
+                        <span data-slot="title">Learning & Weiterbildung</span>
+                        <span data-slot="subtitle">Unser Associate Director Sebastian coached täglich sein Team und kann daher aus erster Hand berichten:</span>
+                        <span data-slot="text">
+                            Wie integrieren wir berufliche Weiterbildung in unseren Projektalltag? Was für
+                            Angebote und Möglichkeiten bieten wir darüber hinaus, damit unsere Engineers immer
+                            am Zahn der Zeit sind?
+                        </span>
+                    </span>
+                </career-card>
+            </section>
+            <div class="relative hidden md:grid md:row-start-5 md:col-start-1 md:col-span-1 group">
+                <div class="absolute top-0 left-0 text-white transition duration-500 rounded-2xl w-full h-full
+                            bg-gradient-to-br from-violette/50 to-transparent opacity-0 group-hover:opacity-100
+                            flex flex-col p-8">
+                    <span class="text-xl font-bold">Gemeinsames Abendessen in Maria Alm</span>
+                    <span>Spring Break 2023 | Maria Alm, Österreich</span>
+                </div>
+                <img loading="lazy" src="assets/gemeinsames-abendessen-in-maria-alm.webp"
+                     alt="Gemeinsames Abendessen"
+                     class="hidden object-cover w-full h-full aspect-video self-center rounded-2xl md:block">
+            </div>
+            <section id="remote">
+                <career-card icon="video-conference" data-index="7">
+                    <span data-mode="tech" data-video-id="eEMu0NZvFYM">
+                        <span data-slot="title">100 % Remote</span>
+                        <span data-slot="subtitle">Dominic arbeitet im Sommer regelmäßig von seinem Hausboot und lebt Remote wie kein Zweiter:</span>
+                        <span data-slot="text">
+                            Wie sieht unser 100 % Remote-Setup aus? Brauche ich dafür eigene Hardware? Was ist,
+                            wenn mein Internet ausfällt? Seht ihr euch auch mal im echten Leben?
+                        </span>
+                    </span>
+                </career-card>
+            </section>
+            <div class="relative hidden md:grid md:row-start-5 md:col-start-3 md:col-span-1 group">
+                <div class="absolute top-0 left-0 text-white transition duration-500 rounded-2xl w-full h-full
+                            bg-gradient-to-br from-violette/50 to-transparent opacity-0 group-hover:opacity-100
+                            flex flex-col p-8">
+                    <span class="text-xl font-bold">Beim Tischkicker-Turnier nach unserer Kartfahrt</span>
+                    <span>Sommerfest 2022 | Köln</span>
+                </div>
+                <img loading="lazy" src="assets/beim-tischkicker-turnier-nach-unserer-kartfahrt.webp"
+                     alt="Beim Tischkicker-Turnier"
+                     class="hidden object-cover w-full h-full aspect-video self-center rounded-2xl md:block">
+            </div>
+            <section id="bewerbungsprozess">
+                <career-card icon="job" class="max-md:hidden">
+                    <span data-mode="tech" data-video-id="vfQuD7B-E2M">
+                        <span data-slot="title">Bewerbung bei L21s Tech</span>
+                        <span data-slot="subtitle">Unser Gründer Tobias legt die Karten auf den Tisch:</span>
+                        <span data-slot="text">
+                            Wie konzipiert man einen Bewerbungsprozess, der möglichst nah am echten Job
+                            ausgerichtet ist? Was erwarten wir von dir, wenn du dich bei L21s vorstellst? Wie
+                            kannst du dich vorbereiten? Was kannst du von uns erwarten?
+                        </span>
+                    </span>
+                    <span data-mode="consulting" data-video-id="">
+                        <span data-slot="title">Bewerbung bei L21s Consulting</span>
+                        <span data-slot="subtitle">Name legt die Karten auf den Tisch:</span>
+                        <span data-slot="text">
+                            Wie läuft eine Bewerbung im Consulting bei L21s ab?
+                            Welche Schritte erwarten dich und wie finden wir gemeinsam heraus, ob wir zueinander passen?
+                        </span>
+                    </span>
+                </career-card>
+                <career-card icon="planning" data-index="8" class="md:hidden">
+                    <span data-mode="tech" data-video-id="vfQuD7B-E2M">
+                        <span data-slot="title">Bewerbung bei L21s Tech</span>
+                        <span data-slot="subtitle">Unser Gründer Tobias legt die Karten auf den Tisch:</span>
+                        <span data-slot="text">
+                            Wie konzipiert man einen Bewerbungsprozess, der möglichst nah am echten Job
+                            ausgerichtet ist? Was erwarten wir von dir, wenn du dich bei L21s vorstellst? Wie
+                            kannst du dich vorbereiten? Was kannst du von uns erwarten?
+                        </span>
+                    </span>
+                </career-card>
+            </section>
+            <section id="bewerbungsprozess-con" class="md:hidden">
+                <career-card icon="planning" data-index="9">
+                    <span data-mode="consulting" data-video-id="">
+                        <span data-slot="title">Bewerbung bei L21s Consulting</span>
+                        <span data-slot="subtitle">Name legt die Karten auf den Tisch:</span>
+                        <span data-slot="text">
+                            Wie läuft eine Bewerbung im Consulting bei L21s ab?
+                            Welche Schritte erwarten dich und wie finden wir gemeinsam heraus, ob wir zueinander passen?
+                        </span>
+                    </span>
+                </career-card>
+            </section>
+            <div class="relative md:row-start-6 md:col-start-1 md:col-span-2 group hidden md:grid">
+                <div class="absolute top-0 left-0 text-white transition duration-500 rounded-2xl w-full h-full
+                            bg-gradient-to-br from-violette/50 to-transparent opacity-0 group-hover:opacity-100
+                            flex flex-col p-8">
+                    <span class="text-xl font-bold">Im Videocall mit einem Versicherungskunden</span>
+                    <span>Leaf Peeping 2022 | Mallorca</span>
+                </div>
+                <img loading="lazy" src="assets/im-videocall-mit-einem-versicherungskunden.webp"
+                     alt="Im Videocall mit einem Versicherungskunden"
+                     class="hidden object-cover w-full h-full aspect-video self-center rounded-2xl md:block">
+            </div>
+            <div class="relative hidden md:grid md:row-start-7 md:col-start-2 md:col-span-2 group">
+                <div class="absolute top-0 left-0 text-white transition duration-500 rounded-2xl w-full h-full
+                            bg-gradient-to-br from-violette/50 to-transparent opacity-0 group-hover:opacity-100
+                            flex flex-col p-8">
+                    <span class="text-xl font-bold">Das L21s-Team vor der Wasserski-Action!</span>
+                    <span>Sommerevent 2025 | Wasserski Langenfeld, Köln</span>
+                </div>
+                <img loading="lazy" src="assets/das-l21s-team-vor-der-wasserski-action.webp"
+                     alt="Das L21s-Team nach erfolgreichen Skifahrten und Après-Ski!"
+                     class="hidden object-cover w-full h-full aspect-video self-center rounded-2xl md:block">
+            </div>
+            <section id="onboarding">
+                <career-card icon="startup" data-index="10">
+                    <span data-mode="tech" data-video-id="8SI3602jLzQ">
+                        <span data-slot="title">Onboarding</span>
+                        <span data-slot="subtitle">Das Operations Team holt dich an Bord:</span>
+                        <span data-slot="text">
+                            Wie sieht das Onboarding und die Einarbeitung bei L21s aus? Was passiert vor deinem
+                            Start, an deinem ersten Tag, in der ersten Woche und darüber hinaus? Wie stellen wir
+                            sicher, dass du dich wohlfühlst und alles hast, was du zum Arbeiten brauchst?
+                        </span>
+                    </span>
+                </career-card>
+            </section>
+            <div class="relative hidden md:grid md:row-start-8 md:col-start-1 md:col-span-1 group">
+                <div class="absolute top-0 left-0 text-white transition duration-500 rounded-2xl w-full h-full
+                            bg-gradient-to-br from-violette/50 to-transparent opacity-0 group-hover:opacity-100
+                            flex flex-col p-8">
+                    <span class="text-xl font-bold">Abschlussdinner bei Sonnenuntergang</span>
+                    <span>Leaf Peeping 2024 | Xhoffraix, Belgien</span>
+                </div>
+                <img loading="lazy" src="assets/abschlussdinner.jpeg" alt="Abschlussdinner bei Sonnenuntergang"
+                     class="hidden object-cover w-full h-full aspect-video self-center rounded-2xl md:block">
+            </div>
+            <div class="relative hidden md:grid md:row-start-8 md:col-start-3 md:col-span-1 group">
+                <div class="absolute top-0 left-0 text-white transition duration-500 rounded-2xl w-full h-full
+                            bg-gradient-to-br from-violette/50 to-transparent opacity-0 group-hover:opacity-100
+                            flex flex-col p-8">
+                    <span class="text-xl font-bold">Outdoor Teamdinner</span>
+                    <span>Leaf Peeping 2023 | Dilsen-Stokkem, Belgien</span>
+                </div>
+                <img loading="lazy" src="assets/outdoor-teamdinner.jpg" alt="Outdoor Teamdinner"
+                     class="hidden object-cover w-full h-full aspect-video self-center rounded-2xl md:block">
+            </div>
+            <div id="stickyButton" class="sticky bottom-0 z-50 flex justify-center p-8 -mt-20 bg-gradient-to-t from-bggray from-25% to-transparent md:hidden">
+                <div class="bg-bggray w-full rounded-full">
+                    <a href="#offeneStellen" class="button secondary w-full border-violette hover:bg-violette/10 rounded-full transition">
+                        <span class="text-violette">Jetzt bewerben</span>
+                    </a>
                 </div>
             </div>
-        </section>
-        <div class="relative hidden md:grid md:row-start-1 md:col-start-2 md:col-span-2 group">
-            <div class="absolute top-0 left-0 text-white transition duration-500 rounded-2xl w-full h-full
-                        bg-gradient-to-br from-violette/50 to-transparent opacity-0 group-hover:opacity-100
-                        flex flex-col p-8">
-                <span class="text-xl font-bold">Das Team am Tisch nach unserem Rhetoriktraining</span>
-                <span>Spring Break 2023 | Maria Alm, Österreich</span>
-            </div>
-            <img loading="lazy" src="assets/das-team-am-tisch-nach-unserem-rhetoriktraining.webp"
-                 alt="Das Team am Tisch nach unserem Rhetoriktraining"
-                 class="hidden object-cover w-full h-full aspect-video self-center rounded-2xl md:block">
-        </div>
-        <section id="technologien">
-            <div class="md:row-start-2 md:col-start-2 bg-violette text-white md:text-violette md:bg-inherit flex flex-col h-full md:min-h-0">
-                <div class="flex flex-col py-6 flex-grow md:p-8 md:bg-bggray md:rounded-2xl">
-                    <div class="flex flex-col gap-8 p-8 flex-grow justify-evenly md:p-0 md:justify-between">
-                        <div class="flex flex-col justify-center gap-2">
-                            <div class="flex flex-col gap-2">
-                                <div class="flex flex-row md:flex-col md:items-start items-center md:gap-2">
-                                    <img class="-translate-x-1 hidden md:block" loading="lazy"
-                                         src="assets/coding_normal.gif" alt="Technologien" width="40" height="40">
-                                    <img class="-translate-x-1 md:hidden" loading="lazy" src="assets/coding_white.gif"
-                                         alt="Technologien" width="40" height="40">
-                                    <h1 class="text-2xl">Technologien</h1>
-                                </div>
-                                <p class="md:text-textgray">
-                                    Welche Technologien verwenden wir eigentlich bei L21s? Wie wählen wir die richtige
-                                    Technologie für unsere Kundenprojekte aus? Arbeiten wir eher Fullstack oder in Silos
-                                    getrennt nach Frontend und Backend?
-                                    <br><br>Dein zukünftiger Kollege Tung kann dir mehr erzählen:
-                                </p>
-                            </div>
-                        </div>
-                        <iframe loading="lazy" class="rounded-2xl drop-shadow-md" width="100%" height="278"
-                                src="https://www.youtube-nocookie.com/embed/ld6-olsFYPY?controls=1&rel=0"
-                                title="YouTube video player" frameborder="0" allow="" allowfullscreen></iframe>
-                        <a href="#offeneStellen" class="md:hidden rounded-full border-2 p-2 px-4 text-md text-center">Jetzt
-                            bewerben</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <div class="relative hidden md:grid md:row-start-2 md:col-start-1 md:col-span-1 group">
-            <div class="absolute top-0 left-0 text-white transition duration-500 rounded-2xl w-full h-full
-                        bg-gradient-to-br from-violette/50 to-transparent opacity-0 group-hover:opacity-100
-                        flex flex-col p-8">
-                <span class="text-xl font-bold">Schlechtes Wetter bremst uns nicht aus</span>
-                <span>Weihnachtsfeier 2022 | WhatAGame, Berlin</span>
-            </div>
-            <img loading="lazy" src="assets/schlechtes-wetter-bremst-uns-nicht-aus.webp"
-                 alt="Schlechtes Wetter bremmst uns nicht aus"
-                 class="hidden object-cover w-full h-full aspect-video self-center rounded-2xl md:block">
-        </div>
-        <section id="ki">
-            <div class="bg-white text-violette md:bg-inherit flex flex-col h-full md:min-h-0">
-                <div class="flex flex-col py-6 flex-grow md:p-8 md:bg-bggray md:rounded-2xl">
-                    <div class="flex flex-col gap-8 p-8 flex-grow justify-evenly md:p-0 md:justify-between">
-                        <div class="flex flex-col justify-center gap-8">
-                            <div class="flex flex-col gap-2">
-                                <div class="flex flex-row md:flex-col md:items-start items-center md:gap-2">
-                                    <img class="-translate-x-1" loading="lazy" src="assets/brain.gif"
-                                         alt="Arbeit mit KI" width="40" height="40">
-                                    <h1 class="text-2xl">Arbeit mit KI</h1>
-                                </div>
-                                <p class="text-textgray">
-                                    Wie genau setzen wir bei L21s künstliche Intelligenz in der Projektarbeit ein?
-                                    Welche KI-Tools verwenden wir? Wo stößt die KI dabei an ihre Grenzen? Und wo ist uns
-                                    der menschliche Berater am wichtigsten?
-                                    <br><br>Unser Gründer Tobias gibt dir einen Einblick:
-                                </p>
-                            </div>
-                        </div>
-                        <iframe loading="lazy" class="rounded-2xl drop-shadow-md" width="100%" height="278"
-                                src="https://www.youtube-nocookie.com/embed/17Hm0ZgGHo0?controls=1&rel=0"
-                                title="YouTube video player" frameborder="0" allow="" allowfullscreen></iframe>
-                        <a href="#offeneStellen" class="md:hidden rounded-full border-2 p-2 px-4 text-md text-center">Jetzt
-                            bewerben</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <div class="relative hidden md:grid md:row-start-2 md:col-start-3 md:col-span-1 group">
-            <div class="absolute top-0 left-0 text-white transition duration-500 rounded-2xl w-full h-full
-                        bg-gradient-to-br from-violette/50 to-transparent opacity-0 group-hover:opacity-100
-                        flex flex-col p-8">
-                <span class="text-xl font-bold">Abkühlen mit Wasserski</span>
-                <span>Sommerevent 2023 | Wasserski Langenfeld, Köln</span>
-            </div>
-            <img loading="lazy" src="assets/abkuehlen-mit-wasserski.webp" alt="Abkühlen mit Wasserski"
-                 class="hidden object-cover w-full h-full aspect-video self-center rounded-2xl md:block">
-        </div>
-        <div class="relative hidden md:grid md:row-start-3 md:col-start-1 md:col-span-2 group">
-            <div class="absolute top-0 left-0 text-white transition duration-500 rounded-2xl w-full h-full
-                        bg-gradient-to-br from-violette/50 to-transparent opacity-0 group-hover:opacity-100
-                        flex flex-col p-8">
-                <span class="text-xl font-bold">Entspannen auf dem Hochkönig</span>
-                <span>Spring Break 2023 | Hochkönig, Österreich</span>
-            </div>
-            <img loading="lazy" src="assets/entspannen-auf-dem-hochkoenig.webp" alt="Entspannen auf dem Hochkönig"
-                 class="hidden object-cover w-full h-full aspect-video self-center rounded-2xl md:block">
-        </div>
-        <section id="teamaufstellung">
-            <div class="bg-violette text-white md:text-violette md:bg-inherit flex flex-col h-full md:min-h-0">
-                <div class="flex flex-col py-6 flex-grow md:p-8 md:bg-bggray md:rounded-2xl">
-                    <div class="flex flex-col gap-8 p-8 flex-grow justify-evenly md:p-0 md:justify-between">
-                        <div class="flex flex-col justify-center gap-8">
-                            <div class="flex flex-col gap-2">
-                                <div class="flex flex-row md:flex-col md:items-start items-center md:gap-2">
-                                    <img class="-translate-x-1 hidden md:block" loading="lazy"
-                                         src="assets/presentation_normal.gif" alt="Zusammenarbeit & Teams" width="40" height="40">
-                                    <img class="-translate-x-1 md:hidden" loading="lazy" src="assets/presentation_white.gif"
-                                         alt="Zusammenarbeit & Teams" width="40" height="40">
-                                    <h1 class="text-2xl">Zusammenarbeit & Teams</h1>
-                                </div>
-                                <p class="md:text-textgray">
-                                    Wie groß sind die Teams, die bei uns ein Kundenprojekt bearbeiten? Machen wir einen
-                                    Unterschied zwischen Beratern und Programmierern? Wie verstehen wir agile
-                                    Arbeitsweisen? Wie fördern wir Austausch über Teams hinweg?
-                                    <br><br>Senior Software Engineer Philippe hat den Durchblick:
-                                </p>
-                            </div>
-                        </div>
-                        <iframe loading="lazy" class="rounded-2xl drop-shadow-md" width="100%" height="278"
-                                src="https://www.youtube-nocookie.com/embed/M3j0SfpdpgI?controls=1&rel=0"
-                                title="YouTube video player" frameborder="0" allow="" allowfullscreen></iframe>
-                        <a href="#offeneStellen" class="md:hidden rounded-full border-2 p-2 px-4 text-md text-center">Jetzt
-                            bewerben</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <div class="relative hidden md:grid md:row-start-4 md:col-start-2 md:col-span-2 group">
-            <div class="absolute top-0 left-0 text-white transition duration-500 rounded-2xl w-full h-full
-                        bg-gradient-to-br from-violette/50 to-transparent opacity-0 group-hover:opacity-100
-                        flex flex-col p-8">
-                <span class="text-xl font-bold">Zeitvertreib im Zug</span>
-                <span>Spring Break 2023 | ICE</span>
-            </div>
-            <img loading="lazy" src="assets/zeitvertreib-im-zug.webp" alt="Zeitvertreib im Zug"
-                 class="hidden object-cover w-full h-full aspect-video self-center rounded-2xl md:block">
-        </div>
-        <section id="learning">
-            <div class="bg-white text-violette md:bg-inherit flex flex-col h-full md:min-h-0">
-                <div class="flex flex-col py-6 flex-grow md:p-8 md:bg-bggray md:rounded-2xl">
-                    <div class="flex flex-col gap-8 p-8 flex-grow justify-evenly md:p-0 md:justify-between">
-                        <div class="flex flex-col justify-center gap-8">
-                            <div class="flex flex-col gap-2">
-                                <div class="flex flex-row md:flex-col md:items-start items-center md:gap-2">
-                                    <img class="-translate-x-1" loading="lazy" src="assets/online_learning_normal.gif"
-                                         alt="Learning & Weiterbildung" width="40" height="40">
-                                    <h1 class="text-2xl">Learning & Weiterbildung</h1>
-                                </div>
-                                <p class="text-textgray">
-                                    Wie integrieren wir berufliche Weiterbildung in unseren Projektalltag? Was für
-                                    Angebote und Möglichkeiten bieten wir darüber hinaus, damit unsere Engineers immer
-                                    am Zahn der Zeit sind?
-                                    <br><br>Unser Associate Director Sebastian coached täglich sein Team und kann
-                                    daher aus erster Hand berichten:
-                                </p>
-                            </div>
-                        </div>
-                        <iframe loading="lazy" class="rounded-2xl drop-shadow-md" width="100%" height="278"
-                                src="https://www.youtube-nocookie.com/embed/PC-1SBUhjrM?controls=1&rel=0"
-                                title="YouTube video player" frameborder="0" allow="" allowfullscreen></iframe>
-                        <a href="#offeneStellen" class="md:hidden rounded-full border-2 p-2 px-4 text-md text-center">Jetzt
-                            bewerben</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <div class="relative hidden md:grid md:row-start-5 md:col-start-1 md:col-span-1 group">
-            <div class="absolute top-0 left-0 text-white transition duration-500 rounded-2xl w-full h-full
-                        bg-gradient-to-br from-violette/50 to-transparent opacity-0 group-hover:opacity-100
-                        flex flex-col p-8">
-                <span class="text-xl font-bold">Gemeinsames Abendessen in Maria Alm</span>
-                <span>Spring Break 2023 | Maria Alm, Österreich</span>
-            </div>
-            <img loading="lazy" src="assets/gemeinsames-abendessen-in-maria-alm.webp" alt="Gemeinsames Abendessen"
-                 class="hidden object-cover w-full h-full aspect-video self-center rounded-2xl md:block">
-        </div>
-        <section id="remote">
-            <div class="bg-violette text-white md:text-violette md:bg-inherit flex flex-col h-full md:min-h-0">
-                <div class="flex flex-col py-6 flex-grow md:p-8 md:bg-bggray md:rounded-2xl">
-                    <div class="flex flex-col gap-8 p-8 flex-grow justify-evenly md:p-0 md:justify-between">
-                        <div class="flex flex-col justify-center gap-8">
-                            <div class="flex flex-col gap-2">
-                                <div class="flex flex-row md:flex-col md:items-start items-center md:gap-2">
-                                    <img class="-translate-x-1 hidden md:block" loading="lazy"
-                                         src="assets/video-conference_normal.gif" alt="100% Remote" width="40" height="40">
-                                    <img class="-translate-x-1 md:hidden" loading="lazy" src="assets/video-conference_white.gif"
-                                         alt="100% Remote" width="40" height="40">
-                                    <h1 class="text-2xl">100 % Remote</h1>
-                                </div>
-                                <p class="md:text-textgray">
-                                    Wie sieht unser 100 % Remote-Setup aus? Brauche ich dafür eigene Hardware? Was ist,
-                                    wenn mein Internet ausfällt? Seht ihr euch auch mal im echten Leben?
-                                    <br><br>Dominic arbeitet im Sommer regelmäßig von seinem Hausboot und lebt Remote
-                                    wie kein Zweiter:
-                                </p>
-                            </div>
-                        </div>
-                        <iframe loading="lazy" class="rounded-2xl drop-shadow-md" width="100%" height="278"
-                                src="https://www.youtube-nocookie.com/embed/eEMu0NZvFYM?controls=1&rel=0"
-                                title="YouTube video player" frameborder="0" allow="" allowfullscreen></iframe>
-                        <a href="#offeneStellen" class="md:hidden rounded-full border-2 p-2 px-4 text-md text-center">Jetzt
-                            bewerben</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <div class="relative hidden md:grid md:row-start-5 md:col-start-3 md:col-span-1 group">
-            <div class="absolute top-0 left-0 text-white transition duration-500 rounded-2xl w-full h-full
-                        bg-gradient-to-br from-violette/50 to-transparent opacity-0 group-hover:opacity-100
-                        flex flex-col p-8">
-                <span class="text-xl font-bold">Beim Tischkicker-Turnier nach unserer Kartfahrt</span>
-                <span>Sommerfest 2022 | Köln</span>
-            </div>
-            <img loading="lazy" src="assets/beim-tischkicker-turnier-nach-unserer-kartfahrt.webp"
-                 alt="Beim Tischkicker-Turnier"
-                 class="hidden object-cover w-full h-full aspect-video self-center rounded-2xl md:block">
-        </div>
-        <section id="bewerbungsprozess">
-            <div class="bg-white text-violette md:bg-inherit flex flex-col h-full md:min-h-0">
-                <div class="flex flex-col py-6 flex-grow md:p-8 md:bg-bggray md:rounded-2xl">
-                    <div class="flex flex-col gap-8 p-8 flex-grow justify-evenly md:p-0 md:justify-between">
-                        <div class="flex flex-col justify-center gap-8">
-                            <div class="flex flex-col gap-2">
-                                <div class="flex flex-row md:flex-col md:items-start items-center md:gap-2">
-                                    <img class="-translate-x-1" loading="lazy" src="assets/job_normal.gif"
-                                         alt="Bewerbungsprozess" width="40" height="40">
-                                    <h1 class="text-2xl">Bewerbungsprozess</h1>
-                                </div>
-                                <p class="text-textgray">
-                                    Wie konzipiert man einen Bewerbungsprozess, der möglichst nah am echten Job
-                                    ausgerichtet ist? Was erwarten wir von dir, wenn du dich bei L21s vorstellst? Wie
-                                    kannst du dich vorbereiten? Was kannst du von uns erwarten?
-                                    <br><br>Unser Gründer Tobias legt die Karten auf den Tisch:
-                                </p>
-                            </div>
-                        </div>
-                        <iframe loading="lazy" class="rounded-2xl drop-shadow-md" width="100%" height="278"
-                                src="https://www.youtube-nocookie.com/embed/vfQuD7B-E2M?controls=1&rel=0"
-                                title="YouTube video player" frameborder="0" allow="" allowfullscreen></iframe>
-                        <a href="#offeneStellen" class="md:hidden rounded-full border-2 p-2 px-4 text-md text-center">Jetzt
-                            bewerben</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <div class="relative md:row-start-6 md:col-start-1 md:col-span-2 group hidden md:grid">
-            <div class="absolute top-0 left-0 text-white transition duration-500 rounded-2xl w-full h-full
-                        bg-gradient-to-br from-violette/50 to-transparent opacity-0 group-hover:opacity-100
-                        flex flex-col p-8">
-                <span class="text-xl font-bold">Im Videocall mit einem Versicherungskunden</span>
-                <span>Leaf Peeping 2022 | Mallorca</span>
-            </div>
-            <img loading="lazy" src="assets/im-videocall-mit-einem-versicherungskunden.webp"
-                 alt="Im Videocall mit einem Versicherungskunden"
-                 class="hidden object-cover w-full h-full aspect-video self-center rounded-2xl md:block">
-        </div>
-        <div class="relative hidden md:grid md:row-start-7 md:col-start-2 md:col-span-2 group">
-            <div class="absolute top-0 left-0 text-white transition duration-500 rounded-2xl w-full h-full
-                        bg-gradient-to-br from-violette/50 to-transparent opacity-0 group-hover:opacity-100
-                        flex flex-col p-8">
-                <span class="text-xl font-bold">Das L21s-Team vor der Wasserski-Action!</span>
-                <span>Sommerevent 2025 | Wasserski Langenfeld, Köln</span>
-            </div>
-            <img loading="lazy" src="assets/das-l21s-team-vor-der-wasserski-action.webp"
-                 alt="Das L21s-Team nach erfolgreichen Skifahrten und Après-Ski!"
-                 class="hidden object-cover w-full h-full aspect-video self-center rounded-2xl md:block">
-        </div>
-        <section id="onboarding">
-            <div class="bg-violette text-white md:text-violette md:bg-inherit flex flex-col h-full md:min-h-0">
-                <div class="flex flex-col flex-grow py-6 md:p-8 md:bg-bggray md:rounded-2xl">
-                    <div class="flex flex-col gap-8 p-8 flex-grow justify-evenly md:p-0 md:justify-between">
-                        <div class="flex flex-col justify-center gap-8">
-                            <div class="flex flex-col gap-2">
-                                <div class="flex flex-row md:flex-col md:items-start items-center md:gap-2">
-                                    <img class="-translate-x-1 hidden md:block" loading="lazy"
-                                         src="assets/startup_normal.gif" alt="Onboarding" width="40" height="40">
-                                    <img class="-translate-x-1 md:hidden" loading="lazy" src="assets/startup_white.gif"
-                                         alt="Onboarding" width="40" height="40">
-                                    <h1 class="text-2xl">Onboarding</h1>
-                                </div>
-                                <p class="md:text-textgray">
-                                    Wie sieht das Onboarding und die Einarbeitung bei L21s aus? Was passiert vor deinem
-                                    Start, an deinem ersten Tag, in der ersten Woche und darüber hinaus? Wie stellen wir
-                                    sicher, dass du dich wohlfühlst und alles hast, was du zum Arbeiten brauchst?
-                                    <br><br>Das Operations Team holt dich an Bord:
-                                </p>
-                            </div>
-                        </div>
-                        <iframe loading="lazy" class="rounded-2xl drop-shadow-md" width="100%" height="278"
-                                src="https://www.youtube-nocookie.com/embed/8SI3602jLzQ?controls=1&rel=0"
-                                title="YouTube video player" frameborder="0" allow="" allowfullscreen></iframe>
-                        <a href="#offeneStellen" class="md:hidden rounded-full border-2 p-2 px-4 text-md text-center">Unsere
-                            offenen Stellen</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <div class="relative hidden md:grid md:row-start-8 md:col-start-1 md:col-span-1 group">
-            <div class="absolute top-0 left-0 text-white transition duration-500 rounded-2xl w-full h-full
-                        bg-gradient-to-br from-violette/50 to-transparent opacity-0 group-hover:opacity-100
-                        flex flex-col p-8">
-                <span class="text-xl font-bold">Abschlussdinner bei Sonnenuntergang</span>
-                <span>Leaf Peeping 2024 | Xhoffraix, Belgien</span>
-            </div>
-            <img loading="lazy" src="assets/abschlussdinner.jpeg" alt="Abschlussdinner bei Sonnenuntergang"
-                 class="hidden object-cover w-full h-full aspect-video self-center rounded-2xl md:block">
-        </div>
-        <div class="relative hidden md:grid md:row-start-8 md:col-start-3 md:col-span-1 group">
-            <div class="absolute top-0 left-0 text-white transition duration-500 rounded-2xl w-full h-full
-                        bg-gradient-to-br from-violette/50 to-transparent opacity-0 group-hover:opacity-100
-                        flex flex-col p-8">
-                <span class="text-xl font-bold">Outdoor Teamdinner</span>
-                <span>Leaf Peeping 2023 | Dilsen-Stokkem, Belgien</span>
-            </div>
-            <img loading="lazy" src="assets/outdoor-teamdinner.jpg" alt="Outdoor Teamdinner"
-                 class="hidden object-cover w-full h-full aspect-video self-center rounded-2xl md:block">
         </div>
     </div>
     <section id="offeneStellen">
@@ -474,5 +419,22 @@
         <a href="https://www.l21s.de/impressum">Impressum</a>
         <a href="https://www.l21s.de/datenschutz">Datenschutz</a>
     </footer>
+    <script>
+        const firstCard = document.querySelector('#projekte');
+        const stickyButton = document.querySelector('#stickyButton');
+
+        function updateStickyButton() {
+            const stickyEnd = firstCard.getBoundingClientRect().bottom;
+            const buttonHeight = stickyButton.offsetHeight;
+            const buttonMargin = parseFloat(getComputedStyle(stickyButton).marginTop) || 0;
+            const position = stickyEnd + buttonHeight + buttonMargin - window.innerHeight;
+
+            stickyButton.style.transform = `translateY(${Math.max(0, Math.min(buttonHeight, position))}px)`;
+        }
+
+        window.addEventListener('scroll', updateStickyButton, {passive: true});
+        window.addEventListener('resize', updateStickyButton);
+        updateStickyButton();
+    </script>
 </body>
 </html>
