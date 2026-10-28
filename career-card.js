@@ -134,8 +134,12 @@ class CareerCard extends HTMLElement {
 
             video.classList.toggle("is-hidden", !isCurrentMode);
 
-            if (!isCurrentMode && video.player?.getPlayerState?.() === YT.PlayerState.PLAYING) {
-                video.player?.pauseVideo();
+            try {
+                if (!isCurrentMode && video.player?.getPlayerState?.() === YT.PlayerState.PLAYING) {
+                    video.player?.pauseVideo();
+                }
+            } catch (error) {
+                console.warn("Video-Player noch nicht initialisiert oder pausierbar:", error)
             }
         });
     }

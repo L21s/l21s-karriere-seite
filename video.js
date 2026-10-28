@@ -146,9 +146,14 @@ class VideoPlayer extends HTMLElement {
 
     pauseOtherVideos() {
         document.querySelectorAll("video-player").forEach(videoPlayer => {
-            if (videoPlayer !== this && videoPlayer.player?.getPlayerState() === YT.PlayerState.PLAYING) {
-                videoPlayer.player?.pauseVideo();
+            try {
+                if (videoPlayer !== this && videoPlayer.player?.getPlayerState() === YT.PlayerState.PLAYING) {
+                    videoPlayer.player?.pauseVideo();
+                }
+            } catch (error) {
+                console.warn("Video-Player noch nicht initialisiert oder pausierbar:", error)
             }
+
         });
     }
 }
