@@ -415,12 +415,15 @@
         window.addEventListener('resize', updateStickyButton);
         updateStickyButton();
 
-        document.addEventListener("mode-change", event => {
-            stickyButton.querySelector(".button").classList.toggle("border-violette", event.detail.currentMode === "tech");
-            stickyButton.querySelector(".button").classList.toggle("border-pink", event.detail.currentMode === "consulting");
+        const stickyButtonBorder = stickyButton.querySelector(".button");
+        const stickyButtonText = stickyButton.querySelector("span");
 
-            stickyButton.querySelector("span").classList.toggle("text-violette", event.detail.currentMode === "tech");
-            stickyButton.querySelector("span").classList.toggle("text-pink", event.detail.currentMode === "consulting");
+        document.addEventListener("mode-change", event => {
+            stickyButtonBorder.classList.toggle("border-violette", event.detail.currentMode === "tech");
+            stickyButtonBorder.classList.toggle("border-pink", event.detail.currentMode === "consulting");
+
+            stickyButtonText.classList.toggle("text-violette", event.detail.currentMode === "tech");
+            stickyButtonText.classList.toggle("text-pink", event.detail.currentMode === "consulting");
         });
 
         const header = document.querySelector('#header');
