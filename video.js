@@ -8,12 +8,19 @@ const youtubeApiReady = new Promise(resolve => {
 });
 
 class VideoPlayer extends HTMLElement {
+    static get observedAttributes() {
+        return ["thumbnail"];
+    }
+
     async connectedCallback() {
         const title = this.getAttribute("title") ?? "";
         const videoId = this.getAttribute("video-id");
 
         this.innerHTML = `
-            <div class="clip-overlay absolute z-1 inset-0 text-white transition duration-500 flex flex-col p-6 justify-between bg-cover bg-center bg-[url('https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg')]">
+            <div class="clip-overlay absolute z-1 inset-0 text-white transition duration-500 flex flex-col p-6 justify-between overflow-hidden bg-bggray">
+                <img class="clip-thumbnail absolute inset-0 w-full h-full object-cover transition-opacity duration-500" alt="">
+                <img class="clip-thumbnail absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-0" alt="">
+
                 <span class="clip-play absolute grid p-3 rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-black/40">
                     <img src="assets/jump.svg" alt="" class="h-8 col-start-1 row-start-1 transition duration-500">
                     <img src="assets/play.svg" alt="Play" class="h-8 col-start-1 row-start-1 transition duration-500 opacity-0">
@@ -34,8 +41,28 @@ class VideoPlayer extends HTMLElement {
             <div class="youtube-player w-full h-full" data-video-id="${videoId}"></div>
         `;
 
+        this.setThumbnail(this.getAttribute("thumbnail"));
+
         await youtubeApiReady;
         this.initPlayer();
+    }
+
+    attributeChangedCallback(name, oldImage, newImage) {
+        if (name === "thumbnail" && oldImage !== newImage) {
+            this.setThumbnail(newImage);
+        }
+    }
+
+    setThumbnail(thumbnail) {
+        const images = this.querySelectorAll(".clip-thumbnail");
+        const nextImage = this.querySelector(".clip-thumbnail.opacity-0");
+
+        nextImage.src = thumbnail || `https://i.ytimg.com/vi/${this.getAttribute("video-id")}/maxresdefault.jpg`;
+        nextImage.onload = () => {
+            images.forEach((image) => {
+                image.classList.toggle("opacity-0");
+            })
+        };
     }
 
     initPlayer() {

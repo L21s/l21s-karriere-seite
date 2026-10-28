@@ -1,76 +1,95 @@
+const initialMode = "tech"
+
 class CareerCard extends HTMLElement {
     connectedCallback() {
-        this.icon = this.getAttribute("icon");
+        this.cardId = this.getAttribute("card-id");
 
-        const sources = {
-            tech: this.querySelector('[data-mode="tech"]'),
-            consulting: this.querySelector('[data-mode="consulting"]')
+        const tech = this.querySelector('[data-mode="tech"]');
+        const consulting = this.querySelector('[data-mode="consulting"]');
+
+        this.source = {
+            tech: tech ?? consulting,
+            consulting: consulting ?? tech
         };
 
-        const hasTech = !!sources.tech;
-        const hasConsulting = !!sources.consulting;
-        const hasToggle = hasTech && hasConsulting;
+        this.hasToggle = Boolean(tech && consulting)
 
         this.innerHTML = `
             <div class="flex flex-col flex-grow gap-6 p-8 max-md:p-0 md:max-2xl:pb-9 bg-bggray rounded-t-3xl md:rounded-2xl h-full overflow-hidden max-md:-mt-6 max-md:shadow-[0_-0.2rem_0.75rem_rgba(0,0,0,0.4)]">
                 <div class="video-card-container flex relative aspect-video">
-                    <div class="grid w-full md:rounded-2xl overflow-hidden">
-                        ${this.renderVideo("tech", sources.tech)}
-                        ${this.renderVideo("consulting", sources.consulting)}
-                    </div>
-                    ${hasToggle ? `<toggle-button class="max-md:invisible absolute -translate-x-1/2 translate-y-1/2 bottom-0 left-1/2"></toggle-button>` : ""}
+                    <div class="video-container grid w-full md:rounded-2xl overflow-hidden"></div>
+                    ${this.hasToggle ? `
+                        <toggle-button class="max-md:invisible absolute -translate-x-1/2 translate-y-1/2 bottom-0 left-1/2"></toggle-button>
+                    ` : ""}
                 </div>
-                
-                <div class="grid max-md:mx-8">
-                    ${this.renderContent("tech")}
-                    ${this.renderContent("consulting")}
-                </div>
+                <div class="content-container grid max-md:mx-8"></div>
             </div>
         `;
 
-        Object.entries(sources).forEach(([mode, source]) => {
-            if (source) {
-                this.setContent(mode, source);
-            }
+        Object.entries(this.source).forEach(([mode, source]) => {
+            this.initCardContent(mode, source);
         });
 
-        this.switchMode(hasTech ? "tech" : "consulting");
+        if (this.hasToggle) {
+            this.setupToggleEvents();
+        }
 
-        if (hasToggle) {
-            this.setupVideoEvents();
-            document.addEventListener("mode-change", event => {
-                this.switchMode(event.detail.currentMode);
-            });
+        this.switchContent(initialMode);
+        document.addEventListener("mode-change", event => {
+            this.switchContent(event.detail.currentMode);
+        });
+    }
+
+    initCardContent(mode, source) {
+        if (source) {
+            this.renderContent(mode);
+            this.fillContent(mode);
+
+            if (mode === source.dataset.mode) {
+                this.renderVideo(mode);
+            }
         }
     }
 
-    renderVideo(mode, content) {
-        return content ? `<video-player data-mode="${mode}" class="card-video col-start-1 row-start-1" video-id="${content.dataset.videoId}"></video-player>` : "";
+    renderVideo(mode) {
+        const container = this.querySelector(".video-container");
+        const player = document.createElement("video-player");
+        const videoId = this.source[mode].dataset.videoId;
+
+        player.dataset.mode = mode;
+        player.className = "card-video col-start-1 row-start-1";
+        player.setAttribute("video-id", videoId);
+
+        container.append(player);
     }
 
     renderContent(mode) {
+        const container = this.querySelector(".content-container");
+        const content = document.createElement("div");
         const color = mode === "tech" ? "violette" : "pink";
 
-        return `
-            <div data-mode="${mode}" class="col-start-1 row-start-1 flex flex-col gap-6 max-md:mb-24">
-                <div class="flex flex-row md:flex-col md:items-start items-center gap-1 md:gap-2 max-md:mt-2">
-                    <img class="-translate-x-1 w-10" loading="lazy" src="assets/${this.icon}_normal.gif" alt="${this.icon}"/>
-                    <h1 data-slot="title" class="col-start-1 row-start-1 text-xl md:text-2xl text-black font-medium"></h1>
-                    <p class="md:hidden text-textgray ml-auto opacity-80 font-medium">${this.dataset.index}/10</p>
-                </div>
-
-                <div class="col-start-1 row-start-1 flex flex-col gap-3">
-                    <p data-slot="subtitle" class="text-${color} font-medium"></p>
-                    <p data-slot="text" class="text-textgray hyphens-auto" lang="de"></p>
-                </div>
+        content.dataset.mode = mode;
+        content.className = "col-start-1 row-start-1 flex flex-col gap-6 max-md:mb-24";
+        content.innerHTML = `
+            <div class="flex flex-row md:flex-col md:items-start items-center gap-1 md:gap-2 max-md:mt-2">
+                <img class="-translate-x-1 w-10" loading="lazy" src="assets/icon-${this.cardId}.gif" alt="${this.cardId}"/>
+                <h1 data-slot="title" class="col-start-1 row-start-1 text-xl md:text-2xl text-black font-medium"></h1>
+                <p class="md:hidden text-textgray ml-auto opacity-80 font-medium">${this.getAttribute("index")}/8</p>
+            </div>
+            
+            <div class="col-start-1 row-start-1 flex flex-col gap-3">
+                <p data-slot="subtitle" class="text-${color} font-medium"></p>
+                <p data-slot="text" class="text-textgray hyphens-auto" lang="de"></p>
             </div>
         `;
+
+        container.append(content);
     }
 
-    setContent(mode, source) {
+    fillContent(mode) {
         const contentContainer = this.querySelector(`div[data-mode="${mode}"]`);
 
-        source.querySelectorAll("[data-slot]").forEach(sourceElement => {
+        this.source[mode].querySelectorAll("[data-slot]").forEach(sourceElement => {
             const slot = sourceElement.dataset.slot;
             const targetElement = contentContainer.querySelector(`[data-slot="${slot}"]`);
 
@@ -80,7 +99,7 @@ class CareerCard extends HTMLElement {
         });
     }
 
-    setupVideoEvents() {
+    setupToggleEvents() {
         const videos = this.querySelectorAll("video-player");
         const toggle = this.querySelector("toggle-button");
 
@@ -95,19 +114,40 @@ class CareerCard extends HTMLElement {
         });
     }
 
-    switchMode(mode) {
+    switchContent(currentMode) {
+        this.querySelectorAll(".content-container [data-mode]").forEach(contentElement => {
+            contentElement.classList.toggle("is-hidden", contentElement.dataset.mode !== currentMode);
+        });
+
+        if (this.hasToggle) {
+            this.showVideo(currentMode);
+        } else {
+            this.showThumbnail(currentMode);
+        }
+    }
+
+    showVideo(currentMode) {
         const videos = this.querySelectorAll("video-player");
-        const modeElements = this.querySelectorAll("video-player[data-mode], div[data-mode]");
 
         videos.forEach(video => {
-            if (video.dataset.mode !== mode) {
+            const isCurrentMode = video.dataset.mode === currentMode;
+
+            video.classList.toggle("is-hidden", !isCurrentMode);
+
+            if (!isCurrentMode && video.player?.getPlayerState?.() === YT.PlayerState.PLAYING) {
                 video.player?.pauseVideo();
             }
         });
+    }
 
-        modeElements.forEach(element => {
-            element.classList.toggle("is-hidden", element.dataset.mode !== mode);
-        });
+    showThumbnail(currentMode) {
+        const player = this.querySelector("video-player");
+
+        if (currentMode === initialMode) {
+            player.removeAttribute("thumbnail");
+        } else {
+            player.setAttribute("thumbnail", `assets/thumbnail-${currentMode}-${this.cardId}.jpg`);
+        }
     }
 }
 
