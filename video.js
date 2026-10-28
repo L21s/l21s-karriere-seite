@@ -21,13 +21,13 @@ class VideoPlayer extends HTMLElement {
                 <img class="clip-thumbnail absolute inset-0 w-full h-full object-cover transition-opacity duration-500" alt="">
                 <img class="clip-thumbnail absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-0" alt="">
 
-                <span class="clip-play absolute grid p-3 rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-black/40">
-                    <img src="assets/jump.svg" alt="" class="h-8 col-start-1 row-start-1 transition duration-500">
-                    <img src="assets/play.svg" alt="Play" class="h-8 col-start-1 row-start-1 transition duration-500 opacity-0">
+                <span class="clip-play absolute grid p-3 rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-black/40 pointer-events-none">
+                    <img data-button="load" src="assets/jump.svg" alt="" class="h-8 col-start-1 row-start-1 transition duration-500">
+                    <img data-button="play" src="assets/play.svg" alt="Play" class="h-8 col-start-1 row-start-1 transition duration-500 opacity-0">
                 </span>
                 <div class="clip-gradient absolute inset-0 bg-gradient-to-br from-violette/50 to-violette/10 transition duration-500 opacity-0 hover:opacity-100 content-end cursor-pointer hidden">
                     <span class="absolute p-3 rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-br from-violette to-pink">
-                        <img src="assets/play.svg" alt="Play" class="h-8">
+                        <img data-button="play" src="assets/play.svg" alt="Play" class="h-8">
                     </span>
                     <span class="clip-title absolute top-0 left-0 mx-8 my-6 text-xl font-bold line-clamp-1">${title}</span>
                 </div>
@@ -94,12 +94,11 @@ class VideoPlayer extends HTMLElement {
 
         gradient.classList.remove("hidden");
 
-        playButton.querySelectorAll("img").forEach(image => {
-            image.classList.toggle("opacity-0");
-        });
+        playButton.querySelector('[data-button="load"]').classList.add("opacity-0");
+        playButton.querySelector('[data-button="play"]').classList.remove("opacity-0");
 
         overlay.addEventListener("click", () => {
-            overlay.classList.add("opacity-0","pointer-events-none");
+            overlay.classList.add("opacity-0", "pointer-events-none");
             this.player.playVideo();
         });
     }
@@ -116,29 +115,38 @@ class VideoPlayer extends HTMLElement {
     }
 
     handlePlayerState(state) {
+        const overlay = this.querySelector(".clip-overlay");
         const pausedButton = this.querySelector(".clip-paused");
 
         if (state === YT.PlayerState.PLAYING) {
             this.dispatchEvent(new CustomEvent("video-playing"));
+            pausedButton.classList.add("hidden");
             this.pauseOtherVideos();
         }
 
-        if (state === YT.PlayerState.PAUSED || state === YT.PlayerState.ENDED) {
-            this.dispatchEvent(new CustomEvent("video-paused"));
-        }
-
         if (state === YT.PlayerState.PAUSED) {
+            this.dispatchEvent(new CustomEvent("video-paused"));
             pausedButton.classList.remove("hidden");
         }
 
-        if (state === YT.PlayerState.PLAYING || state === YT.PlayerState.BUFFERING) {
+        if (state === YT.PlayerState.ENDED) {
+            this.dispatchEvent(new CustomEvent("video-paused"));
+            pausedButton.classList.add("hidden");
+
+            overlay.classList.remove("opacity-0", "pointer-events-none");
+            this.querySelectorAll('[data-button="play"]').forEach(button => {
+                button.src = "assets/replay.svg";
+            });
+        }
+
+        if (state === YT.PlayerState.BUFFERING) {
             pausedButton.classList.add("hidden");
         }
     }
 
     pauseOtherVideos() {
         document.querySelectorAll("video-player").forEach(videoPlayer => {
-            if (videoPlayer !== this) {
+            if (videoPlayer !== this && videoPlayer.player?.getPlayerState() === YT.PlayerState.PLAYING) {
                 videoPlayer.player?.pauseVideo();
             }
         });
