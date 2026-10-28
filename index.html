@@ -31,8 +31,9 @@
     <script src="./career-card.js" defer></script>
 </head>
 <body class="text-white bg-white overflow-x-hidden">
+    <toggle-button id="fixedButton" class="z-20 fixed top-6 right-6 mx-auto rounded-full shadow-lg w-fit h-14 max-md:hidden"></toggle-button>
     <section id="header">
-        <div class="relative bg-gradient-to-br from-violette to-pink">
+        <div class="relative bg-gradient-to-br from-violette to-pink max-md:-mb-32">
             <video autoplay loop muted src="assets/file.webm"
                    class="absolute top-0 left-0 object-cover w-full h-full"></video>
             <div class="w-full top-0 flex flex-col h-full">
@@ -56,7 +57,7 @@
                 </nav>
                 <div class="flex flex-col pt-24 pb-24 md:pt-32 lg:pt-40 2xl:pt-48 md:pb-0 h-full flex-grow max-w-[1800px] w-full mx-auto">
                     <div class="flex flex-col gap-4 lg:gap-16 max-md:py-14 py-8 pb-0 flex-grow justify-evenly md:justify-start md:items-center">
-                        <div class="relative flex flex-col justify-center items-center text-center gap-8 w-full">
+                        <div class="relative flex flex-col justify-center items-center text-center gap-6 md:gap-8 max-md:pb-16 w-full">
                             <h1 class="font-bold text-3xl text-center md:text-7xl">Karriere bei L21s</h1>
                             <h2 class="md:text-2xl px-8">Falls du mehr über L21s erfahren möchtest, bist du hier genau
                                 richtig.
@@ -64,9 +65,6 @@
                                 erwartet.</h2>
                             <video-player title="Welcome to L21s!" video-id="v2gKLt1Q5EM"
                                           class="max-md:my-8 md:translate-y-10 md:w-[80%] lg:w-[70%] md:rounded-2xl aspect-video"></video-player>
-                            <a href="#projekte"
-                               class="button secondary md:hidden hover:bg-white/15 rounded-full md:py-3 transition">Zu
-                                den Projekten</a>
                         </div>
                     </div>
                 </div>
@@ -342,8 +340,8 @@
             </div>
             <div id="stickyButton" class="sticky bottom-0 z-50 flex justify-center p-8 -mt-20 bg-gradient-to-t from-bggray from-25% to-transparent md:hidden">
                 <div class="bg-bggray w-full rounded-full">
-                    <a href="#offeneStellen" class="button secondary w-full border-violette hover:bg-violette/10 rounded-full transition">
-                        <span class="text-violette">Jetzt bewerben</span>
+                    <a href="#offeneStellen" class="button secondary w-full border-violette hover:bg-violette/10 rounded-full transition duration-500">
+                        <span class="text-violette transition duration-500">Jetzt bewerben</span>
                     </a>
                 </div>
             </div>
@@ -416,6 +414,34 @@
         window.addEventListener('scroll', updateStickyButton, {passive: true});
         window.addEventListener('resize', updateStickyButton);
         updateStickyButton();
+
+        document.addEventListener("mode-change", event => {
+            stickyButton.querySelector(".button").classList.toggle("border-violette", event.detail.currentMode === "tech");
+            stickyButton.querySelector(".button").classList.toggle("border-pink", event.detail.currentMode === "consulting");
+
+            stickyButton.querySelector("span").classList.toggle("text-violette", event.detail.currentMode === "tech");
+            stickyButton.querySelector("span").classList.toggle("text-pink", event.detail.currentMode === "consulting");
+        });
+
+        const header = document.querySelector('#header');
+        const onboarding = document.querySelector('#onboarding');
+        const jobs = document.querySelector('#offeneStellen');
+        const fixedButton = document.querySelector('#fixedButton');
+
+        function updateFixedButton() {
+            const headerBottom = header.getBoundingClientRect().bottom;
+            const onboardingTop = onboarding.getBoundingClientRect().top;
+            const jobsBottom = jobs.getBoundingClientRect().bottom;
+
+            const showButton = headerBottom <= 0 && onboardingTop > 0 && jobsBottom > window.innerHeight;
+
+            fixedButton.style.opacity = showButton ? '1' : '0';
+            fixedButton.style.pointerEvents = showButton ? 'auto' : 'none';
+        }
+
+        window.addEventListener('scroll', updateFixedButton, { passive: true });
+        window.addEventListener('resize', updateFixedButton);
+        updateFixedButton();
     </script>
 </body>
 </html>

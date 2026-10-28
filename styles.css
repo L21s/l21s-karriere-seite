@@ -138,6 +138,7 @@ video-player {
 }
 
 toggle-button {
+    display: flex;
     height: 3rem;
     transition: all 0.4s ease;
 }
@@ -150,10 +151,14 @@ toggle-button * {
 .toggle > span {
     display: flex;
     align-items: center;
-    padding: 0 1rem;
+    padding: 0 1.5rem;
 }
 .toggle > span.active {
     color: white;
+}
+
+career-card .toggle > span {
+    padding: 0 1rem;
 }
 
 toggle-button:not(.toggle-minimized) .label,
