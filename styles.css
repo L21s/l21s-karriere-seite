@@ -104,22 +104,95 @@ body {
     width: fit-content;
 }
 
-.apply-button {
+.button {
     display: flex;
+    box-sizing: border-box;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 1rem;
-    border-radius: 5rem;
+    padding: 0 1.5rem;
     font-weight: bold;
     white-space: nowrap;
-    height: fit-content;
+    height: 3.5rem;
 }
 
-.apply-button > span, .apply-button > svg {
+.button.apply > span, .button > svg {
     filter: brightness(0.75);
 }
-.apply-button:hover > span, .apply-button:hover > svg {
+.button.apply:hover > span, .button.apply:hover > svg {
     color: white;
     filter: none;
+}
+
+.button.secondary {
+    border-width: 2px;
+    border-style: solid;
+    background: none;
+}
+
+video-player {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background-color: black;
+}
+
+toggle-button {
+    display: flex;
+    height: 3rem;
+    transition: all 0.4s ease;
+}
+
+toggle-button * {
+    transition: all 0.4s ease;
+    height: 100%;
+}
+
+.toggle > span {
+    display: flex;
+    align-items: center;
+    padding: 0 1.5rem;
+}
+.toggle > span.active {
+    color: white;
+}
+
+career-card .toggle > span {
+    padding: 0 1rem;
+}
+
+toggle-button:not(.toggle-minimized) .label,
+toggle-button:hover .label {
+    background-color: transparent;
+}
+
+.toggle-minimized:not(:hover) {
+    height: 0.75rem;
+    transform: translate(-50%, 75%);
+}
+.toggle-minimized:not(:hover) .toggle {
+    gap: 0.25rem;
+}
+.toggle-minimized:not(:hover) .slider {
+    opacity: 0;
+}
+.toggle-minimized:not(:hover) .label {
+    color: transparent;
+}
+.toggle-minimized:not(:hover) .label:not(.active) {
+    background-color: #585858;
+}
+
+.card-video  {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.4s ease, visibility 0s;
+}
+
+.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+.card-video.is-hidden {
+    transition: opacity 0.4s ease, visibility 0s linear 0.4s;
 }
