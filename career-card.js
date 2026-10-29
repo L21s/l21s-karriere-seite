@@ -72,7 +72,7 @@ class CareerCard extends HTMLElement {
         content.className = "col-start-1 row-start-1 flex flex-col gap-6 max-md:mb-24";
         content.innerHTML = `
             <div class="flex flex-row md:flex-col md:items-start items-center gap-1 md:gap-2 max-md:mt-2">
-                <img class="-translate-x-1 w-10" loading="lazy" src="assets/icon-${this.cardId}.gif" alt="${this.cardId}"/>
+                <img class="-translate-x-1 w-10" loading="lazy" src="assets/icon-${mode}-${this.cardId}.gif" alt="${this.cardId}"/>
                 <h1 data-slot="title" class="col-start-1 row-start-1 text-xl md:text-2xl text-black font-medium"></h1>
                 <p class="md:hidden text-textgray ml-auto opacity-80 font-medium">${this.getAttribute("index")}/8</p>
             </div>
