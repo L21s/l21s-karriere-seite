@@ -26,9 +26,9 @@
     </script>
     <link rel="stylesheet" href="./styles.css">
     <script src="./jobs.js" defer></script>
-    <script src="./toggle.js" defer></script>
+    <script src="./toggle.js" type="module" defer></script>
     <script src="./video.js" defer></script>
-    <script src="./career-card.js" defer></script>
+    <script src="./career-card.js" type="module" defer></script>
 </head>
 <body class="text-white bg-white overflow-x-hidden">
     <toggle-button id="fixedButton" class="z-20 fixed top-6 right-6 mx-auto rounded-full shadow-lg w-fit h-14 max-md:hidden"></toggle-button>
@@ -399,7 +399,9 @@
         <a href="https://www.l21s.de/impressum">Impressum</a>
         <a href="https://www.l21s.de/datenschutz">Datenschutz</a>
     </footer>
-    <script>
+    <script type="module">
+        import { getInitialMode, MODES } from "./toggle.js";
+
         const firstCard = document.querySelector('#projekte');
         const stickyButton = document.querySelector('#stickyButton');
 
@@ -412,19 +414,25 @@
             stickyButton.style.transform = `translateY(${Math.max(0, Math.min(buttonHeight, position))}px)`;
         }
 
-        window.addEventListener('scroll', updateStickyButton, {passive: true});
+        window.addEventListener('scroll', updateStickyButton, { passive: true });
         window.addEventListener('resize', updateStickyButton);
         updateStickyButton();
 
         const stickyButtonBorder = stickyButton.querySelector(".button");
         const stickyButtonText = stickyButton.querySelector("span");
 
-        document.addEventListener("mode-change", event => {
-            stickyButtonBorder.classList.toggle("border-violette", event.detail.currentMode === "tech");
-            stickyButtonBorder.classList.toggle("border-pink", event.detail.currentMode === "consulting");
+        function updateStickyButtonColor(mode) {
+            stickyButtonBorder.classList.toggle("border-violette", mode === MODES.TECH);
+            stickyButtonBorder.classList.toggle("border-pink", mode === MODES.CONSULTING);
 
-            stickyButtonText.classList.toggle("text-violette", event.detail.currentMode === "tech");
-            stickyButtonText.classList.toggle("text-pink", event.detail.currentMode === "consulting");
+            stickyButtonText.classList.toggle("text-violette", mode === MODES.TECH);
+            stickyButtonText.classList.toggle("text-pink", mode === MODES.CONSULTING);
+        }
+
+        updateStickyButtonColor(getInitialMode());
+
+        document.addEventListener("mode-change", event => {
+            updateStickyButtonColor(event.detail.currentMode);
         });
 
         const header = document.querySelector('#header');

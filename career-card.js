@@ -1,15 +1,17 @@
-const initialMode = "tech"
+import { MODES, getInitialMode } from "./toggle.js";
+
+const initialMode = getInitialMode();
 
 class CareerCard extends HTMLElement {
     connectedCallback() {
         this.cardId = this.getAttribute("card-id");
 
-        const tech = this.querySelector('[data-mode="tech"]');
-        const consulting = this.querySelector('[data-mode="consulting"]');
+        const tech = this.querySelector(`[data-mode="${MODES.TECH}"]`);
+        const consulting = this.querySelector(`[data-mode="${MODES.CONSULTING}"]`);
 
         this.source = {
-            tech: tech ?? consulting,
-            consulting: consulting ?? tech
+            [MODES.TECH]: tech ?? consulting,
+            [MODES.CONSULTING]: consulting ?? tech
         };
 
         this.hasToggle = Boolean(tech && consulting)
@@ -66,7 +68,7 @@ class CareerCard extends HTMLElement {
     renderContent(mode) {
         const container = this.querySelector(".content-container");
         const content = document.createElement("div");
-        const color = mode === "tech" ? "violette" : "pink";
+        const color = mode === MODES.TECH ? "violette" : "pink";
 
         content.dataset.mode = mode;
         content.className = "col-start-1 row-start-1 flex flex-col gap-6 max-md:mb-24";
@@ -147,7 +149,7 @@ class CareerCard extends HTMLElement {
     showThumbnail(currentMode) {
         const player = this.querySelector("video-player");
 
-        if (currentMode === initialMode) {
+        if (currentMode === MODES.TECH) {
             player.removeAttribute("thumbnail");
         } else {
             player.setAttribute("thumbnail", `assets/thumbnail-${currentMode}-${this.cardId}.jpg`);
