@@ -29,6 +29,7 @@
     <script src="./toggle.js" type="module" defer></script>
     <script src="./video.js" defer></script>
     <script src="./career-card.js" type="module" defer></script>
+    <script src="./carousel.js" defer></script>
 </head>
 <body class="text-white bg-white overflow-x-hidden">
     <toggle-button id="fixedButton" class="z-20 fixed top-6 right-6 mx-auto rounded-full shadow-lg w-fit h-14 max-md:hidden"></toggle-button>
@@ -351,14 +352,23 @@
     <section id="mehrClips">
         <div class="relative min-h-screen h-full lg:min-h-full">
             <div class="relative w-full top-0 left-0 z-10 flex flex-col h-full max-w-[1800px] mx-auto">
-                <div class="flex flex-col py-24 md:px-8 gap-16 h-full">
-                    <div class="flex flex-col gap-4">
+                <div class="flex flex-col py-24 gap-16 h-full">
+                    <div class="flex flex-col gap-4 md:px-8">
                         <h1 class="text-textgray text-3xl lg:text-5xl text-center font-bold">Noch nicht genug?</h1>
                         <h4 class="text-textgray text-center">Dann schau dir doch unsere L21s Clips an!</h4>
                     </div>
-                    <div class="flex flex-row justify-center gap-6 w-full overflow-x-visible">
-                        <video-player video-id="f7W6Pj-jHgQ" class="w-[85vw] md:w-[320px] md:w-[160px] shrink-0 aspect-[9/16] rounded-2xl"></video-player>
-                    </div>
+                    <video-carousel>
+                        <video-player video-id="eCROVUlmCcA" title=""
+                                      thumbnail="assets/clip1.jpg"></video-player>
+                        <video-player video-id="eCROVUlmCcA" title=""
+                                      thumbnail="assets/clip1.jpg"></video-player>
+                        <video-player video-id="eCROVUlmCcA" title=""
+                                      thumbnail="assets/clip1.jpg"></video-player>
+                        <video-player video-id="eCROVUlmCcA" title=""
+                                      thumbnail="assets/clip1.jpg"></video-player>
+                        <video-player video-id="eCROVUlmCcA" title=""
+                                      thumbnail="assets/clip1.jpg"></video-player>
+                    </video-carousel>
                 </div>
             </div>
         </div>
