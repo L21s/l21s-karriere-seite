@@ -8,6 +8,13 @@ const youtubeApiReady = new Promise(resolve => {
 });
 
 class VideoPlayer extends HTMLElement {
+    constructor() {
+        super();
+        this.whenReady = new Promise(resolve => {
+            this.resolveReady = resolve;
+        });
+    }
+
     static get observedAttributes() {
         return ["thumbnail"];
     }
@@ -70,14 +77,17 @@ class VideoPlayer extends HTMLElement {
     initPlayer() {
         const playerContainer = this.querySelector(".youtube-player");
 
-        this.player = new YT.Player(playerContainer, {
+        new YT.Player(playerContainer, {
             videoId: playerContainer.dataset.videoId,
             playerVars: {
                 playsinline: 1,
                 rel: 0
             },
             events: {
-                onReady: () => {
+                onReady: event => {
+                    this.player = event.target;
+                    this.resolveReady(this);
+
                     this.setDuration();
                     this.setOverlayInteraction();
                 },
@@ -150,16 +160,19 @@ class VideoPlayer extends HTMLElement {
         }
     }
 
-    pauseOtherVideos() {
-        document.querySelectorAll("video-player").forEach(videoPlayer => {
-            try {
-                if (videoPlayer !== this && videoPlayer.player?.getPlayerState() === YT.PlayerState.PLAYING) {
-                    videoPlayer.player?.pauseVideo();
-                }
-            } catch (error) {
-                console.warn("Video-Player noch nicht initialisiert oder pausierbar:", error)
-            }
+    async pauseIfPlaying() {
+        await this.whenReady;
 
+        if (this.player?.getPlayerState() === YT.PlayerState.PLAYING) {
+            this.player.pauseVideo();
+        }
+    }
+
+    pauseOtherVideos() {
+        document.querySelectorAll("video-player").forEach(async videoPlayer => {
+            if (videoPlayer !== this) {
+                videoPlayer.pauseIfPlaying();
+            }
         });
     }
 }

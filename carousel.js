@@ -57,18 +57,14 @@ class VideoCarousel extends HTMLElement {
     updateActivePlayer() {
         const activePlayer = this.getActivePlayer();
 
-        this.clips.forEach(clip => {
+        this.clips.forEach(async clip => {
             const isActive = clip === activePlayer;
             const wasActive = clip.classList.contains("active");
 
             clip.classList.toggle("active", isActive);
 
-            try {
-                if (wasActive && !isActive && clip.player?.getPlayerState() === YT.PlayerState.PLAYING) {
-                    clip.player.pauseVideo();
-                }
-            } catch (error) {
-                console.warn("Video-Player noch nicht initialisiert oder pausierbar:", error)
+            if (wasActive && !isActive) {
+                clip.pauseIfPlaying();
             }
         });
 

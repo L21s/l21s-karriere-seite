@@ -131,17 +131,13 @@ class CareerCard extends HTMLElement {
     showVideo(currentMode) {
         const videos = this.querySelectorAll("video-player");
 
-        videos.forEach(video => {
+        videos.forEach(async video => {
             const isCurrentMode = video.dataset.mode === currentMode;
 
             video.classList.toggle("is-hidden", !isCurrentMode);
 
-            try {
-                if (!isCurrentMode && video.player?.getPlayerState?.() === YT.PlayerState.PLAYING) {
-                    video.player?.pauseVideo();
-                }
-            } catch (error) {
-                console.warn("Video-Player noch nicht initialisiert oder pausierbar:", error)
+            if (!isCurrentMode) {
+                video.pauseIfPlaying();
             }
         });
     }
