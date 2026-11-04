@@ -37,6 +37,9 @@ class VideoCarousel extends HTMLElement {
             clip.addEventListener("video-playing", () => clip.scrollIntoView({
                 behavior: "smooth", block: "nearest", inline: "center"
             }));
+            clip.addEventListener("video-ended", () => {
+                this.scrollToPlayer(1);
+            });
         });
     }
 
@@ -60,8 +63,12 @@ class VideoCarousel extends HTMLElement {
 
             clip.classList.toggle("active", isActive);
 
-            if (wasActive && !isActive && clip.player?.getPlayerState() === YT.PlayerState.PLAYING) {
-                clip.player.pauseVideo();
+            try {
+                if (wasActive && !isActive && clip.player?.getPlayerState() === YT.PlayerState.PLAYING) {
+                    clip.player.pauseVideo();
+                }
+            } catch (error) {
+                console.warn("Video-Player noch nicht initialisiert oder pausierbar:", error)
             }
         });
 
