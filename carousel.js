@@ -9,10 +9,10 @@ class VideoCarousel extends HTMLElement {
 
     render() {
         this.innerHTML = `
-            <div class="relative w-full [--card-width:85vw] md:[--card-width:24rem] lg:[--card-width:16rem] xl:[--card-width:14rem] 2xl:[--card-width:16rem]">
+            <div class="carousel relative w-full [--width:85vw] md:[--width:24rem]">
                 <button class="clips-arrow prev absolute left-2 md:left-1/2 top-1/2 z-10 md:-translate-x-[calc(var(--width)/2+100%+0.75rem)] -translate-y-1/2 flex items-center justify-center size-16 rounded-full bg-black/50 text-3xl text-white disabled:opacity-30">←</button>
                 <div class="clips-viewport w-full overflow-x-auto overflow-y-hidden snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-                    <div class="clips-container flex w-max flex-nowrap gap-4 px-[max(0px,calc((100vw-var(--card-width))/2))]"></div>
+                    <div class="clips-container flex w-max flex-nowrap md:gap-4 px-[max(0px,calc((100vw-var(--width))/2))]"></div>
                 </div>
                 <button class="clips-arrow next absolute right-2 md:left-1/2 top-1/2 z-10 md:translate-x-[calc(var(--width)/2+0.75rem)] -translate-y-1/2 flex items-center justify-center size-16 rounded-full bg-black/50 text-3xl text-white disabled:opacity-30">→</button>
             </div>
@@ -22,7 +22,7 @@ class VideoCarousel extends HTMLElement {
         this.container = this.querySelector(".clips-container");
 
         this.clips.forEach(clip => {
-            clip.classList.add("w-[var(--card-width)]", "shrink-0", "aspect-[9/16]", "rounded-2xl", "snap-center", "transition-all", "duration-300", "opacity-50", "scale-95");
+            clip.classList.add("w-[var(--width)]", "scale-90", "opacity-60", "shrink-0", "snap-center", "transition-all", "duration-300");
             this.container.appendChild(clip);
         });
     }
@@ -56,12 +56,9 @@ class VideoCarousel extends HTMLElement {
 
         this.clips.forEach(clip => {
             const isActive = clip === activePlayer;
-            const wasActive = clip.classList.contains("opacity-100");
+            const wasActive = clip.classList.contains("active");
 
-            clip.classList.toggle("opacity-100", isActive);
-            clip.classList.toggle("opacity-50", !isActive);
-            clip.classList.toggle("scale-100", isActive);
-            clip.classList.toggle("scale-95", !isActive);
+            clip.classList.toggle("active", isActive);
 
             if (wasActive && !isActive && clip.player?.getPlayerState() === YT.PlayerState.PLAYING) {
                 clip.player.pauseVideo();
