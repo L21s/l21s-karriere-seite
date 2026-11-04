@@ -139,6 +139,7 @@ video-player {
 
 video-player.clip {
     aspect-ratio: 9 / 16;
+    height: 100%;
     border-radius: 1rem;
 }
 
