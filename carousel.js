@@ -10,11 +10,11 @@ class VideoCarousel extends HTMLElement {
     render() {
         this.innerHTML = `
             <div class="relative w-full [--card-width:85vw] md:[--card-width:24rem] lg:[--card-width:16rem] xl:[--card-width:14rem] 2xl:[--card-width:16rem]">
-                <button class="clips-prev absolute left-1/2 top-1/2 z-10 -translate-x-[calc(var(--card-width)/2+50%+1rem)] -translate-y-1/2 rounded-full bg-black/60 p-3 text-white">←</button>
+                <button class="clips-arrow prev absolute left-2 md:left-1/2 top-1/2 z-10 md:-translate-x-[calc(var(--width)/2+100%+0.75rem)] -translate-y-1/2 flex items-center justify-center size-16 rounded-full bg-black/50 text-3xl text-white disabled:opacity-30">←</button>
                 <div class="clips-viewport w-full overflow-x-auto overflow-y-hidden snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                     <div class="clips-container flex w-max flex-nowrap gap-4 px-[max(0px,calc((100vw-var(--card-width))/2))]"></div>
                 </div>
-                <button class="clips-next absolute left-1/2 top-1/2 z-10 translate-x-[calc(var(--card-width)/2+50%+1rem)] -translate-y-1/2 rounded-full bg-black/60 p-3 text-white">→</button>
+                <button class="clips-arrow next absolute right-2 md:left-1/2 top-1/2 z-10 md:translate-x-[calc(var(--width)/2+0.75rem)] -translate-y-1/2 flex items-center justify-center size-16 rounded-full bg-black/50 text-3xl text-white disabled:opacity-30">→</button>
             </div>
         `;
 
@@ -28,8 +28,8 @@ class VideoCarousel extends HTMLElement {
     }
 
     setupEvents() {
-        this.querySelector(".clips-prev").addEventListener("click", () => this.scrollToPlayer(-1));
-        this.querySelector(".clips-next").addEventListener("click", () => this.scrollToPlayer(1));
+        this.querySelector(".prev").addEventListener("click", () => this.scrollToPlayer(-1));
+        this.querySelector(".next").addEventListener("click", () => this.scrollToPlayer(1));
 
         this.viewport.addEventListener("scroll", () => this.updateActivePlayer());
 
@@ -67,6 +67,8 @@ class VideoCarousel extends HTMLElement {
                 clip.player.pauseVideo();
             }
         });
+
+        this.updateArrowButtons();
     }
 
     scrollToPlayer(direction) {
@@ -76,6 +78,15 @@ class VideoCarousel extends HTMLElement {
         this.clips[next].scrollIntoView({
             behavior: "smooth", block: "nearest", inline: "center"
         });
+    }
+
+    updateArrowButtons() {
+        const index = this.clips.indexOf(this.getActivePlayer());
+        const prevButton = this.querySelector(".prev");
+        const nextButton = this.querySelector(".next");
+
+        prevButton.disabled = index === 0;
+        nextButton.disabled = index === this.clips.length - 1;
     }
 }
 
