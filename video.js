@@ -58,7 +58,9 @@ class VideoPlayer extends HTMLElement {
 
     attributeChangedCallback(name, oldImage, newImage) {
         if (name === "thumbnail" && oldImage !== newImage) {
-            this.setThumbnail(newImage);
+            if (this.querySelector(".video-thumbnail")) {
+                this.setThumbnail(newImage);
+            }
         }
     }
 
@@ -66,12 +68,14 @@ class VideoPlayer extends HTMLElement {
         const images = this.querySelectorAll(".video-thumbnail");
         const nextImage = this.querySelector(".video-thumbnail.opacity-0");
 
-        nextImage.src = thumbnail || `https://i.ytimg.com/vi/${this.getAttribute("video-id")}/maxresdefault.jpg`;
-        nextImage.onload = () => {
-            images.forEach((image) => {
-                image.classList.toggle("opacity-0");
-            })
-        };
+        if (nextImage) {
+            nextImage.src = thumbnail || `https://i.ytimg.com/vi/${this.getAttribute("video-id")}/maxresdefault.jpg`;
+            nextImage.onload = () => {
+                images.forEach((image) => {
+                    image.classList.toggle("opacity-0");
+                })
+            };
+        }
     }
 
     initPlayer() {
