@@ -137,6 +137,18 @@ video-player {
     background-color: black;
 }
 
+video-player.clip {
+    aspect-ratio: 9 / 16;
+    height: 100%;
+    border-radius: 1rem;
+}
+
+video-player.active {
+    transform: initial;
+    opacity: 1;
+    margin: 0;
+}
+
 toggle-button {
     display: flex;
     height: 3rem;

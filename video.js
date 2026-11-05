@@ -8,6 +8,13 @@ const youtubeApiReady = new Promise(resolve => {
 });
 
 class VideoPlayer extends HTMLElement {
+    constructor() {
+        super();
+        this.whenReady = new Promise(resolve => {
+            this.resolveReady = resolve;
+        });
+    }
+
     static get observedAttributes() {
         return ["thumbnail"];
     }
@@ -17,24 +24,26 @@ class VideoPlayer extends HTMLElement {
         const videoId = this.getAttribute("video-id");
 
         this.innerHTML = `
-            <div class="clip-overlay absolute z-1 inset-0 text-white transition duration-500 flex flex-col p-6 justify-between overflow-hidden bg-bggray">
-                <img class="clip-thumbnail absolute inset-0 w-full h-full object-cover transition-opacity duration-500" alt="">
-                <img class="clip-thumbnail absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-0" alt="">
+            <div class="video-overlay group absolute z-1 inset-0 text-white transition duration-500 flex flex-col p-6 justify-between overflow-hidden bg-bggray">
+                <img class="video-thumbnail absolute inset-0 w-full h-full object-cover transition-opacity duration-500" alt="">
+                <img class="video-thumbnail absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-0" alt="">
 
-                <span class="clip-play absolute grid p-3 rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-black/40 pointer-events-none">
+                <span class="video-title absolute top-0 left-0 pl-8 pr-20 pt-6 pb-10 text-lg font-bold line-clamp-2 w-full text-left bg-gradient-to-b from-black/40 to-black/0 transition duration-500 pointer-events-none opacity-0 group-hover:opacity-0 md:hidden">${title}</span>
+                <span class="video-duration z-10 text-xs p-1 px-2 rounded-full bg-black/40 w-fit self-end transition duration-500 pointer-events-none opacity-0">0:00</span>
+                
+                <span class="video-play absolute grid p-3 rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-black/40 pointer-events-none">
                     <img data-button="load" src="assets/jump.svg" alt="" class="h-8 col-start-1 row-start-1 transition duration-500">
                     <img data-button="play" src="assets/play.svg" alt="Play" class="h-8 col-start-1 row-start-1 transition duration-500 opacity-0">
                 </span>
-                <div class="clip-gradient absolute inset-0 bg-gradient-to-br from-violette/50 to-violette/10 transition duration-500 opacity-0 hover:opacity-100 content-end cursor-pointer hidden">
+                <div class="video-gradient absolute inset-0 bg-gradient-to-br from-violette/50 to-violette/10 transition duration-500 opacity-0 hover:opacity-100 content-end cursor-pointer hidden">
                     <span class="absolute p-3 rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-br from-violette to-pink">
                         <img data-button="play" src="assets/play.svg" alt="Play" class="h-8">
                     </span>
-                    <span class="clip-title absolute top-0 left-0 mx-8 my-6 text-xl font-bold line-clamp-1">${title}</span>
+                    <span class="video-title absolute top-0 left-0 mx-8 pr-12 my-6 text-lg md:text-xl font-bold line-clamp-2">${title}</span>
                 </div>
-                <span class="clip-duration z-10 text-xs p-1 px-2 rounded-full bg-black/40 w-fit self-end transition duration-500 opacity-0">0:00</span>
             </div>
             
-            <span class="clip-paused absolute p-3 rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-black/40 pointer-events-none hidden">
+            <span class="video-paused absolute p-3 rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-black/40 pointer-events-none hidden">
                 <img src="assets/play.svg" alt="Play" class="h-8">
             </span>
 
@@ -49,33 +58,40 @@ class VideoPlayer extends HTMLElement {
 
     attributeChangedCallback(name, oldImage, newImage) {
         if (name === "thumbnail" && oldImage !== newImage) {
-            this.setThumbnail(newImage);
+            if (this.querySelector(".video-thumbnail")) {
+                this.setThumbnail(newImage);
+            }
         }
     }
 
     setThumbnail(thumbnail) {
-        const images = this.querySelectorAll(".clip-thumbnail");
-        const nextImage = this.querySelector(".clip-thumbnail.opacity-0");
+        const images = this.querySelectorAll(".video-thumbnail");
+        const nextImage = this.querySelector(".video-thumbnail.opacity-0");
 
-        nextImage.src = thumbnail || `https://i.ytimg.com/vi/${this.getAttribute("video-id")}/maxresdefault.jpg`;
-        nextImage.onload = () => {
-            images.forEach((image) => {
-                image.classList.toggle("opacity-0");
-            })
-        };
+        if (nextImage) {
+            nextImage.src = thumbnail || `https://i.ytimg.com/vi/${this.getAttribute("video-id")}/maxresdefault.jpg`;
+            nextImage.onload = () => {
+                images.forEach((image) => {
+                    image.classList.toggle("opacity-0");
+                })
+            };
+        }
     }
 
     initPlayer() {
         const playerContainer = this.querySelector(".youtube-player");
 
-        this.player = new YT.Player(playerContainer, {
+        new YT.Player(playerContainer, {
             videoId: playerContainer.dataset.videoId,
             playerVars: {
                 playsinline: 1,
                 rel: 0
             },
             events: {
-                onReady: () => {
+                onReady: event => {
+                    this.player = event.target;
+                    this.resolveReady(this);
+
                     this.setDuration();
                     this.setOverlayInteraction();
                 },
@@ -88,14 +104,17 @@ class VideoPlayer extends HTMLElement {
     }
 
     setOverlayInteraction() {
-        const overlay = this.querySelector(".clip-overlay");
-        const gradient = this.querySelector(".clip-gradient");
-        const playButton = this.querySelector(".clip-play");
+        const overlay = this.querySelector(".video-overlay");
+        const gradient = this.querySelector(".video-gradient");
+        const playButton = this.querySelector(".video-play");
+        const title = this.querySelector(".video-title");
 
         gradient.classList.remove("hidden");
 
         playButton.querySelector('[data-button="load"]').classList.add("opacity-0");
         playButton.querySelector('[data-button="play"]').classList.remove("opacity-0");
+
+        title.classList.remove("opacity-0");
 
         overlay.addEventListener("click", () => {
             overlay.classList.add("opacity-0", "pointer-events-none");
@@ -104,7 +123,7 @@ class VideoPlayer extends HTMLElement {
     }
 
     setDuration() {
-        const duration = this.querySelector(".clip-duration");
+        const duration = this.querySelector(".video-duration");
 
         const totalSeconds = this.player.getDuration();
         const minutes = Math.floor(totalSeconds / 60);
@@ -115,8 +134,8 @@ class VideoPlayer extends HTMLElement {
     }
 
     handlePlayerState(state) {
-        const overlay = this.querySelector(".clip-overlay");
-        const pausedButton = this.querySelector(".clip-paused");
+        const overlay = this.querySelector(".video-overlay");
+        const pausedButton = this.querySelector(".video-paused");
 
         if (state === YT.PlayerState.PLAYING) {
             this.dispatchEvent(new CustomEvent("video-playing"));
@@ -131,6 +150,7 @@ class VideoPlayer extends HTMLElement {
 
         if (state === YT.PlayerState.ENDED) {
             this.dispatchEvent(new CustomEvent("video-paused"));
+            this.dispatchEvent(new CustomEvent("video-ended"));
             pausedButton.classList.add("hidden");
 
             overlay.classList.remove("opacity-0", "pointer-events-none");
@@ -144,16 +164,19 @@ class VideoPlayer extends HTMLElement {
         }
     }
 
-    pauseOtherVideos() {
-        document.querySelectorAll("video-player").forEach(videoPlayer => {
-            try {
-                if (videoPlayer !== this && videoPlayer.player?.getPlayerState() === YT.PlayerState.PLAYING) {
-                    videoPlayer.player?.pauseVideo();
-                }
-            } catch (error) {
-                console.warn("Video-Player noch nicht initialisiert oder pausierbar:", error)
-            }
+    async pauseIfPlaying() {
+        await this.whenReady;
 
+        if (this.player?.getPlayerState() === YT.PlayerState.PLAYING) {
+            this.player.pauseVideo();
+        }
+    }
+
+    pauseOtherVideos() {
+        document.querySelectorAll("video-player").forEach(async videoPlayer => {
+            if (videoPlayer !== this) {
+                videoPlayer.pauseIfPlaying();
+            }
         });
     }
 }

@@ -29,9 +29,10 @@
     <script src="./toggle.js" type="module" defer></script>
     <script src="./video.js" defer></script>
     <script src="./career-card.js" type="module" defer></script>
+    <script src="./carousel.js" defer></script>
 </head>
 <body class="text-white bg-white overflow-x-hidden">
-    <toggle-button id="fixedButton" class="z-20 fixed top-6 right-6 mx-auto rounded-full shadow-lg w-fit h-14 max-md:hidden"></toggle-button>
+    <toggle-button id="fixedButton" class="z-20 fixed top-6 right-6 mx-auto rounded-full shadow-lg w-fit h-14 opacity-0 max-md:hidden"></toggle-button>
     <section id="header">
         <div class="relative bg-gradient-to-br from-violette to-pink max-md:-mb-32">
             <video autoplay loop muted src="assets/file.webm"
@@ -71,7 +72,7 @@
             </div>
         </div>
     </section>
-    <div id="card-wrapper">
+    <div id="card-wrapper" class="overflow-clip">
         <div class="relative z-10 md:flex md:flex-col xl:grid auto-rows-fr lg:grid-cols-3 md:py-8 md:px-8 md:pt-24 md:gap-8 max-w-[1800px] mx-auto">
             <toggle-button class="z-20 sticky top-6 mx-auto rounded-full shadow-lg w-fit h-14 md:hidden"></toggle-button>
             <section id="projekte" class="max-md:mt-16">
@@ -348,6 +349,30 @@
             </div>
         </div>
     </div>
+    <section id="mehrClips">
+        <div class="relative min-h-screen h-full lg:min-h-full">
+            <div class="relative w-full top-0 left-0 z-10 flex flex-col h-full max-w-[1800px] mx-auto">
+                <div class="flex flex-col pt-16 pb-20 gap-16 h-full bg-white">
+                    <div class="flex flex-col gap-2 md:px-8">
+                        <h1 class="text-textgray text-3xl lg:text-5xl text-center font-bold">Noch nicht genug?</h1>
+                        <h4 class="text-textgray text-center">Dann schau dir doch unsere L21s Clips an!</h4>
+                    </div>
+                    <video-carousel>
+                        <video-player class="clip" video-id="cBHv7lGkArM" title="Kompetenzen, die im Interview überzeugen"
+                                      thumbnail=""></video-player>
+                        <video-player class="clip" video-id="8eTGVmS_LI4" title="In ständiger Veränderung"
+                                      thumbnail=""></video-player>
+                        <video-player class="clip" video-id="eCROVUlmCcA" title="Versicherungen, langweilig?"
+                                      thumbnail="assets/clip1.jpg"></video-player>
+                        <video-player class="clip" video-id="n3Ui6Ey7zaQ" title="Der erste große Kunde"
+                                      thumbnail=""></video-player>
+                        <video-player class="clip" video-id="w8h_Dv9C-Ac" title="Learnings aus der Kundengewinnung"
+                                      thumbnail=""></video-player>
+                    </video-carousel>
+                </div>
+            </div>
+        </div>
+    </section>
     <section id="offeneStellen">
         <div class="relative min-h-screen h-full lg:min-h-full bg-gradient-to-br from-violette to-pink">
             <video autoplay loop muted src="assets/file.webm"
@@ -447,8 +472,8 @@
 
             const showButton = headerBottom <= 0 && onboardingTop > 0 && jobsBottom > window.innerHeight;
 
-            fixedButton.style.opacity = showButton ? '1' : '0';
-            fixedButton.style.pointerEvents = showButton ? 'auto' : 'none';
+            fixedButton.classList.toggle('opacity-0', !showButton);
+            fixedButton.classList.toggle('pointer-events-none', !showButton);
         }
 
         window.addEventListener('scroll', updateFixedButton, { passive: true });
